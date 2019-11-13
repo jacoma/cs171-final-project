@@ -1,43 +1,46 @@
 var parseDate = d3.timeParse("%Y");
-var landingData = [];
+var fishSpecies = [];
+var countries = [];
+var landingData;
 
 /*** VARIABLES FOR VIZ */
-var stackedArea;
+var stackedArea, barchart;
 
-/*** LOAD DATA */
-loadData();
+queue()
+    .defer(d3.csv, "data/landings_2.csv")
+    .await(createVis);
 
-function loadData() {
-    queue()
-    .defer(d3.csv, "data/landings.csv")
-    .await(function(error, landings){
-        if(!error){
+function createVis(error, landings){
+    if(error) { console.log(error); }
 
-            console.log(landings);
-
-            /*** CREATE STACKED AREA CHART DATA */
-            years = Object.keys(landings[0]);
-
-            for(y = 0; y < years.length; y++){
-                yearObj = {};
-                yearObj["Year"] = parseDate(years[y]);
-                landings.forEach(function(d){
-                        yearObj[d.Species] = +d[years[y]];
-                    })
-
-                landingData.push(yearObj);
-            }
-
-            console.log(landingData);
-            
-            createVis();
+    landings.forEach(function(d){
+        if(countries.indexOf(d.Country) < 0) {
+            countries.push(d.Country);
         }
     });
-}
+        
+    landings.forEach(function(d){
+        if(fishSpecies.indexOf(d.Species) < 0) {
+            fishSpecies.push(d.Species);
+        }
+    });
 
-/*** CREATE VISUALZATIONS */
-function createVis(){
+    landingData = landings;
 
-    stackedArea = new StackedAreaChart("viz-area", landingData);
+    // (3) Create event handler
+	var MyEventHandler = {};
+
+    /*** CREATE VISUALZATIONS */
+    stackedArea = new StackedAreaChart("viz-area", landingData, MyEventHandler);
+
+    barchart = new BarChart("viz-bar", landingData);
+
+    // (5) Bind event handler
+    $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter){
+
+		barchart.onSelectionChange(speciesFilter);
+
+		stackedArea.onSelectionChange(speciesFilter);
+	});
 
 }

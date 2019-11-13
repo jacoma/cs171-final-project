@@ -4,11 +4,12 @@
  * @param _data	
  */
 
-StackedAreaChart = function(_parentElement, _data){
+StackedAreaChart = function(_parentElement, _data, _eventHandler){
 
 	this.parentElement = _parentElement;
     this.data = _data;
     this.displayData = [];
+    this.eventHandler = _eventHandler;
 
     // DEBUG RAW DATA
     // console.log(this.data);
@@ -27,8 +28,8 @@ StackedAreaChart.prototype.initVis = function(){
 
 	vis.margin = { top: 40, right: 20, bottom: 60, left: 60 };
 
-	vis.width = 800 - vis.margin.left - vis.margin.right,
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
+        vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
   /*** SVG */
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -49,12 +50,10 @@ StackedAreaChart.prototype.initVis = function(){
 	vis.responsivefy();
 
     /*** CREATE SCALES */
-    vis.colorScale = d3.scaleOrdinal(d3.schemeCategory10)
-        .domain(d3.keys(vis.data[0]).filter(function(d){ return d != "Year"; }));
+    vis.colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
     vis.x = d3.scaleTime()
-        .range([0, vis.width])
-        .domain(d3.extent(vis.data, function(d) { return d.Year; }));
+        .range([0, vis.width]);
 
     vis.y = d3.scaleLinear()
         .range([vis.height, 0]);
@@ -63,7 +62,8 @@ StackedAreaChart.prototype.initVis = function(){
         .scale(vis.x);
 
     vis.yAxis = d3.axisLeft()
-        .scale(vis.y);
+        .scale(vis.y)
+        .tickFormat(d3.format("0.2s"));
 
     vis.svg.append("g")
         .attr("class", "x-axis axis")
@@ -75,22 +75,12 @@ StackedAreaChart.prototype.initVis = function(){
     vis.svg.append("text")
 		.attr("class", "axis-title")
 		.attr("transform", "translate("+(-(vis.margin.left) + 10)+"," +(vis.margin.top * 3.5)+")rotate(-90)")
-        .text("Funding (in millions $ USD)");
+        .text("Tonnes (in millions)");
         
     vis.svg.append("text")
 		.attr("class", "chart-title")
 		.attr("transform", "translate("+(10)+"," +(-vis.margin.top/2)+")")
-		.text("Funding by Source from 2003 to 2015");
-
-
-
-    /*** CREATE STACK & PATH LAYOUT */
-    vis.dataCategories = vis.colorScale.domain();
-
-    vis.stack = d3.stack()
-        .keys(vis.dataCategories);
-
-    vis.stackedData = vis.stack(vis.data);
+		.text("Volume of Fish Landings from 2000");
 
 	vis.area = d3.area()
         .curve(d3.curveLinear)
@@ -110,15 +100,20 @@ StackedAreaChart.prototype.initVis = function(){
             if(vis.filter){
                 return vis.y(d.data[vis.filter]); 
             }else{
-                return vis.y(d[1])
-            }});
+                if(isNaN(d[1])){
+                    vis.y(0)
+                } else{
+                    return vis.y(d[1])
+                }
+            }
+        });
 
 
 	/*** TOOLTIP */
     vis.tooltip = vis.svg.append("text")
-        .attr("class", "areaTooltip")
-        .attr("transform", "translate(10,10)")
-        .attr("display", "none");
+         .attr("class", "areaTooltip")
+         .attr("transform", "translate(10,10)")
+         .attr("display", "none");
 
     vis.wrangleData();
 }
@@ -129,6 +124,45 @@ StackedAreaChart.prototype.initVis = function(){
 
 StackedAreaChart.prototype.wrangleData = function(){
     var vis = this;
+
+    // yearlyData = [];
+
+    /*** CREATE STACKED AREA CHART DATA */
+    years = [];
+
+    vis.data.forEach(function(d){
+        if(years.indexOf(d.YEAR) < 0) {
+            years.push(d.YEAR);
+        }
+    });
+
+    years = years.sort((a,b) => d3.ascending(a, b));
+
+    var yearlyData = [];
+
+    for(y = 0; y < years.length; y++){
+        yearObj = {};
+        yearObj["Year"] = parseDate(years[y]);
+
+        for(s = 0; s < fishSpecies.length; s++){
+            vis.data.forEach(function(d){
+                if(d.YEAR === years[y] && d.Species === fishSpecies[s]){ 
+                    yearObj[fishSpecies[s]] = +d["Sum of Value"];
+                }
+            })
+        }
+        yearlyData.push(yearObj);
+    }
+
+    /*** CREATE STACK & PATH LAYOUT */
+    vis.colorScale.domain(d3.keys(yearlyData[0]).filter(function(d){ return d != "Year"; }));
+
+    vis.dataCategories = vis.colorScale.domain();
+
+    vis.stack = d3.stack()
+        .keys(vis.dataCategories);
+
+    vis.stackedData = vis.stack(yearlyData);
 
     /*** FILTER DATA BASED ON SELECTION */
     if(vis.filter){
@@ -165,7 +199,19 @@ StackedAreaChart.prototype.updateVis = function(){
         });
     })]);
 
-    vis.dataCategories = vis.colorScale.domain();
+    minYear = d3.min(vis.displayData, function(row){
+        return d3.min(row, function(d){
+            return d.data.Year
+        })
+    });
+
+    maxYear = d3.max(vis.displayData, function(row){
+        return d3.max(row, function(d){
+            return d.data.Year
+        })
+    });
+
+    vis.x.domain([minYear, maxYear]);
 
     /*** CREATE STACKED AREA CHARRT */
     var categories = vis.svg.selectAll(".area")
@@ -193,29 +239,26 @@ StackedAreaChart.prototype.updateVis = function(){
         });
 
     d3.selectAll(".area")
-        .on("mouseover", function(d){
-            vis.tooltip.attr("display", null);
-        })
-        .on("mousemove", function(d){
-            var x0 = vis.x.invert(d3.mouse(this)[0]);
-            var xYear = x0.getFullYear();
+    //     .on("mouseover", function(d){
+    //         vis.tooltip.attr("display", null);
+    //     })
+    //     .on("mousemove", function(d){
+    //         var x0 = vis.x.invert(d3.mouse(this)[0]);
+    //         var xYear = x0.getFullYear();
 
-            i = years.indexOf(xYear.toString());
-            value = d[i].data[d.key];
+    //         i = years.indexOf(xYear.toString());
+    //         value = d[i].data[d.key];
 
-            vis.tooltip.text(d.key + ": " + "$" +tipFormat(value)+"M");
-        })
-        .on("mouseout", function(d){
-            vis.tooltip.attr("display", "none");
-        })
+    //         vis.tooltip.text(d.key + ": " + "$" +tipFormat(value)+"M");
+    //     })
+    //     .on("mouseout", function(d){
+    //         vis.tooltip.attr("display", "none");
+    //     })
         .on("click", function(d, i) {
-            if(vis.filter){
-                vis.filter = "";
-            } else {
-                vis.filter = vis.dataCategories[i];
-            }
 
-            vis.wrangleData();
+            // 3. Trigger the event 'selectionChanged' of our event handler
+			$(vis.eventHandler).trigger("selectionChanged", vis.dataCategories[i]);
+
         });
 
     categories.exit().remove();
@@ -264,4 +307,16 @@ StackedAreaChart.prototype.responsivefy = function(){
 		var targetWidth = parseInt(container.style("width"));
 		svg.attr("width", targetWidth);
 	}
+}
+
+StackedAreaChart.prototype.onSelectionChange = function(filter){
+    var vis = this;
+
+    if(vis.filter){
+        vis.filter = "";
+    } else {
+        vis.filter = filter;
+    }
+
+    vis.wrangleData();
 }
