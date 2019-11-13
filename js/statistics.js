@@ -13,6 +13,8 @@ statStockStatus = [
 drawStatistics();
 
 function drawStatistics(){
+        statFishStocks = statFishStocks.sort(function(a, b){ return a.Metric - b.Metric })
         fishStock = new Statistics("fishstocks", statFishStocks, "Global Fish Stock");
+        statStockStatus = statStockStatus.sort(function(a, b){ return a.Metric - b.Metric })
         stockStatus = new Statistics("stockstatus", statStockStatus, "Status of Fish Stocks");
     }

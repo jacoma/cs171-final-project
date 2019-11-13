@@ -7,21 +7,17 @@ bubbleSVG = d3.select("#bubbles").append("svg")
     .attr("class", "bubble")
     .attr("id", "bubblesvg");
 
-
-
+var allPopData;
+var populationData = [];
+var filterYear = 2018
 loadData();
 
-var supportData;
 
 // prepare data
 function loadData(){
-    d3.csv("data/FisheriesSupport2000-2019.csv", function(error, bubbleData){
+    d3.csv("data/global_population.csv", function(error, popData){
         if(!error) {
-            //set up data into array of objects
-            bubbleData.forEach(function(d){
-                d.Value = parseFloat(d.Value)
-            })
-            supportData = bubbleData;
+            allPopData = popData;
             //console.log(bubbleData);
             wrangleData();
         }
@@ -29,9 +25,18 @@ function loadData(){
 }
 
 function wrangleData(){
-    supportData = supportData.filter(function(d){ return d.TIME == "2010"})
-    supportData = supportData.sort(function(a,b) { return b.Value - a.Value })
-    drawBubbles(supportData);
+    filterYear = d3.select("#year").property("value");
+    console.log(filterYear);
+    allPopData.forEach(function(d) {
+        var temp = {Name: d.Country_Name,
+        Value: parseInt(d[filterYear]) };
+        populationData.push(temp)
+    })
+
+    populationData.sort(function(a,b) {return b.Value - a.Value})
+    console.log(populationData)
+
+    drawBubbles(populationData);
 
 }
 
