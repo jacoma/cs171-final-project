@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CS171 - Final Project (Subsidies Visualization)</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/subsidies_style.css">
+</head>
+<body>
+
+	<div class="container">
+
+		<h1>Global Fisheries Funding from 2000 - 2017</h1>
+<!--		<h2>All Time Statistics</h2>-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6" id="col1">
+				<!-- Select box to choose the ranking type -->
+					<form class="form-inline" >
+						<div class="form-group">
+							<label for="ranking-type">Group by</label>
+							<select class="form-control" id="select-box" onchange=changeSelection() autocomplete="off">
+								<option value="TOT">Total</option>
+								<option value="COL">Colombia</option>
+								<option value="AUS">Australia</option>
+								<option value="BRA">Brazil</option>
+								<option value="OECD">OECD</option>
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" id="plot">
+					<!-- Parent container for the visualization -->
+					<div id="chart-area"></div>
+				</div>
+					<!--Second column for Edition specifics-->
+				<div class="col-md-4" id="specifics"><div id=details></div></div>
+
+	</div>
+
+
+
+	<!-- Load JS libraries -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3-tip.js"></script>
+<!--	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>-->
+
+	<!-- Your implementation -->
+	<script src="js/subsidies_main.js"></script>
+</body>
+</html>
