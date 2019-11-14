@@ -21,3 +21,23 @@
     font-size: 7px;
     color: black;
 }
+
+@media screen and (min-width: 500px) {
+    .story-cover {
+        min-height: 800px;
+    }
+
+    .story .row {
+        min-height: 400px;
+    }
+
+    .story div {
+        margin: 100px 0px 50px 0px;
+    }
+
+    .story #start-story div{
+        margin: 50px 0px 50px 0px;
+    }
+  }
+
+

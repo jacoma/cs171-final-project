@@ -5,10 +5,12 @@
  * @param _data						-- the actual data: perDayData
  */
 
-BarChart = function(_parentElement, _data){
+BarChart = function(_parentElement, _data, _eventHandler){
     this.parentElement = _parentElement;
     this.data = _data;
     this.filteredData = this.data;
+    this.displayData = [];
+    this.eventHandler = _eventHandler;
 
     this.initVis();
 }
@@ -26,7 +28,8 @@ BarChart.prototype.initVis = function(){
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
-    vis.filter = "";
+    vis.speciesFilter = "";
+    vis.countryFilter = "";
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -111,11 +114,11 @@ BarChart.prototype.updateVis = function(){
     vis.x.domain([0, d3.max(vis.displayData, d=>d.value)]);
     vis.y.domain(vis.displayData.map(d=>d.key));
 
-    var bars = vis.svg.selectAll(".bar")
+    var bars = vis.svg.selectAll(".bar-country")
         .data(vis.displayData, d => d.key);
 
     bars.enter().append("rect")
-        .attr("class", "bar")
+        .attr("class", "bar-country")
         .merge(bars)
         .transition(vis.t)
         .attr("width", function(d){
@@ -126,8 +129,37 @@ BarChart.prototype.updateVis = function(){
         .attr("y", function(d){
             return vis.y(d.key);
         })
+        .attr("fill", function(d, i){
+            if(vis.speciesFilter){
+                return stackedArea.colorScale(vis.speciesFilter)
+            } else {
+                return "grey"
+            }
+        })
+        .attr("opacity", 0.7);
 
     bars.exit().remove();
+
+    d3.selectAll(".bar-country").on("mouseover", function(d, i){
+            d3.select(this).attr("opacity", 1);
+        })
+        .on("mouseleave", function(d, i){
+            d3.select(this).attr("opacity", 0.7);
+        })
+        .on("click", function(d,i){
+            clickedBar = d.key;
+            var normalBars = d3.selectAll(".bar-country");
+
+            console.log(clickedBar, vis.countryFilter);
+            if(vis.countryFilter){
+                normalBars.attr("fill", "grey");
+            } else {
+                normalBars.attr("fill", d => d.key === clickedBar ? "blue":"grey")
+            }
+
+            $(vis.eventHandler).trigger("selectionChanged", ["", d.key]);
+        
+        })
 
     // DRAW AXIS
     vis.svg.select(".y-axis")
@@ -167,20 +199,30 @@ BarChart.prototype.responsivefy = function(){
 }
 
 
-BarChart.prototype.onSelectionChange = function(filter){
+BarChart.prototype.onSelectionChange = function(speciesFilter, countryFilter){
     var vis = this;
 
-    if(vis.filter === filter){
-        vis.filter = ""
+    if(vis.speciesFilter === speciesFilter){
+        vis.speciesFilter = ""
         vis.filteredData = vis.data;
 
     } else {
-        vis.filter = filter;
+        vis.speciesFilter = speciesFilter;
 
         vis.filteredData = vis.data.filter(function(d){
-            return d.Species === filter;
+            return d.Species === speciesFilter;
         });
     }
 
-	vis.wrangleData();
+    if(countryFilter){
+        if(vis.countryFilter){
+            vis.countryFilter = "";
+        }
+        else{
+            vis.countryFilter = countryFilter
+        }
+    } else {
+        vis.wrangleData();
+    }
+            
 }

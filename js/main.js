@@ -33,14 +33,14 @@ function createVis(error, landings){
     /*** CREATE VISUALZATIONS */
     stackedArea = new StackedAreaChart("viz-area", landingData, MyEventHandler);
 
-    barchart = new BarChart("viz-bar", landingData);
+    barchart = new BarChart("viz-bar", landingData, MyEventHandler);
 
     // (5) Bind event handler
-    $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter){
+    $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter, countryFilter, MyEventHandler){
 
-		barchart.onSelectionChange(speciesFilter);
+		barchart.onSelectionChange(speciesFilter, countryFilter);
 
-		stackedArea.onSelectionChange(speciesFilter);
+		stackedArea.onSelectionChange(speciesFilter, countryFilter);
 	});
 
 }
