@@ -36,6 +36,18 @@ label {
   /*border: #0b2e13;*/
 }
 
+img {
+  text-align: center;
+  max-width: 60%;
+  max-height: 30%;
+  margin:auto;
+  opacity: 0.8;
+}
+
+.img-container {
+  text-align: center;
+}
+
 /****************/
 /*  LINE CHART  */
 /****************/
