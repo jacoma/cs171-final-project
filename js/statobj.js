@@ -21,18 +21,19 @@ Statistics.prototype.initVis = function() {
 
     var vis = this;
 
-    imgPadding =10;
-    statLength = 120;
-    statHeight = 20;
-    width = 300;
-    height= 200;
-    margin = {top:0, right:0, bottom:0, left:0};
+    vis.imgPadding = 10;
+    vis.statLength = 120;
+    vis.statHeight = 20;
+    vis.width = 300;
+    vis.height= 200;
+    vis.margin = {top:0, right:0, bottom:0, left:0};
 
     vis.statisticSVG = d3.select("#" + vis.parentElement)
         .append("svg")
-        .attr("width",width - margin.right - margin.left)
-        .attr("height",height - margin.top - margin.bottom )
-        .attr("transform", "translate(" + margin.left +", " + margin.top +")");
+        .attr("class", "statistics")
+        .attr("width", vis.width - vis.margin.right - vis.margin.left)
+        .attr("height", vis.height - vis.margin.top - vis.margin.bottom )
+        .attr("transform", "translate(" + vis.margin.left +", " + vis.margin.top +")");
 
 /*    var yScaleImg = d3.scaleLinear()
         .domain([
@@ -46,6 +47,7 @@ Statistics.prototype.initVis = function() {
             d3.max(vis.displayData, function(d) { return +d.Metric; })])
         .range([10,100]);
 */
+
 var title = vis.statisticSVG.append("text")
     .attr("class", "stat_title")
     .attr("x", 0)
@@ -53,20 +55,37 @@ var title = vis.statisticSVG.append("text")
     .attr("text-align", "middle")
     .text(vis.displayTitle);
 
+    vis.wrangleData();
+}
+
+Statistics.prototype.wrangleData = function() {
+    var vis = this;
+    
+    vis.data.sort(function(a, b){ return a.Metric - b.Metric });
+
+    vis.displayData = vis.data;
+
+    vis.updateVis();
+}
+
+Statistics.prototype.updateVis = function() {
+
+    var vis = this;
+
     var row = vis.statisticSVG.selectAll(".statistic")
         .data(vis.displayData)
         .enter()
         .append("g")
         .attr("class", "statistic")
-        .attr("height", statHeight)
+        .attr("height", vis.statHeight)
         .attr("transform", function (d, i) {
             i++;
 //                return "translate(0, " + yScaleImg(d.Metric) + ")"
-            return "translate(0, " + statHeight * i + ")"
+            return "translate(0, " + vis.statHeight * i + ")"
         });
     row.append("svg:image")
-        .attr('x', statLength)
-        .attr('y', function(d) {return (d.Metric + imgPadding)/4 } )
+        .attr('x', vis.statLength)
+        .attr('y', function(d) {return (d.Metric + vis.imgPadding)/4 } )
 //        .attr('width', function(d) { return xScaleImg(d.Metric) })
 //        .attr('height', function(d) {return yScaleImg(d.Metric) })
         .attr('width', function(d) { return d.Metric })
@@ -75,7 +94,7 @@ var title = vis.statisticSVG.append("text")
 
     row.append("text")
         .attr('x', 0)
-        .attr('y', function(d) {return (d.Metric/2) + imgPadding} )
+        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
 /*        .attr('y', function (d) {
             if(d.Metric > 20) {
                 return d.Metric / 2

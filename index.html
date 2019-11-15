@@ -33,17 +33,6 @@
 				</div>
 		</div>
 		<!-- START THE FEATURETTES -->
-
-		<!-- <div class="row featurette mt-2">
-				<div class="col-md-6">
-					<div id = "viz-bar">
-					</div>
-				  </div>
-				<div class="col-md-6">
-					  <div id = "viz-area">
-					  </div>
-				</div>
-			  </div> -->
 	
 		<div class="row featurette mt-2">
 		  <div class="col-md-6 order-md-1">
@@ -53,7 +42,15 @@
 					but also sabotages the stability of marine environments.</p>
 		  </div>
 		  <div class="col-md-6 order-md-2">
-			<div id = "viz-other"></div>
+			<select id = "bubble-year">
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+					<option value="2005">2005</option>
+					<option value="2006">2006</option>
+				</select>
+			<div id = "viz-bubbles"></div>
 		  </div>
 		</div>
 
@@ -96,9 +93,12 @@
 						sardines—will collapse by the year 2050. "Collapse" was defined as a 90 percent depletion of the species'
 						baseline abundance.[2]</p>
 				</div>
-				<div class="col-md-6 order-md-1">
-				  <div id = "viz-vessels"></div>
+				<div class="col-md-3 order-md-1">
+				  <div id = "viz-fishStock"></div>
 				</div>
+				<div class="col-md-3 order-md-1">
+						<div id = "viz-statusStock"></div>
+					  </div>
 			  </div>
 	
 		<hr class="featurette-divider">
@@ -146,11 +146,16 @@
 	<script src="js/topojson.min.js"></script>
 	<script src="js/d3.min.js"></script>
 	<script src="js/d3-tip.js"></script>
+	<script src="js/d3-scale-chromatic.min.js"></script>
 
 	<!-- Choropleth and second visualization -->
 	<script src="js/main.js"></script>
 	<script src="js/vis-stackedArea.js"></script>
 	<script src="js/vis-barcharts.js"></script>
+	<!-- <script src="js/bubblesvis.js"></script> -->
+	<script src="js/bubblechart.js"></script>
+	<script src="js/statobj.js"></script>
+	<!-- <script src="js/statistics.js"></script> -->
 
 </body>
 </html>

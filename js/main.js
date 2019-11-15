@@ -3,14 +3,26 @@ var fishSpecies = [];
 var countries = [];
 var landingData;
 
+statFishStocks = [
+    {Stat: "Already Gone", Metric:90},
+    {Stat:"Remaining", Metric: 10},
+    ]
+
+statStockStatus = [
+    {Stat: "Overexploited", Metric: 17},
+    {Stat: "Fully Exploited", Metric: 52},
+    {Stat: "Depleted", Metric: 7},
+]
+
 /*** VARIABLES FOR VIZ */
-var stackedArea, barchart;
+var stackedArea, barchart, bubblechart, fishStock, stockStatus;
 
 queue()
     .defer(d3.csv, "data/landings_2.csv")
+    .defer(d3.csv, "data/global_population.csv")
     .await(createVis);
 
-function createVis(error, landings){
+function createVis(error, landings, bubbles){
     if(error) { console.log(error); }
 
     landings.forEach(function(d){
@@ -34,6 +46,12 @@ function createVis(error, landings){
     stackedArea = new StackedAreaChart("viz-area", landingData, MyEventHandler);
 
     barchart = new BarChart("viz-bar", landingData, MyEventHandler);
+
+    bubblechart = new BubbleChart("viz-bubbles", bubbles);
+
+    fishStock = new Statistics("viz-fishStock", statFishStocks, "Global Fish Stock");
+
+    stockStatus = new Statistics("viz-statusStock", statStockStatus, "Status of Fish Stocks");
 
     // (5) Bind event handler
     $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter, countryFilter, MyEventHandler){
