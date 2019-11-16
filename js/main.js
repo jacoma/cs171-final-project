@@ -62,3 +62,17 @@ function createVis(error, landings, bubbles){
 	});
 
 }
+
+// function blowBubbles(){
+
+//     bubbleData.forEach(function(d){
+//         d.Value = parseFloat(d.Value)
+//     });
+
+//     supportData = bubbleData;
+//     //console.log(bubbleData);
+
+//     supportData = supportData.filter(function(d){ return d.TIME == "2010"})
+//         .sort(function(a,b) { return b.Value - a.Value })
+
+// }

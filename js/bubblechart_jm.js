@@ -23,11 +23,52 @@ BubbleChart.prototype.initVis = function() {
     var vis = this;
     vis.width = 250;
     vis.height=250;
+    vis.filterYear = "2001";
+
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height )
-        .attr("class", "bubble")
-    this.updateVis();
+        .attr("class", "bubble");
+
+    /*** CREATE SCALES */
+    vis.colorCircles = d3.scaleOrdinal(d3.schemeBlues[9]);
+
+    vis.scaleRadius = d3.scaleLinear()
+        .range([10,50]);
+
+    vis.scaleRect = d3.scaleLinear()
+        .range([5,20]);
+
+    d3.select("#bubble-year").on("change", function(d){
+
+        var selectedOption = d3.select(this).property("value");
+
+        vis.filterYear = selectedOption;
+
+        vis.wrangleData();
+    });
+    
+    vis.wrangleData();
+}
+
+BubbleChart.prototype.wrangleData = function(){
+    var vis = this;
+
+    // filterYear = d3.select("#year").property("value");
+    // console.log(filterYear);
+    var tempArray = [];
+
+    vis.data.forEach(function(d) {
+        var temp = {Name: d.Country_Name,
+        Value: parseInt(d[vis.filterYear]) };
+        tempArray.push(temp)
+    })
+
+    tempArray.sort(function(a,b) {return b.Value - a.Value})
+
+    vis.displayData = tempArray;
+    vis.updateVis();
+
 }
 
 
@@ -35,21 +76,16 @@ BubbleChart.prototype.initVis = function() {
 
 BubbleChart.prototype.updateVis = function() {
     var vis = this;
-    //console.log(vis.displayData);
+    console.log(vis.displayData);
     //console.log(vis.displayData.length)
-    var colorCircles = d3.scaleOrdinal(d3.schemeBlues[9]);
 
-    var scaleRadius = d3.scaleLinear()
-        .domain([
+    vis.scaleRadius.domain([
             d3.min(vis.displayData, function(d) { return +d.Value; }),
-            d3.max(vis.displayData, function(d) { return +d.Value; })])
-        .range([10,40]);
+            d3.max(vis.displayData, function(d) { return +d.Value; })]);
 
-    var scaleRect = d3.scaleLinear()
-        .domain([
+    vis.scaleRect.domain([
             d3.min(vis.displayData, function(d) { return +d.Value; }),
-            d3.max(vis.displayData, function(d) { return +d.Value; })])
-        .range([5,20]);
+            d3.max(vis.displayData, function(d) { return +d.Value; })]);
 
 
 
@@ -75,8 +111,8 @@ BubbleChart.prototype.updateVis = function() {
 
     circle = node.append("circle")
         .attr('r', function(d) {
-            return scaleRadius(d.Value)})
-        .style("fill", function(d) { return colorCircles(d.LOCATION)})
+            return vis.scaleRadius(d.Value)})
+        .style("fill", function(d) { return vis.colorCircles(d.Name)})
         .attr("class", "bubbles" );
 
 /*
@@ -90,23 +126,23 @@ BubbleChart.prototype.updateVis = function() {
         .attr("transform", "rotate(15)");
 */
         node.append("path")
-            .attr("y", function(d) { return (scaleRadius(d.Value) - (scaleRadius(d.Value)* 2 )) + 8; })
+            .attr("y", function(d) { return (vis.scaleRadius(d.Value) - (vis.scaleRadius(d.Value)* 2 )) + 8; })
             .attr("d", function (d){
                 //var x = scaleRadius(d.Value) ;
-                var x = (scaleRadius(d.Value) - (scaleRadius(d.Value)* 2 )) + scaleRect(d.Value);
-                var y = (scaleRadius(d.Value) - (scaleRadius(d.Value)* 2 )) + scaleRect(d.Value);
-                var w = scaleRect(d.Value);
+                var x = (vis.scaleRadius(d.Value) - (vis.scaleRadius(d.Value)* 2 )) + vis.scaleRect(d.Value);
+                var y = (vis.scaleRadius(d.Value) - (vis.scaleRadius(d.Value)* 2 )) + vis.scaleRect(d.Value);
+                var w = vis.scaleRect(d.Value);
                 return "M 0 " + x  +
                     " l " + w + " 0" +
                     " l 4 4" +
                     " l 0 8 z"
             })
-            .attr("fill", function(d, i) { return colorCircles(i--)})
+            .attr("fill", function(d, i) { return vis.colorCircles(i--)})
 
     node.append("text")
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.LOCATION })
+        .text(function(d) { return d.Name})
         .attr("class", "bubble_text");
 
 
