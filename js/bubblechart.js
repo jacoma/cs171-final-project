@@ -75,8 +75,9 @@ BubbleChart.prototype.updateVis = function() {
 
     circle = node.append("circle")
         .attr('r', function(d) {
+            console.log(d.Value);
             return scaleRadius(d.Value)})
-        .style("fill", function(d) { return colorCircles(d.LOCATION)})
+        .style("fill", function(d) { return colorCircles(d.Name)})
         .attr("class", "bubbles" );
 
 /*
@@ -106,7 +107,7 @@ BubbleChart.prototype.updateVis = function() {
     node.append("text")
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.LOCATION })
+        .text(function(d) { return d.Name })
         .attr("class", "bubble_text");
 
 

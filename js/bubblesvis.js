@@ -25,7 +25,7 @@ function loadData(){
 }
 
 function wrangleData(){
-    filterYear = d3.select("#year").property("value");
+    filterYear = d3.select("#bubble-year").property("value");
     console.log(filterYear);
     allPopData.forEach(function(d) {
         var temp = {Name: d.Country_Name,
@@ -42,6 +42,6 @@ function wrangleData(){
 
 function drawBubbles(bData) {
 
-    bubbleChart = new BubbleChart("bubblesvg", bData);
+    bubbleChart = new BubbleChart("viz-bubbles", bData);
 
 }

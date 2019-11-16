@@ -47,7 +47,7 @@ function createVis(error, landings, bubbles){
 
     barchart = new BarChart("viz-bar", landingData, MyEventHandler);
 
-    bubblechart = new BubbleChart("viz-bubbles", bubbles);
+    //bubblechart = new BubbleChart("viz-bubbles", bubbles);
 
     fishStock = new Statistics("viz-fishStock", statFishStocks, "Global Fish Stock");
 
