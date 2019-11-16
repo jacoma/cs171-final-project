@@ -1,7 +1,7 @@
 
 // SVG drawing area
 
-var margin = {top: 40, right: 40, bottom: 60, left: 200};
+var margin = {top: 100, right: 40, bottom: 60, left: 200};
 
 var width = 800 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
@@ -186,6 +186,17 @@ function updateVisualization(data) {
 		.text(function(d) {
 			return "$ Million USD"
 		});
+
+	svg.append("text")
+		.attr("y", -60)
+		.attr("x", 200)
+		.attr("class","ylabel")
+		.text(function() {
+			return "Global Fisheries Funding from 2000 - 2018"
+		})
+		.attr("text-anchor","middle")
+		.style("font-size", "40px")
+		.attr("fill","Grey");
 }
 
 

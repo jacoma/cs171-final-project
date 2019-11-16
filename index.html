@@ -60,14 +60,62 @@
 				<div class="col-md-12 order-md-1">
 				  <h2 class="featurette-heading">How did it start?</h2>
 				  <p class="lead">In the mid-20th century, international efforts to increase the availability
-						and affordability of protein-rich foods led to concerted government efforts to increase fishing capacity.
+						and affordability of protein-rich foods led to conc3erted government efforts to increase fishing capacity.
 						Favorable policies, loans, and subsidies spawned a rapid rise of big industrial fishing operations, which
 						quickly supplanted local boatmen as the world's source of seafood.[3]</p>
 				</div>
+
 				<div class="col-md-12 order-md-2">
+					<!-- Select box to choose the ranking type -->
+					<form class="form-inline" >
+						<div class="form-group">
+							<label for="ranking-type">Group by</label>
+							<select class="form-control" id="select-box" onchange=changeSelection() autocomplete="off">
+								<option value="TOT">Total</option>
+								<option value="AUS">Australia</option>
+								<option value="BEL">Belgium</option>
+								<option value="CAN">Canada</option>
+								<option value="DNK">Denmark</option>
+								<option value="FRA">France</option>
+								<option value="DEU">Germany</option>
+								<option value="GRC">Greece</option>
+								<option value="ISL">Iceland</option>
+								<option value="IRL">Ireland</option>
+								<option value="ITA">Italy</option>
+								<option value="JPN">Japan</option>
+								<option value="KOR">Korea</option>
+								<option value="MEX">Mexico</option>
+								<option value="NLD">Netherlands</option>
+								<option value="NZL">New Zealand</option>
+								<option value="NOR">Norway</option>
+								<option value="PRT">Portugal</option>
+								<option value="ESP">Spain</option>
+								<option value="SWE">Sweden</option>
+								<option value="TUR">Turkey</option>
+								<option value="GBR">United Kingdom</option>
+								<option value="USA">United States</option>
+								<option value="CHL">Chile</option>
+								<option value="EST">Estonia</option>
+								<option value="TWN">Taiwan</option>
+								<option value="ARG">Argentina</option>
+								<option value="LVA">Latvia</option>
+								<option value="COL">Colombia</option>
+								<option value="BRA">Brazil</option>
+								<option value="CHN">China</option>
+								<option value="CRI">Costa Rica</option>
+								<option value="IDN">Indonesia</option>
+								<option value="LTU">Lithuania</option>
+								<option value="MYS">Malaysia</option>
+								<option value="PER">Peru</option>
+								<option value="PHL">Philippines</option>
+								<option value="SVN">Slovenia</option>
+								<option value="OECD">OECD</option>
+							</select>
+						</div>
+					</form>
 				  <div id = "viz-subsidies"></div>
 				</div>
-			  </div>
+	    </div>
 
 		<hr class="featurette-divider">
 
