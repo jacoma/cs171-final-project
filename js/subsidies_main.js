@@ -3,10 +3,10 @@
 
 var margin = {top: 40, right: 40, bottom: 60, left: 200};
 
-var width = 1000 - margin.left - margin.right,
+var width = 800 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
-var svg = d3.select("#chart-area").append("svg")
+var svg = d3.select("#viz-subsidies").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
