@@ -35,18 +35,18 @@ Statistics.prototype.initVis = function() {
         .attr("height", vis.height - vis.margin.top - vis.margin.bottom )
         .attr("transform", "translate(" + vis.margin.left +", " + vis.margin.top +")");
 
-/*    var yScaleImg = d3.scaleLinear()
+    vis.yScaleImg = d3.scaleLog()
         .domain([
             d3.min(vis.displayData, function(d) { return +d.Metric; }),
             d3.max(vis.displayData, function(d) { return +d.Metric; })])
-        .range([5,50]);
+        .range([10,50]);
 
-    var xScaleImg = d3.scaleLinear()
+    vis.xScaleImg = d3.scaleLog()
         .domain([
             d3.min(vis.displayData, function(d) { return +d.Metric; }),
             d3.max(vis.displayData, function(d) { return +d.Metric; })])
-        .range([10,100]);
-*/
+        .range([20,100]);
+
 
 var title = vis.statisticSVG.append("text")
     .attr("class", "stat_title")
@@ -86,10 +86,10 @@ Statistics.prototype.updateVis = function() {
     row.append("svg:image")
         .attr('x', vis.statLength)
         .attr('y', function(d) {return (d.Metric + vis.imgPadding)/4 } )
-//        .attr('width', function(d) { return xScaleImg(d.Metric) })
-//        .attr('height', function(d) {return yScaleImg(d.Metric) })
-        .attr('width', function(d) { return d.Metric })
-        .attr('height', function(d) {return d.Metric/2 })
+        .attr('width', function(d) { return vis.xScaleImg(d.Metric) })
+        .attr('height', function(d) {return vis.yScaleImg(d.Metric) })
+//        .attr('width', function(d) { return d.Metric })
+//        .attr('height', function(d) {return d.Metric/2 })
         .attr("xlink:href", "img/trout-sillouette.svg");
 
     row.append("text")
