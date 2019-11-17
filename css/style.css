@@ -24,7 +24,11 @@
 
 @media screen and (min-width: 500px) {
     .story-cover {
-        min-height: 800px;
+        min-height: 850px;
+        background-image: url("../img/pile-med.jpg");
+        background-position: bottom;
+        background-size: 100%;
+        background-attachment: fixed;
     }
 
     .story .row {
@@ -32,12 +36,41 @@
     }
 
     .story div {
-        margin: 100px 0px 50px 0px;
+        margin: 50px 0px 25px 0px;
     }
 
-    .story #start-story div{
-        margin: 50px 0px 50px 0px;
+    .story #start-story{
+        margin: 100px 0px 50px 0px;
     }
+  }
+
+  @media screen and (max-width: 500px) {
+    .story-cover {
+        min-height: 250px;
+        background-image: url("../img/pile-small.jpg");
+        background-position: bottom;
+        background-size: 100%;
+        background-attachment: fixed;
+    }
+
+    .story .row {
+      min-height: 400px;
+    }
+
+    .story div {
+      margin: 20px 0px 10px 0px;
+    }
+
+    .story #start-story{
+        margin: 25px 0px 10px 0px;
+    }
+  }
+
+  #story-heading {
+    border: 2px solid #333;
+    background-color: white;
+    background-color: rgba(255,255,255,.8);
+    display: inline-block;
   }
 
 
@@ -45,24 +78,24 @@
 /*  SUBSIDIES LINE CHART  */
 /****************/
 
-.axis path,
-.axis line {
+#viz-subsidies .axis path,
+#viz-subsidies .axis line {
   fill: none;
   stroke: #c7c7c7;
   shape-rendering: crispEdges;
 }
-.axis text {
+#viz-subsidies .axis text {
   font-size: 13px;
   fill: grey;
 }
 
-.line {
+#viz-subsidies .line {
   fill: none;
   stroke: #1C9A3D;
   stroke-width: 1.5px;
 }
 
-.tooltip-circle {
+#viz-subsidies .tooltip-circle {
   fill: #96AB96;
 }
 
@@ -90,7 +123,7 @@
   box-sizing: border-box;
   display: inline;
   font-size: 10px;
-  width: 100%;
+  /* width: 100%; */
   line-height: 1;
   color: rgba(0, 0, 0, 0.8);
   content: "\25BC";
