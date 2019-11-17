@@ -75,7 +75,7 @@ BubbleChart.prototype.updateVis = function() {
 
     circle = node.append("circle")
         .attr('r', function(d) {
-            console.log(d.Value);
+//            console.log(d.Value);
             return scaleRadius(d.Value)})
         .style("fill", function(d) { return colorCircles(d.Name)})
         .attr("class", "bubbles" );
