@@ -1,7 +1,7 @@
 var width = 500;
 var height = 500;
 
-var svg = d3.select("#aqua-chart").append("svg")
+var svgAqua = d3.select("#aqua-chart").append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")
@@ -59,7 +59,7 @@ d3.csv("data/aqua_timeseries.csv", function(data1) {
 
         console.log(quantity);
 
-        var chart = svg.selectAll(".pie")
+        var chart = svgAqua.selectAll(".pie")
             .data(pie(quantity))
             .enter()
             .append("g")
