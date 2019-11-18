@@ -29,7 +29,7 @@ StackedAreaChart.prototype.initVis = function(){
     vis.speciesFilter = "";
     vis.countryFilter = "";
 
-	vis.margin = { top: 40, right: 20, bottom: 60, left: 60 };
+	vis.margin = { top: 75, right: 20, bottom: 50, left: 60 };
 
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
@@ -53,9 +53,10 @@ StackedAreaChart.prototype.initVis = function(){
 	vis.responsivefy();
 
     /*** CREATE SCALES */
-    vis.colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    vis.colorScale = d3.scaleOrdinal(d3.schemePastel1).domain(fishSpecies);
 
     vis.x = d3.scaleTime()
+        .domain(d3.extent(areaYears, d=>parseDate(d)))
         .range([0, vis.width]);
 
     vis.y = d3.scaleLinear()
@@ -77,14 +78,15 @@ StackedAreaChart.prototype.initVis = function(){
 
     vis.svg.append("text")
 		.attr("class", "axis-title")
-		.attr("transform", "translate("+(-(vis.margin.left) + 10)+"," +(vis.margin.top * 3.5)+")rotate(-90)")
+		.attr("transform", "translate("+(-(vis.margin.left) + 15)+"," +(vis.margin.top*2)+")rotate(-90)")
         .text("Tonnes (in millions)");
         
     vis.svg.append("text")
 		.attr("class", "chart-title")
-		.attr("transform", "translate("+(10)+"," +(-vis.margin.top/2)+")")
-		.text("Volume of Fish Landings from 2000");
+		.attr("transform", "translate("+(10)+"," +(-50)+")")
+		.text("Volume of Fish Landings by Species (2000-2017)");
 
+    /*** CREATE AREA & LINE GENERATORS */
 	vis.area = d3.area()
         .curve(d3.curveLinear)
         .x(function(d) { return vis.x(d.data.Year); })
@@ -97,26 +99,36 @@ StackedAreaChart.prototype.initVis = function(){
         .y0(vis.height)
         .y1(function(d) { return vis.y(d.data[vis.speciesFilter]); });
 
-    vis.lineCreator = d3.line()
-        .x(function(d) { return vis.x(d.data.Year); })
-        .y(function(d) { 
-            if(vis.speciesFilter){
-                return vis.y(d.data[vis.speciesFilter]); 
-            }else{
-                if(isNaN(d[1])){
-                    vis.y(0)
-                } else{
-                    return vis.y(d[1])
-                }
-            }
-        });
-
 
 	/*** TOOLTIP */
     vis.tooltip = vis.svg.append("text")
          .attr("class", "areaTooltip")
-         .attr("transform", "translate(10,10)")
-         .attr("display", "none");
+         .attr("display", "none")
+         .attr("transform", `translate(10, -10)`);
+
+    /*** MOUSEOVER EVENTS */
+    vis.highlight = function(d){
+        vis.tooltip.attr("display", null);
+
+        d3.selectAll(".area").style("opacity", .2);
+
+        d3.select(this).style("opacity", 1);
+    }
+
+    vis.noHighlight = function(d){
+        d3.selectAll(".area").style("opacity", 1);
+        vis.tooltip.attr("display", "none");
+    }
+
+    vis.mouseMove = function(d){
+        var x0 = vis.x.invert(d3.mouse(this)[0]);
+        var xYear = x0.getFullYear();
+
+        i = areaYears.indexOf(xYear.toString());
+        value = d[i].data[d.key];
+
+        vis.tooltip.text(d.key + ": " + d3.format("0.3s")(value));
+    }
 
     vis.wrangleData();
 }
@@ -128,50 +140,40 @@ StackedAreaChart.prototype.initVis = function(){
 StackedAreaChart.prototype.wrangleData = function(){
     var vis = this;
 
-    // yearlyData = [];
-
     /*** CREATE STACKED AREA CHART DATA */
-    years = [];
-
-    vis.filteredData.forEach(function(d){
-        if(years.indexOf(d.YEAR) < 0) {
-            years.push(d.YEAR);
-        }
-    });
-
-    years = years.sort((a,b) => d3.ascending(a, b));
-
     var yearlyData = [];
 
-
-
-    for(y = 0; y < years.length; y++){
+    for(y = 0; y < areaYears.length; y++){
         yearObj = {};
-        yearObj["Year"] = parseDate(years[y]);
+        yearObj["Year"] = parseDate(areaYears[y]);
 
         for(s = 0; s < fishSpecies.length; s++){
+            yearObj[fishSpecies[s]] = 0;
+
             vis.filteredData.forEach(function(d){
-                if(d.YEAR === years[y] && d.Species === fishSpecies[s]){ 
-                    yearObj[fishSpecies[s]] = +d["Sum of Value"];
+                if(d.YEAR === areaYears[y] && d.Species === fishSpecies[s]){ 
+                    yearObj[fishSpecies[s]] += +d["Sum of Value"];
                 }
             })
         }
         yearlyData.push(yearObj);
     }
 
-    /*** CREATE STACK & PATH LAYOUT */
-    vis.colorScale.domain(d3.keys(yearlyData[0]).filter(function(d){ return d != "Year"; }));
+    console.log(yearlyData);
 
-    vis.dataCategories = vis.colorScale.domain();
+    /*** CREATE STACK & PATH LAYOUT */
+    vis.fishKeys = d3.keys(yearlyData[0]).filter(function(d){ return d != "Year"; });
 
     vis.stack = d3.stack()
-        .keys(vis.dataCategories);
+        .keys(vis.fishKeys);
 
     vis.stackedData = vis.stack(yearlyData);
 
+    console.log(vis.stackedData);
+
     /*** FILTER DATA BASED ON SELECTION */
     if(vis.speciesFilter){
-        vis.indexOfFilter = vis.dataCategories.findIndex(function(d){return d == vis.speciesFilter});
+        vis.indexOfFilter = vis.fishKeys.findIndex(function(d){return d == vis.speciesFilter});
         vis.displayData = [vis.stackedData[vis.indexOfFilter]];
         
     } else {
@@ -203,20 +205,6 @@ StackedAreaChart.prototype.updateVis = function(){
         });
     })]);
 
-    minYear = d3.min(vis.displayData, function(row){
-        return d3.min(row, function(d){
-            return d.data.Year
-        })
-    });
-
-    maxYear = d3.max(vis.displayData, function(row){
-        return d3.max(row, function(d){
-            return d.data.Year
-        })
-    });
-
-    vis.x.domain([minYear, maxYear]);
-
     /*** CREATE STACKED AREA CHARRT */
     var categories = vis.svg.selectAll(".area")
         .data(vis.displayData, d => d.key);
@@ -229,9 +217,9 @@ StackedAreaChart.prototype.updateVis = function(){
         .style("opacity", .8)
         .style("fill", function(d,i) {
             if(vis.speciesFilter){
-                return vis.colorScale(vis.dataCategories[vis.indexOfFilter]);
+                return vis.colorScale(vis.fishKeys[vis.indexOfFilter]);
             } else{
-                return vis.colorScale(vis.dataCategories[i]);
+                return vis.colorScale(vis.fishKeys[i]);
             }
         })
         .attr("d", function(d) {
@@ -243,49 +231,20 @@ StackedAreaChart.prototype.updateVis = function(){
         });
 
     d3.selectAll(".area")
-    //     .on("mouseover", function(d){
-    //         vis.tooltip.attr("display", null);
-    //     })
-    //     .on("mousemove", function(d){
-    //         var x0 = vis.x.invert(d3.mouse(this)[0]);
-    //         var xYear = x0.getFullYear();
-
-    //         i = years.indexOf(xYear.toString());
-    //         value = d[i].data[d.key];
-
-    //         vis.tooltip.text(d.key + ": " + "$" +tipFormat(value)+"M");
-    //     })
-    //     .on("mouseout", function(d){
-    //         vis.tooltip.attr("display", "none");
-    //     })
         .on("click", function(d, i) {
 
             // 3. Trigger the event 'selectionChanged' of our event handler
-			$(vis.eventHandler).trigger("selectionChanged", [vis.dataCategories[i], ""]);
-
-        });
+            $(vis.eventHandler).trigger("selectionChanged", [vis.fishKeys[i], ""]);
+        })
+        .on("mouseover", vis.highlight)
+        .on("mousemove", vis.mouseMove)
+        .on("mouseout", vis.noHighlight);
 
     categories.exit().remove();
-    
-    /*** CREATE LINE PATH TO OUTLINE THE AREAS - MATCHES THE AESTHETIC OF THE MAP. */
-    vis.path = vis.svg.selectAll(".line")
-        .data(vis.displayData, d => d.key);
-
-    vis.path.enter()
-        .append("path")
-        .attr("class", "line")
-        .merge(vis.path)
-        .transition(vis.t)
-        .attr("d", vis.lineCreator)
-        .attr("fill", "none")
-        .attr("stroke", "black");
-
-    vis.path.exit().remove();
-
 
 	/*** CREATE AXES */ 
-	vis.svg.select(".x-axis").call(vis.xAxis);
-    vis.svg.select(".y-axis").call(vis.yAxis);
+	vis.svg.select(".x-axis").call(vis.xAxis).select(".domain").remove();
+    vis.svg.select(".y-axis").call(vis.yAxis).select(".domain").remove();
 }
 
 StackedAreaChart.prototype.responsivefy = function(){
@@ -333,5 +292,9 @@ StackedAreaChart.prototype.onSelectionChange = function(speciesFilter, countryFi
         }
     }
 
+    console.log(vis.filteredData);
+
     vis.wrangleData();
 }
+
+

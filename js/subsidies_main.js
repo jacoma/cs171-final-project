@@ -74,7 +74,7 @@ queue()
         data = SubsidiesData;
 
 		// TO DO: Solve issue with countries not having dots in certain years.
-        console.log(data);
+        // console.log(data);
 
         // Initializes the default visualization by filtering data for total Funding
         var default_selection = "TOT";
@@ -83,7 +83,7 @@ queue()
             if (d.LOCATION == default_selection)
                 curr_data.push(d);
         });
-        console.log(curr_data);
+        // console.log(curr_data);
 
         // Makes call to create Selectbox
         createSelectBox(CountryCodes);

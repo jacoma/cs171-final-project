@@ -23,7 +23,7 @@ BarChart = function(_parentElement, _data, _eventHandler){
 BarChart.prototype.initVis = function(){
     var vis = this;
 
-	vis.margin = { top: 40, right: 20, bottom: 60, left: 80 };
+	vis.margin = { top: 80, right: 20, bottom: 60, left: 80 };
 
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
@@ -42,10 +42,10 @@ BarChart.prototype.initVis = function(){
     /*** RESPONSIVE SVG */
     vis.responsivefy();
     
-    // Scales and axes
+    /*** SCALES & AXES */
     vis.y = d3.scaleBand()
-        .rangeRound([vis.height, 0])
-        .paddingInner(0.05);
+        .range([vis.height, 0])
+        .paddingInner(0.075);
 
     vis.x = d3.scaleLinear()
         .range([0, vis.width]);
@@ -59,8 +59,7 @@ BarChart.prototype.initVis = function(){
         .tickSize(0);
 
     vis.svg.append("g")
-        .attr("class", "x-axis axis")
-        .attr("transform", "translate(0," + 0 + ")");
+        .attr("class", "x-axis axis");
 
     vis.svg.append("g")
         .attr("class", "y-axis axis")
@@ -68,9 +67,9 @@ BarChart.prototype.initVis = function(){
 
     // Axis title
     vis.svg.append("text")
-        .attr("x", -50)
-        .attr("y", -8)
-        .text("Text");
+		.attr("class", "chart-title")
+		.attr("transform", "translate("+(10)+"," +(-50)+")")
+		.text("Volume of Fish Landings by Country");
 
 
     // (Filter, aggregate, modify data)
@@ -133,9 +132,9 @@ BarChart.prototype.updateVis = function(){
             if(vis.speciesFilter){
                 return stackedArea.colorScale(vis.speciesFilter)
             } else {
-                return "grey"
-            }
-        })
+                    return "black";
+                }
+            })
         .attr("opacity", 0.7);
 
     bars.exit().remove();
@@ -150,11 +149,10 @@ BarChart.prototype.updateVis = function(){
             clickedBar = d.key;
             var normalBars = d3.selectAll(".bar-country");
 
-            console.log(clickedBar, vis.countryFilter);
-            if(vis.countryFilter){
+            if(vis.countryFilter===clickedBar){
                 normalBars.attr("fill", "grey");
             } else {
-                normalBars.attr("fill", d => d.key === clickedBar ? "blue":"grey")
+                normalBars.attr("fill", d => d.key === clickedBar ? "black":"grey")
             }
 
             $(vis.eventHandler).trigger("selectionChanged", ["", d.key]);

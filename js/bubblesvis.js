@@ -26,7 +26,7 @@ function loadData(){
 
 function wrangleData(){
     filterYear = d3.select("#bubble-year").property("value");
-    console.log(filterYear);
+    // console.log(filterYear);
     allPopData.forEach(function(d) {
         var temp = {Name: d.Country_Name,
         Value: parseInt(d[filterYear]) };
@@ -34,7 +34,7 @@ function wrangleData(){
     })
 
     populationData.sort(function(a,b) {return b.Value - a.Value})
-    console.log(populationData)
+    // console.log(populationData)
 
     drawBubbles(populationData);
 

@@ -20,8 +20,8 @@ d3.csv("data/aqua_timeseries.csv", function(data1) {
             d.UN_Code = +d.UN_Code;
         });
 
-        console.log(data1);
-        console.log(data2);
+        // console.log(data1);
+        // console.log(data2);
 
         // Filter by year
         data1.filter(function(d) {
@@ -57,7 +57,7 @@ d3.csv("data/aqua_timeseries.csv", function(data1) {
             .innerRadius(innerRadius)
             .outerRadius(outerRadius);
 
-        console.log(quantity);
+        // console.log(quantity);
 
         var chart = svgAqua.selectAll(".pie")
             .data(pie(quantity))
@@ -79,7 +79,7 @@ d3.csv("data/aqua_timeseries.csv", function(data1) {
             .attr("fill", "#fff")
             .text(function(d, i) {
                 if (d.value > 50000000) {
-                    console.log(d.value);
+                    // console.log(d.value);
 
                     return data2[i].Name_En;
                 }
