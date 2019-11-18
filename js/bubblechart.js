@@ -43,7 +43,7 @@ BubbleChart.prototype.updateVis = function() {
         .domain([
             d3.min(vis.displayData, function(d) { return +d.Value; }),
             d3.max(vis.displayData, function(d) { return +d.Value; })])
-        .range([10,40]);
+        .range([5,60]);
 
     var scaleRect = d3.scaleLinear()
         .domain([
@@ -51,6 +51,24 @@ BubbleChart.prototype.updateVis = function() {
             d3.max(vis.displayData, function(d) { return +d.Value; })])
         .range([5,20]);
 
+    var gradientRadial = vis.svg.append("defs").selectAll("radialGradient")
+        .data(vis.displayData)
+        .enter()
+        .append("radialGradient")
+        .attr("id", function(d) { return "gradient-" + d.Name })
+        .attr("cx", "30%")
+        .attr("cy", "30%")
+        .attr("r", "65%");
+
+    gradientRadial.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d.Name)).brighter(1);})
+    gradientRadial.append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", function(d) {return colorCircles(d.Name); })
+    gradientRadial.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d.Name)).darker(1.5);})
 
 
     var simulation = d3.forceSimulation(vis.displayData)
@@ -78,7 +96,8 @@ BubbleChart.prototype.updateVis = function() {
 //            console.log(d.Value);
             return scaleRadius(d.Value)})
         .style("fill", function(d) { return colorCircles(d.Name)})
-        .attr("class", "bubbles" );
+        .attr("class", "bubbles" )
+        .style("fill", function(d){ return "url(#gradient-" + d.Name +")"; });
 
 /*
     node.append("rect")
@@ -89,7 +108,7 @@ BubbleChart.prototype.updateVis = function() {
         .attr("stroke", "#dddfe2")
         .attr("fill", function(d, i) { return colorCircles(i--) })
         .attr("transform", "rotate(15)");
-*/
+
         node.append("path")
             .attr("y", function(d) { return (scaleRadius(d.Value) - (scaleRadius(d.Value)* 2 )) + 8; })
             .attr("d", function (d){
@@ -103,7 +122,7 @@ BubbleChart.prototype.updateVis = function() {
                     " l 0 8 z"
             })
             .attr("fill", function(d, i) { return colorCircles(i--)})
-
+*/
     node.append("text")
         .attr("dy", ".2em")
         .style("text-anchor", "middle")

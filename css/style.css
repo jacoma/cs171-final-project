@@ -16,7 +16,6 @@
 
 }
 
-
 .references {
     font-size: 9px;
     color: black;
@@ -106,3 +105,19 @@
 }
 
 
+/* RADAR CHART STYLES */
+.axis {
+    font: 15px sans-serif;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #D4D8DA;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+}
+#chart {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
