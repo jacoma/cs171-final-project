@@ -73,8 +73,19 @@
     display: inline-block;
   }
 
+/****************/
+/*  FISH LANDINGS AREA CHART  */
+/****************/
+#viz-area .axis-title {
+  font-size: .9rem;
+}
 
-  /****************/
+#viz-area .areaTooltip {
+  font-style: italic;
+}
+
+
+/****************/
 /*  SUBSIDIES LINE CHART  */
 /****************/
 

@@ -1,5 +1,6 @@
 var parseDate = d3.timeParse("%Y");
 var fishSpecies = [];
+var areaYears = [];
 var countries = [];
 var landingData;
 
@@ -37,6 +38,16 @@ function createVis(error, landings, bubbles){
         }
     });
 
+    landings.forEach(function(d){
+        if(areaYears.indexOf(d.YEAR) < 0) {
+            areaYears.push(d.YEAR);
+        }
+    });
+
+    areaYears = areaYears.sort(function(a,b){return a-b});
+
+    console.log(areaYears, fishSpecies);
+
     landingData = landings;
 
     // (3) Create event handler
@@ -62,17 +73,3 @@ function createVis(error, landings, bubbles){
 	});
 
 }
-
-// function blowBubbles(){
-
-//     bubbleData.forEach(function(d){
-//         d.Value = parseFloat(d.Value)
-//     });
-
-//     supportData = bubbleData;
-//     //console.log(bubbleData);
-
-//     supportData = supportData.filter(function(d){ return d.TIME == "2010"})
-//         .sort(function(a,b) { return b.Value - a.Value })
-
-// }
