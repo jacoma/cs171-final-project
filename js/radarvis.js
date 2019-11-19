@@ -21,7 +21,7 @@ var config = {
 var radarData=[[], []];
 
 queue()
-    .defer(d3.csv, "data/FishLandings3.csv")
+    .defer(d3.csv, "data/landings.csv")
     .defer(d3.csv, "data/global_population.csv")
     .await(createRadar);
 
@@ -33,24 +33,34 @@ function createRadar(error, landings, population) {
         //expects arrays of objects
 
     //ALL OF THESE HAVE HARD CODED YEAR FOR NOW
+    //MAYBE FILTER TO THE TOP 5????
+    //WHAT IS INTERACTION
+
+
     population.forEach(function(d) {
         //console.log(parseInt(d[2001])/popMax);
         var pops = {
-            axis: d.Country_Name,
+            axis: d.Country_Code,
             value: parseInt(d[2001])
         };
         radarData[0].push(pops)
     });
 
     landings = landings.filter(function(d){ return d[2001] > 0})
-    landings.forEach(function(d) {
-//        console.log(parseInt(d[2001])/catchMax);
-        var fishes = {
-            axis: d.Country,
-            value: parseInt(d[2001])
-        };
-        radarData[1].push(fishes)
-    });
+
+    landings = d3.rollup(landings, function(v) {
+            return d3.sum(v, function(d) {return d[2001]; })},
+        function(d) {
+            return d.Country_Code});
+    console.log(landings);
+
+    var tempData = Array.from(landings);
+    //console.log(tempData);
+    for (i=0;i<tempData.length; i++){
+        var temp = {axis: tempData[i][0], value: tempData[i][1]}
+        radarData[1].push(temp);
+    };
+
 
     console.log(radarData);
     updateVis();

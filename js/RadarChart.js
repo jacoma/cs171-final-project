@@ -34,7 +34,8 @@ var RadarChart = {
             }
         }
         var colorCircles = d3.scaleOrdinal()
-            .range(["#32a871","#308ea6","#308ea6"]);
+        //    .range(["#32a871","#308ea6","#308ea6"]);
+            .range(["#32a871","#308ea6"]);
 
 
 
@@ -117,7 +118,7 @@ var RadarChart = {
             .attr("transform", function(d, i){return "translate(0, -10)"})
             .attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
             .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);})
-            .text(function(t){console.log(t); return t;});
+            .text(function(t){ return t;});
 
 
         d.forEach(function(y, x){
@@ -184,17 +185,16 @@ var RadarChart = {
                     return cfg.h/2*(1-(Math.max(j.value, 0)/max)*cfg.factor*Math.cos(i*cfg.radians/total));
                 })
                 .attr("data-id", function(j){return j.area})
-//                .style("fill", "#fff")
-//                .style("stroke-width", "2px")
                 .style("stroke", colorCircles(series)).style("fill-opacity", .9)
                 .style("fill", function(d){ return "url(#gradient-" + d.axis +")"; })
                 .on('mouseover', function (d){
-                    console.log(d)
+                    console.log(d);
+                    console.log(x);
                     tooltip
                         .style("left", d3.event.pageX - 40 + "px")
                         .style("top", d3.event.pageY - 80 + "px")
                         .style("display", "inline-block")
-                        .html((d.axis) + "<br><span>" + (d.value) + "</span>");
+                        .html((d.axis) + " " + x + ": <br><span>" + (d.value) + "</span>");
                 })
                 .on("mouseout", function(d){ tooltip.style("display", "block");});
 

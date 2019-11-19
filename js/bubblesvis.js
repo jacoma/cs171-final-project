@@ -8,36 +8,41 @@ bubbleSVG = d3.select("#bubbles").append("svg")
     .attr("id", "bubblesvg");
 
 var allEmpData;
+var allVesselData;
 var employmentData = [];
-var filterYear = 2018
-loadData();
+var vesselData=[];
+var filterYear = 2018;
 
 
-// prepare data
-function loadData(){
-    d3.csv("data/Employment.csv", function(error, empData){
-        if(!error) {
+
+queue()
+    .defer(d3.csv, "data/Employment.csv")
+    .defer(d3.csv, "data/TotalVessels.csv")
+    .await(loadData);
+
+function loadData(error, empData, vessels){
+     if(!error) {
             allEmpData = empData;
+            allVesselData = vessels;
 //            console.log(empData);
             wrangleData();
         }
-    })
 }
 
 function wrangleData(){
 //    filterYear = d3.select("#bubble-year").property("value");
     // console.log(filterYear);
     filterYear=2008;
-    allEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
-    allEmpData.sort(function(a,b) {return b.value - a.value});
 
-    console.log(allEmpData);
+    //*************EMPLOYMENT DATA*******************
+    allEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
+
+    //console.log(allEmpData);
     allEmpData = d3.rollup(allEmpData, function(v) {
         return d3.sum(v, function(d) {return d.Value; })},
         function(d) {
         return d.Country});
-    console.log(allEmpData);
-
+    //console.log(allEmpData);
     var tempData = Array.from(allEmpData);
     //console.log(tempData);
     for (i=0;i<tempData.length; i++){
@@ -45,15 +50,28 @@ function wrangleData(){
             employmentData.push(temp);
         };
 
+    employmentData.sort(function(a,b) {return b.value - a.value});
+    console.log(employmentData);
 
-   // console.log(employmentData);
+    //*************VESSELS DATA*******************
+    allVesselData = allVesselData.filter(function(d){ return d.Year == filterYear; });
+    allVesselData.forEach(function(d){
+        vesselData.push({key: d.COUNTRY, value: d.Value})
+    })
+    console.log(vesselData);
 
-    drawBubbles(employmentData);
+    empChart = new BubbleChart("viz-employment", employmentData, "bubble");
+    vesselChart = new BubbleChart("viz-vessels", vesselData, "vessel")
 
+//    drawBubbles(employmentData);
+//    drawVessels(allVesselData);
 }
 
+
+/*
 function drawBubbles(bData) {
 //    console.log(bData);
-    bubbleChart = new BubbleChart("viz-employment", bData);
+    bubbleChart = new BubbleChart("viz-employment", bData, "bubble");
 
 }
+*/

@@ -1,4 +1,4 @@
-﻿COUNTRY,Country,Economic sector,Year,Value
+COUNTRY,Country,Economic sector,Year,Value
 AUS,Australia,Fishing Sector,2005,7441
 AUS,Australia,Fishing Sector,2006,8235
 AUS,Australia,Fishing Sector,2007,6151
@@ -1835,6 +1835,45 @@ THA,Thailand,Processing,2012,4849
 THA,Thailand,Processing,2014,51075
 THA,Thailand,Processing,2015,128984
 THA,Thailand,Processing,2016,271468
+OECD,OECD - Total,Fishing Sector,2005,887811
+OECD,OECD - Total,Fishing Sector,2006,863927
+OECD,OECD - Total,Fishing Sector,2007,894715
+OECD,OECD - Total,Fishing Sector,2008,915859
+OECD,OECD - Total,Fishing Sector,2009,922818
+OECD,OECD - Total,Fishing Sector,2010,935333
+OECD,OECD - Total,Fishing Sector,2011,858285
+OECD,OECD - Total,Fishing Sector,2012,747752
+OECD,OECD - Total,Fishing Sector,2013,828891
+OECD,OECD - Total,Fishing Sector,2014,806484
+OECD,OECD - Total,Fishing Sector,2015,830492
+OECD,OECD - Total,Fishing Sector,2016,814845
+OECD,OECD - Total,Fishing Sector,2017,648234
+OECD,OECD - Total,Aquaculture,2005,138184
+OECD,OECD - Total,Aquaculture,2006,138494
+OECD,OECD - Total,Aquaculture,2007,141907
+OECD,OECD - Total,Aquaculture,2008,161275
+OECD,OECD - Total,Aquaculture,2009,160705
+OECD,OECD - Total,Aquaculture,2010,142499
+OECD,OECD - Total,Aquaculture,2011,190542
+OECD,OECD - Total,Aquaculture,2012,166503
+OECD,OECD - Total,Aquaculture,2013,167574
+OECD,OECD - Total,Aquaculture,2014,166803
+OECD,OECD - Total,Aquaculture,2015,155499
+OECD,OECD - Total,Aquaculture,2016,148933
+OECD,OECD - Total,Aquaculture,2017,128996
+OECD,OECD - Total,Processing,2005,173153
+OECD,OECD - Total,Processing,2006,162980
+OECD,OECD - Total,Processing,2007,202697
+OECD,OECD - Total,Processing,2008,179666
+OECD,OECD - Total,Processing,2009,153651
+OECD,OECD - Total,Processing,2010,141227
+OECD,OECD - Total,Processing,2011,168755
+OECD,OECD - Total,Processing,2012,208087
+OECD,OECD - Total,Processing,2013,167585
+OECD,OECD - Total,Processing,2014,165619
+OECD,OECD - Total,Processing,2015,160837
+OECD,OECD - Total,Processing,2016,143960
+OECD,OECD - Total,Processing,2017,58180
 AUT,Austria,Fishing Sector,2005,200
 AUT,Austria,Fishing Sector,2006,200
 AUT,Austria,Fishing Sector,2007,190
@@ -1849,6 +1888,19 @@ AUT,Austria,Fishing Sector,2015,180
 AUT,Austria,Fishing Sector,2016,180
 AUT,Austria,Fishing Sector,2017,180
 LVA,Latvia,Processing,2017,50
+OECD,OECD - Total,Unspecified Fishing,2005,137715
+OECD,OECD - Total,Unspecified Fishing,2006,73686
+OECD,OECD - Total,Unspecified Fishing,2007,73915
+OECD,OECD - Total,Unspecified Fishing,2008,297400
+OECD,OECD - Total,Unspecified Fishing,2009,281555
+OECD,OECD - Total,Unspecified Fishing,2010,276584
+OECD,OECD - Total,Unspecified Fishing,2011,250124
+OECD,OECD - Total,Unspecified Fishing,2012,238929
+OECD,OECD - Total,Unspecified Fishing,2013,250813
+OECD,OECD - Total,Unspecified Fishing,2014,238765
+OECD,OECD - Total,Unspecified Fishing,2015,236050
+OECD,OECD - Total,Unspecified Fishing,2016,236957
+OECD,OECD - Total,Unspecified Fishing,2017,184125
 POL,Poland,Unspecified Fishing,2010,1409
 POL,Poland,Unspecified Fishing,2011,1386
 POL,Poland,Unspecified Fishing,2012,1577
@@ -1875,6 +1927,19 @@ PRT,Portugal,Aquaculture,2011,2300
 PRT,Portugal,Aquaculture,2012,2431
 PRT,Portugal,Aquaculture,2013,2454
 PRT,Portugal,Aquaculture,2014,2359
+OECD,OECD - Total,Marine Deep-Sea Fishing,2005,108104
+OECD,OECD - Total,Marine Deep-Sea Fishing,2006,113030
+OECD,OECD - Total,Marine Deep-Sea Fishing,2007,110208
+OECD,OECD - Total,Marine Deep-Sea Fishing,2008,72496
+OECD,OECD - Total,Marine Deep-Sea Fishing,2009,89268
+OECD,OECD - Total,Marine Deep-Sea Fishing,2010,90463
+OECD,OECD - Total,Marine Deep-Sea Fishing,2011,85847
+OECD,OECD - Total,Marine Deep-Sea Fishing,2012,67157
+OECD,OECD - Total,Marine Deep-Sea Fishing,2013,60707
+OECD,OECD - Total,Marine Deep-Sea Fishing,2014,56441
+OECD,OECD - Total,Marine Deep-Sea Fishing,2015,57293
+OECD,OECD - Total,Marine Deep-Sea Fishing,2016,45250
+OECD,OECD - Total,Marine Deep-Sea Fishing,2017,36122
 ARG,Argentina,Marine Coastal Fishing,2005,16561
 ARG,Argentina,Marine Coastal Fishing,2006,18065
 ARG,Argentina,Marine Coastal Fishing,2007,17917
@@ -1903,6 +1968,19 @@ AUT,Austria,Aquaculture,2016,2300
 AUT,Austria,Aquaculture,2017,2300
 GBR,United Kingdom,Unspecified Fishing,2016,11757
 GBR,United Kingdom,Unspecified Fishing,2017,11692
+OECD,OECD - Total,Marine Coastal Fishing,2005,609130
+OECD,OECD - Total,Marine Coastal Fishing,2006,647784
+OECD,OECD - Total,Marine Coastal Fishing,2007,680041
+OECD,OECD - Total,Marine Coastal Fishing,2008,519704
+OECD,OECD - Total,Marine Coastal Fishing,2009,526346
+OECD,OECD - Total,Marine Coastal Fishing,2010,541540
+OECD,OECD - Total,Marine Coastal Fishing,2011,500279
+OECD,OECD - Total,Marine Coastal Fishing,2012,420391
+OECD,OECD - Total,Marine Coastal Fishing,2013,493620
+OECD,OECD - Total,Marine Coastal Fishing,2014,493753
+OECD,OECD - Total,Marine Coastal Fishing,2015,513012
+OECD,OECD - Total,Marine Coastal Fishing,2016,514090
+OECD,OECD - Total,Marine Coastal Fishing,2017,409196
 PRT,Portugal,Processing,2010,7376
 PRT,Portugal,Processing,2011,7447
 PRT,Portugal,Processing,2012,7167
