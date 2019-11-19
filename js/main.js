@@ -9,11 +9,20 @@ statFishStocks = [
     {Stat:"Remaining", Metric: 10},
     ]
 
+//Status of fish stocks worldwide
 statStockStatus = [
     {Stat: "Overexploited", Metric: 17},
     {Stat: "Fully Exploited", Metric: 52},
     {Stat: "Depleted", Metric: 7},
 ]
+
+// Percent decrease in catches since 1960
+statCatches = [
+    {Stat: "Pacific Herring", Metric: 71},
+    {Stat: "Atlantic Herring", Metric: 63},
+    {Stat: "Atlantic Cod", Metric: 69},
+]
+
 
 /*** VARIABLES FOR VIZ */
 var stackedArea, barchart, bubblechart, fishStock, stockStatus;
@@ -63,6 +72,8 @@ function createVis(error, landings, bubbles){
     fishStock = new Statistics("viz-fishStock", statFishStocks, "Global Fish Stock");
 
     stockStatus = new Statistics("viz-statusStock", statStockStatus, "Status of Fish Stocks");
+
+    stockDecrease = new Statistics("viz-statusDecrease", statCatches, "% decrease catch since 1960");
 
     // (5) Bind event handler
     $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter, countryFilter, MyEventHandler){

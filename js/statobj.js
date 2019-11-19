@@ -36,20 +36,22 @@ Statistics.prototype.initVis = function() {
         .attr("transform", "translate(" + vis.margin.left +", " + vis.margin.top +")");
 
     vis.yScaleImg = d3.scaleLinear()
-        .domain([
-            d3.min(vis.displayData, function(d) { return +d.Metric; }),
-            d3.max(vis.displayData, function(d) { return +d.Metric; })])
-        .range([10,50]);
+        .domain([0,100])
+//        .domain([
+//            d3.min(vis.displayData, function(d) { return +d.Metric; }),
+//            d3.max(vis.displayData, function(d) { return +d.Metric; })])
+        .range([8,50]);
 
     vis.xScaleImg = d3.scaleLinear()
-        .domain([
-            d3.min(vis.displayData, function(d) { return +d.Metric; }),
-            d3.max(vis.displayData, function(d) { return +d.Metric; })])
-        .range([20,100]);
+        .domain([0,100])
+//        .domain([
+//            d3.min(vis.displayData, function(d) { return +d.Metric; }),
+//            d3.max(vis.displayData, function(d) { return +d.Metric; })])
+        .range([16,100]);
 
 
 var title = vis.statisticSVG.append("text")
-    .attr("class", "stat_title")
+    .attr("class", "stat_metric")
     .attr("x", 0)
     .attr("y", 15)
     .attr("text-align", "middle")
