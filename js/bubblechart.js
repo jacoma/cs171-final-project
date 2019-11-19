@@ -41,34 +41,34 @@ BubbleChart.prototype.updateVis = function() {
 
     var scaleRadius = d3.scaleLinear()
         .domain([
-            d3.min(vis.displayData, function(d) { return +d.Value; }),
-            d3.max(vis.displayData, function(d) { return +d.Value; })])
+            d3.min(vis.displayData, function(d) { return +d["value"]; }),
+            d3.max(vis.displayData, function(d) { return +d["value"]; })])
         .range([5,60]);
 
     var scaleRect = d3.scaleLinear()
         .domain([
-            d3.min(vis.displayData, function(d) { return +d.Value; }),
-            d3.max(vis.displayData, function(d) { return +d.Value; })])
+            d3.min(vis.displayData, function(d) { return +d.value; }),
+            d3.max(vis.displayData, function(d) { return +d.value; })])
         .range([5,20]);
 
     var gradientRadial = vis.svg.append("defs").selectAll("radialGradient")
         .data(vis.displayData)
         .enter()
         .append("radialGradient")
-        .attr("id", function(d) { return "gradient-" + d.Name })
+        .attr("id", function(d) { return "gradient-" + d["key"] })
         .attr("cx", "30%")
         .attr("cy", "30%")
         .attr("r", "65%");
 
     gradientRadial.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d.Name)).brighter(1);})
+        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d["key"])).brighter(1);})
     gradientRadial.append("stop")
         .attr("offset", "50%")
-        .attr("stop-color", function(d) {return colorCircles(d.Name); })
+        .attr("stop-color", function(d) {return colorCircles(d["key"]); })
     gradientRadial.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d.Name)).darker(1.5);})
+        .attr("stop-color", function(d) {return d3.rgb(colorCircles(d["key"])).darker(1.5);})
 
 
     var simulation = d3.forceSimulation(vis.displayData)
@@ -94,10 +94,10 @@ BubbleChart.prototype.updateVis = function() {
     circle = node.append("circle")
         .attr('r', function(d) {
 //            console.log(d.Value);
-            return scaleRadius(d.Value)})
-        .style("fill", function(d) { return colorCircles(d.Name)})
+            return scaleRadius(d["value"])})
+        .style("fill", function(d) { return colorCircles(d["key"])})
         .attr("class", "bubbles" )
-        .style("fill", function(d){ return "url(#gradient-" + d.Name +")"; });
+        .style("fill", function(d){ return "url(#gradient-" + d["key"] +")"; });
 
 /*
     node.append("rect")
@@ -126,7 +126,7 @@ BubbleChart.prototype.updateVis = function() {
     node.append("text")
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.Name })
+        .text(function(d) { return d["key"] })
         .attr("class", "bubble_text");
 
 

@@ -7,41 +7,53 @@ bubbleSVG = d3.select("#bubbles").append("svg")
     .attr("class", "bubble")
     .attr("id", "bubblesvg");
 
-var allPopData;
-var populationData = [];
+var allEmpData;
+var employmentData = [];
 var filterYear = 2018
 loadData();
 
 
 // prepare data
 function loadData(){
-    d3.csv("data/global_population.csv", function(error, popData){
+    d3.csv("data/Employment.csv", function(error, empData){
         if(!error) {
-            allPopData = popData;
-            //console.log(bubbleData);
+            allEmpData = empData;
+//            console.log(empData);
             wrangleData();
         }
     })
 }
 
 function wrangleData(){
-    filterYear = d3.select("#bubble-year").property("value");
+//    filterYear = d3.select("#bubble-year").property("value");
     // console.log(filterYear);
-    allPopData.forEach(function(d) {
-        var temp = {Name: d.Country_Name,
-        Value: parseInt(d[filterYear]) };
-        populationData.push(temp)
-    })
+    filterYear=2008;
+    allEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
+    allEmpData.sort(function(a,b) {return b.value - a.value});
 
-    populationData.sort(function(a,b) {return b.Value - a.Value})
-    // console.log(populationData)
+    console.log(allEmpData);
+    allEmpData = d3.rollup(allEmpData, function(v) {
+        return d3.sum(v, function(d) {return d.Value; })},
+        function(d) {
+        return d.Country});
+    console.log(allEmpData);
 
-    drawBubbles(populationData);
+    var tempData = Array.from(allEmpData);
+    //console.log(tempData);
+    for (i=0;i<tempData.length; i++){
+            var temp = {key: tempData[i][0], value: tempData[i][1]}
+            employmentData.push(temp);
+        };
+
+
+   // console.log(employmentData);
+
+    drawBubbles(employmentData);
 
 }
 
 function drawBubbles(bData) {
-
-    bubbleChart = new BubbleChart("viz-bubbles", bData);
+//    console.log(bData);
+    bubbleChart = new BubbleChart("viz-employment", bData);
 
 }
