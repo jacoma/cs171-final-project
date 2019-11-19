@@ -22,9 +22,9 @@ Statistics.prototype.initVis = function() {
     var vis = this;
 
     vis.imgPadding = 10;
-    vis.statLength = 120;
+    vis.statLength = 90;
     vis.statHeight = 20;
-    vis.width = 300;
+    vis.width = 200;
     vis.height= 200;
     vis.margin = {top:0, right:0, bottom:0, left:0};
 
@@ -35,13 +35,13 @@ Statistics.prototype.initVis = function() {
         .attr("height", vis.height - vis.margin.top - vis.margin.bottom )
         .attr("transform", "translate(" + vis.margin.left +", " + vis.margin.top +")");
 
-    vis.yScaleImg = d3.scaleLog()
+    vis.yScaleImg = d3.scaleLinear()
         .domain([
             d3.min(vis.displayData, function(d) { return +d.Metric; }),
             d3.max(vis.displayData, function(d) { return +d.Metric; })])
         .range([10,50]);
 
-    vis.xScaleImg = d3.scaleLog()
+    vis.xScaleImg = d3.scaleLinear()
         .domain([
             d3.min(vis.displayData, function(d) { return +d.Metric; }),
             d3.max(vis.displayData, function(d) { return +d.Metric; })])
@@ -104,5 +104,15 @@ Statistics.prototype.updateVis = function() {
             }
         }) */
         .attr("class", "stat_text")
-        .text(function(d) { return d.Stat + ": " + d.Metric + "%"; })
+        .text(function(d) { return d.Stat; })
+
+    row.append("text")
+        .attr('x', vis.width)
+        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
+        .attr("class", "stat_metric")
+        .attr("text-anchor", "end")
+        .text(function(d) { return d.Metric + "%"; });
+
+
 }
+
