@@ -35,7 +35,8 @@ var RadarChart = {
         }
         var colorCircles = d3.scaleOrdinal()
         //    .range(["#32a871","#308ea6","#308ea6"]);
-            .range(["#32a871","#308ea6"]);
+            .range(["#32a871","#308ea6"])
+            .domain([0,1]);
 
 
 
@@ -147,25 +148,25 @@ var RadarChart = {
                 .domain([min, max])
                 .range([5,20]);
 
-//            console.log(d[x]);
+            console.log(series);
             var gradientRadial = g.append("defs").selectAll("radialGradient")
                 .data(d[x])
                 .enter()
                 .append("radialGradient")
-                .attr("id", function(d) { return "gradient-" + d.axis })
+                .attr("id", function(d) { return "gradient-" + series })
                 .attr("cx", "30%")
                 .attr("cy", "30%")
                 .attr("r", "65%");
 
             gradientRadial.append("stop")
                 .attr("offset", "0%")
-                .attr("stop-color", function(c) {return d3.rgb(colorCircles(c.axis)).brighter(1);})
+                .attr("stop-color", function(c) {return d3.rgb(colorCircles(series)).brighter(1);})
             gradientRadial.append("stop")
                 .attr("offset", "50%")
-                .attr("stop-color", function(c) {return colorCircles(c.axis); })
+                .attr("stop-color", function(c) {return colorCircles(series); })
             gradientRadial.append("stop")
                 .attr("offset", "100%")
-                .attr("stop-color", function(c) {return d3.rgb(colorCircles(c.axis)).darker(1.5);})
+                .attr("stop-color", function(c) {return d3.rgb(colorCircles(series)).darker(1.5);})
 
 
             g.selectAll(".nodes")
@@ -186,7 +187,7 @@ var RadarChart = {
                 })
                 .attr("data-id", function(j){return j.area})
                 .style("stroke", colorCircles(series)).style("fill-opacity", .9)
-                .style("fill", function(d){ return "url(#gradient-" + d.axis +")"; })
+                .style("fill", function(d){ return "url(#gradient-" + series +")"; })
                 .on('mouseover', function (d){
                     console.log(d);
                     console.log(x);

@@ -23,9 +23,9 @@ Statistics.prototype.initVis = function() {
 
     vis.imgPadding = 10;
     vis.statLength = 90;
-    vis.statHeight = 20;
     vis.width = 200;
     vis.height= 200;
+    vis.statHeight = 20;
     vis.margin = {top:0, right:0, bottom:0, left:0};
 
     vis.statisticSVG = d3.select("#" + vis.parentElement)
