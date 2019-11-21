@@ -26,49 +26,56 @@ BubbleChart.prototype.initVis = function() {
     vis.height=250;
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
-        .attr("height", vis.height )
-        .attr("class", "bubble")
-    this.updateVis();
+        .attr("height", vis.height );
+    this.updateVis(vis.displayData);
 }
 
 
 // bubble chart reference: https://www.freecodecamp.org/news/a-gentle-introduction-to-d3-how-to-build-a-reusable-bubble-chart-9106dc4f6c46/
 
-BubbleChart.prototype.updateVis = function() {
+BubbleChart.prototype.updateVis = function(data) {
     var vis = this;
-    //console.log(vis.displayData);
+    console.log(data);
     //console.log(vis.displayData.length)
 
 
-    var simulation = d3.forceSimulation(vis.displayData)
+    var simulation = d3.forceSimulation(data)
         .force("charge", d3.forceManyBody().strength([-35]))
         .force("x", d3.forceX())
         .force("y", d3.forceY())
         .on("tick", ticked);
 
     function ticked(e) {
-        node.attr("transform",function(d) {
+        vis.node.attr("transform",function(d) {
             return "translate(" + [d.x+(vis.width / 2), d.y+((vis.height) / 2)] +")";
         });
     }
 
-    var node = vis.svg.selectAll(".bubbles")
-        .data(vis.displayData)
+    vis.t = d3.transition()
+        .duration(250);
+
+    vis.node = vis.svg.selectAll(".bubbles")
+        .remove()
+        .data(data)
         .enter()
         .append("g")
+        .attr("class", "bubbles")
         .attr("x", function(d){return d.x})
         .attr("y", function(d){return d.y})
         .attr('transform', 'translate(' + [vis.width / 2, vis.height / 2] + ')');
 
+        vis.node.exit()
+            .transition(vis.t)
+            .remove();
 
-    if (vis.chartType == "bubble") {
+ //   if (vis.chartType == "bubble") {
 
         var colorCircles = d3.scaleOrdinal(d3.schemeBlues[9]);
 
         var scaleRadius = d3.scaleLog()
             .domain([
-                d3.min(vis.displayData, function(d) { return +d.value; }),
-                d3.max(vis.displayData, function(d) { return +d.value; })])
+                d3.min(data, function(d) { return +d.value; }),
+                d3.max(data, function(d) { return +d.value; })])
             .range([5,30]);
 
 //        console.log(d3.min(vis.displayData, function(d) { return +d.value; }));
@@ -80,8 +87,8 @@ BubbleChart.prototype.updateVis = function() {
                 d3.max(vis.displayData, function(d) { return +d.value; })])
             .range([5,20]);
 */
-        var gradientRadial = vis.svg.append("defs").selectAll("radialGradient")
-            .data(vis.displayData)
+        var gradientRadial = vis.node.append("defs").selectAll("radialGradient")
+            .data(data)
             .enter()
             .append("radialGradient")
             .attr("id", function(d) { return "gradient-" + d["key"] })
@@ -99,7 +106,10 @@ BubbleChart.prototype.updateVis = function() {
             .attr("offset", "100%")
             .attr("stop-color", function(d) {return d3.rgb(colorCircles(d["key"])).darker(1.5);})
 
-        circle = node.append("circle")
+
+        vis.node.append("circle")
+            .merge(vis.node)
+            .transition().duration(250)
             .attr('r', function (d) {
                 //console.log(scaleRadius(d.value));
                 return scaleRadius(d.value)
@@ -111,22 +121,24 @@ BubbleChart.prototype.updateVis = function() {
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
             });
-    }
+ //   }
+
+    /*
     if (vis.chartType=="vessel"){
 
         vis.xImgScale = d3.scaleLinear()
             .domain([
-            d3.min(vis.displayData, function(d) { return +d.value; }),
-            d3.max(vis.displayData, function(d) { return +d.value; })])
+            d3.min(data, function(d) { return +d.value; }),
+            d3.max(data, function(d) { return +d.value; })])
             .range([20,100]);
 
         vis.yImgScale = d3.scaleLinear()
             .domain([
-                d3.min(vis.displayData, function(d) { return +d.value; }),
-                d3.max(vis.displayData, function(d) { return +d.value; })])
+                d3.min(data, function(d) { return +d.value; }),
+                d3.max(data, function(d) { return +d.value; })])
             .range([40,200]);
 
-        node.append("svg:img")
+        vis.node.append("svg:img")
             .attr("width", function(d) { return vis.yImgScale(d.value) })
             .attr("height", function(d) {return vis.xImgScale(d.value) })
             .attr("class", "bubbles")
@@ -134,7 +146,7 @@ BubbleChart.prototype.updateVis = function() {
             .attr("xlink:href", "img/trout-sillouette.svg");
 
     }
-
+*/
     /*
     node.append("rect")
         .attr("x", 2)
@@ -159,11 +171,12 @@ BubbleChart.prototype.updateVis = function() {
             })
             .attr("fill", function(d, i) { return colorCircles(i--)})
 */
-    node.append("text")
+    vis.node.append("text")
+        .merge(vis.node)
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
         .text(function(d) { return d["key"] })
-        .attr("class", "bubble_text");
+        .attr("class", "bubble_text")
 
 
 }

@@ -11,8 +11,9 @@ var allEmpData;
 var allVesselData;
 var employmentData = [];
 var vesselData=[];
-var filterYear = 2018;
-
+var filterYear;
+var empChart;
+var vesselChart;
 
 
 queue()
@@ -30,20 +31,23 @@ function loadData(error, empData, vessels){
 }
 
 function wrangleData(){
-//    filterYear = d3.select("#bubble-year").property("value");
-    // console.log(filterYear);
-    filterYear=2008;
+    employmentData=[];
+    vesselData=[]
+
+    if (filterYear == null){
+        filterYear = 2005;
+    }
 
     //*************EMPLOYMENT DATA*******************
-    allEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
+    tempEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
 
     //console.log(allEmpData);
-    allEmpData = d3.rollup(allEmpData, function(v) {
+    tempEmpData = d3.rollup(tempEmpData, function(v) {
         return d3.sum(v, function(d) {return d.Value; })},
         function(d) {
         return d.COUNTRY});
     //console.log(allEmpData);
-    var tempData = Array.from(allEmpData);
+    var tempData = Array.from(tempEmpData);
     //console.log(tempData);
     for (i=0;i<tempData.length; i++){
             var temp = {key: tempData[i][0], value: tempData[i][1]}
@@ -51,22 +55,40 @@ function wrangleData(){
         };
 
     employmentData.sort(function(a,b) {return b.value - a.value});
-    console.log(employmentData);
+    //console.log(employmentData);
 
     //*************VESSELS DATA*******************
-    allVesselData = allVesselData.filter(function(d){ return d.Year == filterYear; });
-    allVesselData.forEach(function(d){
+    tempVesselData = allVesselData.filter(function(d){ return d.Year == filterYear; });
+    tempVesselData.forEach(function(d){
         vesselData.push({key: d.COUNTRY, value: d.Value})
     })
-    console.log(vesselData);
 
-    empChart = new BubbleChart("viz-employment", employmentData, "bubble");
-    vesselChart = new BubbleChart("viz-vessels", vesselData, "vessel")
+    vesselData.sort(function(a,b) {return b.value - a.value});
 
+    //console.log(vesselData);
+    drawChart();
 //    drawBubbles(employmentData);
 //    drawVessels(allVesselData);
 }
 
+function drawChart() {
+    if (empChart) {
+        console.log("chart already exists");
+        empChart.updateVis(employmentData);
+        vesselChart.updateVis(vesselData);
+    } else {
+        empChart = new BubbleChart("viz-employment", employmentData, "bubble");
+        vesselChart = new BubbleChart("viz-vessels", vesselData, "vessel")
+
+    }
+}
+
+function updateBubbles() {
+    filterYear = d3.select("#bubble-year").property("value");
+    //console.log(filterYear);
+    wrangleData();
+
+}
 
 /*
 function drawBubbles(bData) {
