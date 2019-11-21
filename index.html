@@ -137,14 +137,6 @@
 					wanting to continually grow their economy.[4]</p>
 			</div>
 			<div class="col-md-6 order-md-2">
-				<select id = "bubble-year">
-					<option value="2001">2001</option>
-					<option value="2002">2002</option>
-					<option value="2003">2003</option>
-					<option value="2004">2004</option>
-					<option value="2005">2005</option>
-					<option value="2006">2006</option>
-				</select>
 				<div id = "viz-bubbles"></div>
 			</div>
 		</div>
@@ -161,7 +153,16 @@
 						target species. [3]</p>
 				</div>
 				<div class="col-md-6 order-md-1">
-				  <div id = "viz-vessels"></div>
+					<select id = "bubble-year" onchange="updateBubbles()">
+						<option value="2001">2001</option>
+						<option value="2002">2002</option>
+						<option value="2003">2003</option>
+						<option value="2004">2004</option>
+						<option value="2005">2005</option>
+						<option value="2006">2006</option>
+					</select>
+
+					<div id = "viz-vessels"></div>
 					<div id="viz-employment"></div>
 				</div>
 			  </div>

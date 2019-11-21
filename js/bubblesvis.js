@@ -41,7 +41,7 @@ function wrangleData(){
     allEmpData = d3.rollup(allEmpData, function(v) {
         return d3.sum(v, function(d) {return d.Value; })},
         function(d) {
-        return d.Country});
+        return d.COUNTRY});
     //console.log(allEmpData);
     var tempData = Array.from(allEmpData);
     //console.log(tempData);

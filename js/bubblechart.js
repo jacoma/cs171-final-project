@@ -65,11 +65,14 @@ BubbleChart.prototype.updateVis = function() {
 
         var colorCircles = d3.scaleOrdinal(d3.schemeBlues[9]);
 
-        var scaleRadius = d3.scaleLinear()
+        var scaleRadius = d3.scaleLog()
             .domain([
-                d3.min(vis.displayData, function(d) { return +d["value"]; }),
-                d3.max(vis.displayData, function(d) { return +d["value"]; })])
-            .range([5,60]);
+                d3.min(vis.displayData, function(d) { return +d.value; }),
+                d3.max(vis.displayData, function(d) { return +d.value; })])
+            .range([5,30]);
+
+//        console.log(d3.min(vis.displayData, function(d) { return +d.value; }));
+//        console.log(d3.max(vis.displayData, function(d) { return +d.value; }));
 
 /*        var scaleRect = d3.scaleLinear()
             .domain([
@@ -98,8 +101,8 @@ BubbleChart.prototype.updateVis = function() {
 
         circle = node.append("circle")
             .attr('r', function (d) {
-    //            console.log(d.Value);
-                return scaleRadius(d["value"])
+                //console.log(scaleRadius(d.value));
+                return scaleRadius(d.value)
             })
             .style("fill", function (d) {
                 return colorCircles(d["key"])
@@ -111,24 +114,24 @@ BubbleChart.prototype.updateVis = function() {
     }
     if (vis.chartType=="vessel"){
 
-        vis.xImgScale = d3.scaleLog()
+        vis.xImgScale = d3.scaleLinear()
             .domain([
             d3.min(vis.displayData, function(d) { return +d.value; }),
             d3.max(vis.displayData, function(d) { return +d.value; })])
             .range([20,100]);
 
-        vis.yImgScale = d3.scaleLog()
+        vis.yImgScale = d3.scaleLinear()
             .domain([
                 d3.min(vis.displayData, function(d) { return +d.value; }),
                 d3.max(vis.displayData, function(d) { return +d.value; })])
             .range([40,200]);
 
-        circle = node.append("img")
-
-            .attr('width', function(d) { return vis.xImgScale(d.value) })
-            .attr('height', function(d) {return vis.yImgScale(d.value) })
-            .attr("fill", "blue")
-            .attr("xlink:href", "img/Pilot-Boat.svg");
+        node.append("svg:img")
+            .attr("width", function(d) { return vis.yImgScale(d.value) })
+            .attr("height", function(d) {return vis.xImgScale(d.value) })
+            .attr("class", "bubbles")
+            .style("fill", "blue")
+            .attr("xlink:href", "img/trout-sillouette.svg");
 
     }
 
