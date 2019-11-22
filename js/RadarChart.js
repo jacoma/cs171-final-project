@@ -11,8 +11,8 @@ var RadarChart = {
     draw: function(id, d, options){
         var cfg = {
             //radius: 5,
-            w: 600,
-            h: 600,
+            w: 400,
+            h: 400,
             factor: 1,
             factorLegend: .85,
             levels: 3,
@@ -56,9 +56,6 @@ var RadarChart = {
             .append("g")
             .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 
-        var tooltip;
-
-
         //Circular segments
         for(var j=0; j<cfg.levels; j++){
             var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
@@ -94,7 +91,7 @@ var RadarChart = {
                 .text((j+1)*100/cfg.levels);
         }
 */
-        series = 0;
+        //series = 0;
 
         var axis = g.selectAll(".axis")
             .data(allAxis)
@@ -146,7 +143,31 @@ var RadarChart = {
                 .domain([min, max])
                 .range([5,20]);
 
-            console.log(series);
+            console.log("Series " + series);
+            g.append("text")
+                .attr("class", "legend")
+                .attr("x", width)
+                .attr("y", series * 20)
+                .style("fill", function (d) {
+                    return colorCircles(series);
+                })
+                .attr("text-anchor", "end")
+                .text(function(d){
+                    switch(x){
+                        case 0:
+                            return "Population"
+                            break;
+                        case 1:
+                            return "Catch"
+                            break;
+                        case 2:
+                            return "Subsidies"
+                            break;
+                    }
+
+                });
+
+
             var gradientRadial = g.append("defs").selectAll("radialGradient")
                 .data(d[x])
                 .enter()
@@ -196,7 +217,7 @@ var RadarChart = {
                             label ="Catch"
                             break;
                         case 2:
-                            label: "Subsidies"
+                            label= "Subsidies"
                             break;
                     }
                     console.log(d);

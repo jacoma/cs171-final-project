@@ -12,8 +12,8 @@
 <body>
 		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light story-cover">
 				<div class="col-md-5 p-lg-5 mx-auto my-5" id="story-heading">
-				  <h1 class="display-4 font-weight-normal">Smells Fishy</h1>
-				  <p class="lead font-weight-normal">Is this the last century of wild seafood?</p>
+				  <p class="lead font-weight-normal">Smells Fishy!</p>
+					<h1 class="display-4 font-weight-normal">Is this the last century of wild seafood?</h1>
 				</div>
 		</div>
 	<div class = "container story">
@@ -66,7 +66,10 @@
 				<div class = "col-md-4"><h4>Population</h4><p>Quick text</p></div>
 				<div class = "col-md-4"><h4>Subsidies</h4><p>Quick text</p></div>
 				</div>
+		<div class="col-md-12">
 
+		<div id = "viz-radar"></div>
+		</div>
 				<hr class="featurette-divider">
 
 				<div class="row featurette mt-2 multi-column">
@@ -132,6 +135,26 @@
 					</form>
 				  <div id = "viz-subsidies"></div>
 				</div>
+		<div class="row featurette mt-2 multi-column">
+			<div class="col-md-4 order-md-1">
+				<select id = "bubble-year" onchange="updateBubbles()">
+					<option value="2005">2005</option>
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+				</select>
+				<h4>Fleet Size</h4>
+				<div id ="viz-vessels"></div>
+			</div>
+			<div class="col-md-4 order-md-1">
+				<h4>Employment</h4>
+				<div id="viz-employment"></div>
+			</div>
+			<div class="col-md-4 order-md-1">
+			</div>
+		</div>
 
 		<hr class="featurette-divider">
 
@@ -147,35 +170,13 @@
 					wanting to continually grow their economy.[4]</p>
 			</div>
 			<div class="col-md-6 order-md-2">
-				<div id = "viz-radar"></div>
-			</div>
-		</div>
-
-		<hr class="featurette-divider">
-
-
-		<div class="row featurette mt-2 multi-column">
-				<div class="col-md-6 order-md-2">
-				  <h2 class="featurette-heading">Increase in vessels and Convenience.</h2>
-				  <p class="lead">Consumers soon grew accustomed to having access to a wide selection of fish species at
+				  <h3 class="featurette-heading">Increase in vessels and Convenience.</h3>
+				  <p>Consumers soon grew accustomed to having access to a wide selection of fish species at
 					  affordable prices. To support this large, profit-seeking commercial fleets were extremely aggressive, scouring the world's oceans and
 						developing ever more sophisticated methods and technologies for finding, extracting, and processing their
 						target species. [3]</p>
 				</div>
-				<div class="col-md-6 order-md-1">
-					<select id = "bubble-year" onchange="updateBubbles()">
-						<option value="2005">2005</option>
-						<option value="2006">2006</option>
-						<option value="2007">2007</option>
-						<option value="2008">2008</option>
-						<option value="2009">2009</option>
-						<option value="2010">2010</option>
-					</select>
-
-					<div id ="viz-vessels"></div>
-					<div id="viz-employment"></div>
-				</div>
-			  </div>
+		</div>
 
 		<hr class="featurette-divider">
 
