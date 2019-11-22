@@ -157,7 +157,8 @@ function updateVisualization(data) {
 	circles.on('mouseover', tool_tip.show)
 		.on('mouseout', tool_tip.hide)
 		.on('click', function(d) {
-			showEdition(d);
+			console.log("just clicked!");
+			updateBubbles();
 		});
 	//Exit
 	yearly_value_pts.exit().remove();
