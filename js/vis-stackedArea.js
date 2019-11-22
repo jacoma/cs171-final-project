@@ -78,13 +78,13 @@ StackedAreaChart.prototype.initVis = function(){
 
     vis.svg.append("text")
 		.attr("class", "axis-title")
-		.attr("transform", "translate("+(-(vis.margin.left) + 15)+"," +(vis.margin.top*2)+")rotate(-90)")
-        .text("Tonnes (in millions)");
+		.attr("transform", "translate("+(-(vis.margin.left) + 15)+"," +(vis.margin.top*3)+")rotate(-90)")
+        .text("Fish Landings (Tonnes in millions)");
         
     vis.svg.append("text")
 		.attr("class", "chart-title")
 		.attr("transform", "translate("+(10)+"," +(-50)+")")
-		.text("Volume of Fish Landings by Species (2000-2017)");
+		.text("Volume fish landings decrease as fisheries become depleted");
 
     /*** CREATE AREA & LINE GENERATORS */
 	vis.area = d3.area()

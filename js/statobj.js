@@ -21,12 +21,12 @@ Statistics.prototype.initVis = function() {
 
     var vis = this;
 
+    vis.margin = {top:10, right:20, bottom:10, left:0};
     vis.imgPadding = 10;
     vis.statLength = 90;
-    vis.width = 200;
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
     vis.height= 200;
     vis.statHeight = 20;
-    vis.margin = {top:0, right:0, bottom:0, left:0};
 
     vis.statisticSVG = d3.select("#" + vis.parentElement)
         .append("svg")
@@ -109,7 +109,7 @@ Statistics.prototype.updateVis = function() {
         .text(function(d) { return d.Stat; })
 
     row.append("text")
-        .attr('x', vis.width)
+        .attr('x', vis.width - vis.margin.right)
         .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
         .attr("class", "stat_metric")
         .attr("text-anchor", "end")

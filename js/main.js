@@ -35,6 +35,8 @@ queue()
 function createVis(error, landings, bubbles){
     if(error) { console.log(error); }
 
+    console.log(landings);
+
     landings.forEach(function(d){
         if(countries.indexOf(d.Country) < 0) {
             countries.push(d.Country);
