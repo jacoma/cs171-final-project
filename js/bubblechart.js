@@ -54,23 +54,25 @@ BubbleChart.prototype.updateVis = function(data) {
     vis.t = d3.transition()
         .duration(250);
 
+    vis.svg.selectAll(".bubbles").remove();
+
     vis.node = vis.svg.selectAll(".bubbles")
-        .remove()
         .data(data)
         .enter()
         .append("g")
         .attr("class", "bubbles")
         .attr("x", function(d){return d.x})
         .attr("y", function(d){return d.y})
-        .attr('transform', 'translate(' + [vis.width / 2, vis.height / 2] + ')');
+        .attr('transform', 'translate(' + [vis.width / 2, vis.height / 2] + ')')
+        .style("opacity", .5);
 
-        vis.node.exit()
-            .transition(vis.t)
-            .remove();
+//        vis.node.exit()
+//            .transition(vis.t)
+//            .remove();
 
  //   if (vis.chartType == "bubble") {
 
-        var colorCircles = d3.scaleOrdinal(d3.schemeBlues[9]);
+        var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
 
         var scaleRadius = d3.scaleLog()
             .domain([
@@ -114,14 +116,15 @@ BubbleChart.prototype.updateVis = function(data) {
                 //console.log(scaleRadius(d.value));
                 return scaleRadius(d.value)
             })
+            .attr("class", "bubbles")
             .style("fill", function (d) {
                 return colorCircles(d["key"])
             })
-            .attr("class", "bubbles")
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
             });
- //   }
+
+            //   }
 
     /*
     if (vis.chartType=="vessel"){
@@ -177,7 +180,7 @@ BubbleChart.prototype.updateVis = function(data) {
         .style("text-anchor", "middle")
         .text(function(d) { return d["key"] })
         .attr("class", "bubble_text")
-
+        .exit().remove();
 
 }
 
