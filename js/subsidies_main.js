@@ -196,7 +196,7 @@ function updateVisualization(data) {
 			return "Global Fisheries Funding from 2000 - 2018"
 		})
 		.attr("text-anchor","middle")
-		.style("font-size", "40px")
+		.style("font-size", "20px")
 		.attr("fill","Grey");
 }
 
