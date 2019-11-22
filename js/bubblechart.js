@@ -72,6 +72,10 @@ BubbleChart.prototype.updateVis = function(data) {
 
  //   if (vis.chartType == "bubble") {
 
+        vis.tip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
         var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
 
         var scaleRadius = d3.scaleLog()
@@ -123,7 +127,20 @@ BubbleChart.prototype.updateVis = function(data) {
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
             });
-
+            vis.node.on("mouseover", function(d) {
+            vis.tip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+            vis.tip.html(d["key"]+ ": " + d["value"])
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function(d) {
+                vis.tip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+        ;
             //   }
 
     /*

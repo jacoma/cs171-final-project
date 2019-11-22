@@ -1,12 +1,4 @@
 
-width = 800;
-height=500;
-bubbleSVG = d3.select("#bubbles").append("svg")
-    .attr("width", width)
-    .attr("height", height )
-    .attr("class", "bubble")
-    .attr("id", "bubblesvg");
-
 var allEmpData;
 var allVesselData;
 var employmentData = [];
