@@ -8,6 +8,7 @@ var exportData=[];
 var filterYear;
 var empChart;
 var vesselChart;
+var selectedCountry;
 
 
 queue()
@@ -32,9 +33,12 @@ function wrangleData(){
     exportData=[];
 
     if (filterYear == null){
-        filterYear = 2008;
+        filterYear = 2017;
     }
 
+    //if (selectedCountry == null){
+    //    selectedCountry ="USA";
+    //}
     //*************EMPLOYMENT DATA*******************
     tempEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
 
@@ -81,18 +85,20 @@ function wrangleData(){
 function drawChart() {
     if (empChart) {
         console.log("chart already exists");
-        empChart.updateVis(employmentData);
-        vesselChart.updateVis(vesselData);
-        exportChart.updateVis(exportData);
+        empChart.updateVis(employmentData, selectedCountry);
+        vesselChart.updateVis(vesselData, selectedCountry);
+        exportChart.updateVis(exportData, selectedCountry);
     } else {
-        empChart = new BubbleChart("viz-employment", employmentData, "bubble");
-        vesselChart = new BubbleChart("viz-vessels", vesselData, "vessel")
-        exportChart = new BubbleChart("viz-exports", exportData, "bubble")
+        console.log(selectedCountry);
+        empChart = new BubbleChart("viz-employment", employmentData, selectedCountry);
+        vesselChart = new BubbleChart("viz-vessels", vesselData, selectedCountry)
+        exportChart = new BubbleChart("viz-exports", exportData, selectedCountry)
 
     }
 }
 
-function updateBubbles() {
+function updateBubbles(year, country) {
+    selectedCountry = country;
     filterYear = d3.select("#bubble-year").property("value");
     //console.log(filterYear);
     wrangleData();

@@ -7,12 +7,12 @@
  * @param _config					-- variable from the dataset (e.g. 'electricity') and title for each bar chart
  */
 
-BubbleChart = function(_parentElement, _data, _chartType){
+BubbleChart = function(_parentElement, _data, _country){
     this.parentElement = _parentElement;
     this.data = _data;
     this.displayData = _data;
-    this.chartType = _chartType;
-
+//    this.chartType = _chartType;
+    this.country = _country;
     this.initVis();
 }
 
@@ -27,17 +27,17 @@ BubbleChart.prototype.initVis = function() {
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height );
-    this.updateVis(vis.displayData);
+    this.updateVis(vis.displayData, vis.country);
 }
 
 
 // bubble chart reference: https://www.freecodecamp.org/news/a-gentle-introduction-to-d3-how-to-build-a-reusable-bubble-chart-9106dc4f6c46/
 
-BubbleChart.prototype.updateVis = function(data) {
+BubbleChart.prototype.updateVis = function(data, country) {
     var vis = this;
     //console.log(data);
     //console.log(vis.displayData.length)
-
+    console.log(country);
 
     var simulation = d3.forceSimulation(data)
         .force("charge", d3.forceManyBody().strength([-35]))
@@ -64,7 +64,14 @@ BubbleChart.prototype.updateVis = function(data) {
         .attr("x", function(d){return d.x})
         .attr("y", function(d){return d.y})
         .attr('transform', 'translate(' + [vis.width / 2, vis.height / 2] + ')')
-        .style("opacity", .5);
+        .style("opacity", function(d) {
+            if (d.key==country){
+                return .9
+            }
+            else {
+                return .5
+            }
+        });
 
 //        vis.node.exit()
 //            .transition(vis.t)
@@ -127,6 +134,7 @@ BubbleChart.prototype.updateVis = function(data) {
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
             });
+
             vis.node.on("mouseover", function(d) {
             vis.tip.transition()
                     .duration(200)
