@@ -19,7 +19,7 @@ var config = {
 }
 
 //var radarData=[[],[],[]];
-var radarData=[[], []];
+var radarData=[[], [], []];
 var sortDataA = [];
 var sortDataB = [];
 var sortDataC = [];
@@ -27,9 +27,10 @@ var sortDataC = [];
 queue()
     .defer(d3.csv, "data/landings_SA.csv")
     .defer(d3.csv, "data/global_population_SA.csv")
+    .defer(d3.csv, "data/Subsidies_SA.csv")
     .await(createRadar);
 
-function createRadar(error, landings, population) {
+function createRadar(error, landings, population, subsidies) {
 //Call function to draw the Radar chart
     if (error) throw error;
 
@@ -45,7 +46,7 @@ function createRadar(error, landings, population) {
         //console.log(parseInt(d[2001])/popMax);
         var pops = {
             axis: d.Country_Name,
-            value: parseInt(d[2001])
+            value: parseInt(d[2008])
         };
         sortDataA.push(pops)
     });
@@ -67,7 +68,7 @@ function createRadar(error, landings, population) {
     console.log(radarData);
 */
     landings = d3.rollup(landings, function(v) {
-            return d3.sum(v, function(d) {return d[2001]; })},
+            return d3.sum(v, function(d) {return d[2008]; })},
         function(d) {
             return d.Country});
 //    console.log(landings);
@@ -81,6 +82,17 @@ function createRadar(error, landings, population) {
     };
 
     radarData[1] = sortDataB.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
+
+    subsidies.forEach(function(d) {
+        //console.log(parseInt(d[2001])/popMax);
+        var subs = {
+            axis: d.Country,
+            value: parseInt(d[2008])
+        };
+        sortDataC.push(subs)
+    });
+    radarData[2] = sortDataC.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
+
 
     console.log(radarData);
     updateVis();

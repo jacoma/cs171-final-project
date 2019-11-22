@@ -195,8 +195,11 @@ var RadarChart = {
                         case 1:
                             label ="Catch"
                             break;
+                        case 2:
+                            label: "Subsidies"
+                            break;
                     }
-                    console.log(x);
+                    console.log(d);
                     radarTip.transition()
                         .duration(200)
                         .style("opacity", .9);

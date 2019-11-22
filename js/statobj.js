@@ -24,9 +24,10 @@ Statistics.prototype.initVis = function() {
     vis.margin = {top:10, right:20, bottom:10, left:0};
     vis.imgPadding = 10;
     vis.statLength = 90;
-    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+//    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+    vis.width = 200;
     vis.height= 200;
-    vis.statHeight = 20;
+    vis.statHeight = 40;
 
     vis.statisticSVG = d3.select("#" + vis.parentElement)
         .append("svg")
@@ -81,13 +82,14 @@ Statistics.prototype.updateVis = function() {
         .attr("class", "statistic")
         .attr("height", vis.statHeight)
         .attr("transform", function (d, i) {
-            i++;
+//            i++;
 //                return "translate(0, " + yScaleImg(d.Metric) + ")"
-            return "translate(0, " + vis.statHeight * i + ")"
+            return "translate(0, " +(vis.statHeight * i + 30) + ")"
         });
     row.append("svg:image")
         .attr('x', vis.statLength)
-        .attr('y', function(d) {return (d.Metric + vis.imgPadding)/4 } )
+//        .attr('y', function(d) {return (d.Metric + vis.imgPadding)/4 } )
+        .attr('y', 0)
         .attr('width', function(d) { return vis.xScaleImg(d.Metric) })
         .attr('height', function(d) {return vis.yScaleImg(d.Metric) })
 //        .attr('width', function(d) { return d.Metric })
@@ -96,7 +98,8 @@ Statistics.prototype.updateVis = function() {
 
     row.append("text")
         .attr('x', 0)
-        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
+        .attr('y', 10)
+//        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
 /*        .attr('y', function (d) {
             if(d.Metric > 20) {
                 return d.Metric / 2
@@ -110,7 +113,8 @@ Statistics.prototype.updateVis = function() {
 
     row.append("text")
         .attr('x', vis.width - vis.margin.right)
-        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
+//        .attr('y', function(d) {return (d.Metric/2) + vis.imgPadding} )
+        .attr('y', 10)
         .attr("class", "stat_metric")
         .attr("text-anchor", "end")
         .text(function(d) { return d.Metric + "%"; });
