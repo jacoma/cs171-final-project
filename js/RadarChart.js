@@ -35,10 +35,12 @@ var RadarChart = {
         }
         var colorCircles = d3.scaleOrdinal()
         //    .range(["#32a871","#308ea6","#308ea6"]);
-            .range(["#32a871","#308ea6"])
+            .range(["#f5ec42","#f54242","#308ea6"])
             .domain([0,1]);
 
-
+        var radarTip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
 
         //cfg.maxValue = 100;
         var allAxis = (d[0].map(function(i, j){ return i.axis}));
@@ -135,10 +137,6 @@ var RadarChart = {
         });
         series=0;
 
-
-        var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-
-
         d.forEach(function(y, x){
             //console.log(x);
             //console.log(d[x]);
@@ -189,15 +187,28 @@ var RadarChart = {
                 .style("stroke", colorCircles(series)).style("fill-opacity", .9)
                 .style("fill", function(d){ return "url(#gradient-" + series +")"; })
                 .on('mouseover', function (d){
-                    console.log(d);
+                    var label
+                    switch(x){
+                        case 0:
+                            label ="Population"
+                            break;
+                        case 1:
+                            label ="Catch"
+                            break;
+                    }
                     console.log(x);
-                    tooltip
-                        .style("left", d3.event.pageX - 40 + "px")
-                        .style("top", d3.event.pageY - 80 + "px")
-                        .style("display", "inline-block")
-                        .html((d.axis) + " " + x + ": <br><span>" + (d.value) + "</span>");
+                    radarTip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    radarTip.html((d.axis) + " " + label + ": <br><span>" + (d.value) + "</span>")
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
                 })
-                .on("mouseout", function(d){ tooltip.style("display", "block");});
+                .on("mouseout", function(d) {
+                    radarTip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
 
             series++;
         });
