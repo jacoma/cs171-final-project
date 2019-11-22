@@ -1,8 +1,10 @@
 
 var allEmpData;
 var allVesselData;
+var allExportData;
 var employmentData = [];
 var vesselData=[];
+var exportData=[];
 var filterYear;
 var empChart;
 var vesselChart;
@@ -11,12 +13,14 @@ var vesselChart;
 queue()
     .defer(d3.csv, "data/Employment.csv")
     .defer(d3.csv, "data/TotalVessels.csv")
+    .defer(d3.csv, "data/Exports.csv")
     .await(loadData);
 
-function loadData(error, empData, vessels){
+function loadData(error, empData, vessels, exports){
      if(!error) {
             allEmpData = empData;
             allVesselData = vessels;
+            allExportData = exports;
 //            console.log(empData);
             wrangleData();
         }
@@ -24,10 +28,11 @@ function loadData(error, empData, vessels){
 
 function wrangleData(){
     employmentData=[];
-    vesselData=[]
+    vesselData=[];
+    exportData=[];
 
     if (filterYear == null){
-        filterYear = 2005;
+        filterYear = 2008;
     }
 
     //*************EMPLOYMENT DATA*******************
@@ -37,12 +42,13 @@ function wrangleData(){
     tempEmpData = d3.rollup(tempEmpData, function(v) {
         return d3.sum(v, function(d) {return d.Value; })},
         function(d) {
-        return d.COUNTRY});
-    //console.log(allEmpData);
+        return d.COUNTRY + "-" + d.Country})
+    console.log(tempEmpData);
     var tempData = Array.from(tempEmpData);
     //console.log(tempData);
     for (i=0;i<tempData.length; i++){
-            var temp = {key: tempData[i][0], value: tempData[i][1]}
+            country=tempData[i][0].split("-")
+            var temp = {key: country[0], value: tempData[i][1], name: country[1]}
             employmentData.push(temp);
         };
 
@@ -52,12 +58,21 @@ function wrangleData(){
     //*************VESSELS DATA*******************
     tempVesselData = allVesselData.filter(function(d){ return d.Year == filterYear; });
     tempVesselData.forEach(function(d){
-        vesselData.push({key: d.COUNTRY, value: d.Value})
+        vesselData.push({key: d.COUNTRY, value: d.Value, name: d.Country})
     })
 
     vesselData.sort(function(a,b) {return b.value - a.value});
 
     //console.log(vesselData);
+
+    //*************EXPORT DATA*******************
+    allExportData.forEach(function(d){
+        exportData.push({key: d.Code, value: parseInt(d[filterYear]), name: d.Country})
+    });
+    exportData.sort(function(a,b) {return b.value - a.value});
+
+    //console.log(exportData);
+
     drawChart();
 //    drawBubbles(employmentData);
 //    drawVessels(allVesselData);
@@ -68,9 +83,11 @@ function drawChart() {
         console.log("chart already exists");
         empChart.updateVis(employmentData);
         vesselChart.updateVis(vesselData);
+        exportChart.updateVis(exportData);
     } else {
         empChart = new BubbleChart("viz-employment", employmentData, "bubble");
         vesselChart = new BubbleChart("viz-vessels", vesselData, "vessel")
+        exportChart = new BubbleChart("viz-exports", exportData, "bubble")
 
     }
 }

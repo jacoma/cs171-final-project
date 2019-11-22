@@ -143,7 +143,7 @@ var RadarChart = {
                 .domain([min, max])
                 .range([5,20]);
 
-            console.log("Series " + series);
+//            console.log("Series " + series);
             g.append("text")
                 .attr("class", "legend")
                 .attr("x", width)

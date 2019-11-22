@@ -35,7 +35,7 @@ BubbleChart.prototype.initVis = function() {
 
 BubbleChart.prototype.updateVis = function(data) {
     var vis = this;
-    console.log(data);
+    //console.log(data);
     //console.log(vis.displayData.length)
 
 
@@ -131,7 +131,7 @@ BubbleChart.prototype.updateVis = function(data) {
             vis.tip.transition()
                     .duration(200)
                     .style("opacity", .9);
-            vis.tip.html(d["key"]+ ": " + d["value"])
+            vis.tip.html(d["name"]+ ": " + d["value"])
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
