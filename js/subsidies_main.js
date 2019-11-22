@@ -249,6 +249,7 @@ function createSelectBox(CountryCodes) {
 // ******* Setting up tooltips *******
 var tool_tip = d3.tip()
 	.attr("class", "d3-tip")
-	.offset([-8, 0])
-	.html(function(d) { return "Year: " + d.TIME + ", Amount of Funding: $" + Math.round(d.Value) + " Million USD" });
+	.offset([-10, 199])
+	.html(function(d){ return "Year: " + d.TIME + ", Amount of Funding: $" + Math.round(d.Value) + " Million USD" });
+
 svg.call(tool_tip);
