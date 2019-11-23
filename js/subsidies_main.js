@@ -157,8 +157,19 @@ function updateVisualization(data) {
 	circles.on('mouseover', tool_tip.show)
 		.on('mouseout', tool_tip.hide)
 		.on('click', function(d) {
-			console.log("just clicked!");
-			updateBubbles();
+			// var curr_year = d.TIME;
+            var curr_year;
+            if (d.TIME <= 2018 && d.TIME >= 2005) {
+                $("#bubble-year").val(d.TIME);
+                curr_year = d.TIME;
+            }
+            else {
+                $("#bubble-year").val(2005);
+                curr_year = 2005;
+                alert("No data available for this year. Please select a year between 2005 and 2018!");
+            }
+            var curr_selection = d3.select("#select-box").property("value");
+			updateBubbles(curr_year, curr_selection);
 		});
 	//Exit
 	yearly_value_pts.exit().remove();
