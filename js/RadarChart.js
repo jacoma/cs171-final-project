@@ -27,8 +27,8 @@ RadarChart.prototype.initVis = function() {
         maxValue: 0,
         radians: 2 * Math.PI,
         opacityArea: 0.5,
-        ToRight: 5,
-        TranslateX: 80,
+//        ToRight: 5,
+        TranslateX: 50,
         TranslateY: 30,
         ExtraWidthX: 100,
         ExtraWidthY: 100
@@ -44,7 +44,7 @@ RadarChart.prototype.initVis = function() {
         .style("opacity", 0);
     vis.radar_tip = d3.tip()
         .attr("class", "d3-tip")
-        .offset([-10, 199])
+        .offset([-10, 100])
 //        .html("testing tool tip")
         .html(function(d){
 /*            var label

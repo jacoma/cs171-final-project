@@ -30,7 +30,7 @@ var sortDataC = [];
 var radarChart;
 
 queue()
-    .defer(d3.csv, "data/landings_SA.csv")
+    .defer(d3.csv, "data/landings_SA2.csv")
     .defer(d3.csv, "data/global_population_SA.csv")
     .defer(d3.csv, "data/Subsidies_SA.csv")
     .await(createRadar);
@@ -66,15 +66,26 @@ function updateRadar() {
     });
     radarData[0] = sortDataA.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
 
-    var yearLandings = d3.rollup(allLandings, function (v) {
-            return d3.sum(v, function (d) {
-                return d[radarYear];
-            })
-        },
-        function (d) {
-            return d.Country
-        });
-//    console.log(landings);
+
+    var yearLandings = allLandings.forEach(function (d) {
+        //console.log(parseInt(d[2001])/popMax);
+        var lands = {
+            axis: d.Country,
+            value: parseInt(d[radarYear])
+        };
+        sortDataB.push(lands)
+    });
+    radarData[1] = sortDataB.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
+
+    /*    var yearLandings = d3.rollup(allLandings, function (v) {
+                return d3.sum(v, function (d) {
+                    return d[radarYear];
+                })
+            },
+            function (d) {
+                return d.Country
+            });
+    //    console.log(landings);
 
     var tempData = Array.from(yearLandings);
     console.log(tempData);
@@ -86,7 +97,7 @@ function updateRadar() {
     ;
 
     radarData[1] = sortDataB.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
-
+*/
     var yearSubsidies = allSubsidies.forEach(function (d) {
         var subs = {
             axis: d.Country,
