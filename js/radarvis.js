@@ -20,9 +20,14 @@ var config = {
 
 //var radarData=[[],[],[]];
 var radarData=[[], [], []];
+var allLandings;
+var allPopulation;
+var allSubsidies;
+
 var sortDataA = [];
 var sortDataB = [];
 var sortDataC = [];
+var radarChart;
 
 queue()
     .defer(d3.csv, "data/landings_SA.csv")
@@ -33,74 +38,72 @@ queue()
 function createRadar(error, landings, population, subsidies) {
 //Call function to draw the Radar chart
     if (error) throw error;
-
+    allLandings = landings;
+    allPopulation = population;
+    allSubsidies = subsidies;
         //create data from 3 data sets
         //expects arrays of objects
 
-    //ALL OF THESE HAVE HARD CODED YEAR FOR NOW
-    //MAYBE FILTER TO THE TOP 5????
-    //WHAT IS INTERACTION
 
 
-    population.forEach(function(d) {
+
+    console.log(radarData);
+    updateRadar();
+    }
+
+
+function updateRadar() {
+    //radarYear = d3.select("#radar-year").property("value");
+    radarYear = 2017;
+
+    var yearPopulation = allPopulation.forEach(function (d) {
         //console.log(parseInt(d[2001])/popMax);
         var pops = {
             axis: d.Country_Name,
-            value: parseInt(d[2008])
+            value: parseInt(d[radarYear])
         };
         sortDataA.push(pops)
     });
     radarData[0] = sortDataA.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
 
-/*    landings = landings.filter(function(d){ return d[2001] > 0})
-
-    landings.forEach(function(d) {
-        //console.log(parseInt(d[2001])/popMax);
-        var pops = {
-            axis: d.Country,
-            value: parseInt(d[2001])
-        };
-        radarData[1].push(pops)
-    });
-
-    landings = landings.sort(function(a, b){ return a.Country_Name > b.Country_Name})
-
-    console.log(radarData);
-*/
-    landings = d3.rollup(landings, function(v) {
-            return d3.sum(v, function(d) {return d[2008]; })},
-        function(d) {
-            return d.Country});
+    var yearLandings = d3.rollup(allLandings, function (v) {
+            return d3.sum(v, function (d) {
+                return d[radarYear];
+            })
+        },
+        function (d) {
+            return d.Country
+        });
 //    console.log(landings);
 
-    var tempData = Array.from(landings);
+    var tempData = Array.from(yearLandings);
     console.log(tempData);
     //console.log(tempData);
-    for (i=0;i<tempData.length; i++){
+    for (i = 0; i < tempData.length; i++) {
         var temp = {axis: tempData[i][0], value: tempData[i][1]}
         sortDataB.push(temp);
-    };
+    }
+    ;
 
     radarData[1] = sortDataB.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
 
-    subsidies.forEach(function(d) {
-        //console.log(parseInt(d[2001])/popMax);
+    var yearSubsidies = allSubsidies.forEach(function (d) {
         var subs = {
             axis: d.Country,
-            value: parseInt(d[2008])
+            value: parseInt(d[radarYear])
         };
         sortDataC.push(subs)
     });
     radarData[2] = sortDataC.slice().sort((a, b) => d3.ascending(a.axis, b.axis))
 
 
-    console.log(radarData);
-    updateVis();
+    if (radarChart) {
+        radarChart.updateRadar();
+    } else {
+        radarChart = new RadarChart("#viz-radar", radarData, config)
     }
 
 
-function updateVis() {
-    RadarChart.draw("#viz-radar", radarData, config )
 }
 
 

@@ -27,6 +27,15 @@ BubbleChart.prototype.initVis = function() {
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height );
+
+    vis.bubble_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-5, 100])
+        //        .html("testing tool tip")
+        .html(function(d){ return d.name + ": " + d.value });
+
+    vis.svg.call(vis.bubble_tip);
+
     this.updateVis(vis.displayData, vis.country);
 }
 
@@ -38,6 +47,8 @@ BubbleChart.prototype.updateVis = function(data, country) {
     //console.log(data);
     //console.log(vis.displayData.length)
     console.log(country);
+
+
 
     var simulation = d3.forceSimulation(data)
         .force("charge", d3.forceManyBody().strength([-35]))
@@ -79,9 +90,9 @@ BubbleChart.prototype.updateVis = function(data, country) {
 
  //   if (vis.chartType == "bubble") {
 
-        vis.tip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+//        vis.tip = d3.select("body").append("div")
+//        .attr("class", "tooltip")
+//        .style("opacity", 0);
 
         var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -134,21 +145,24 @@ BubbleChart.prototype.updateVis = function(data, country) {
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
             });
+            vis.node.on('mouseover', vis.bubble_tip.show)
+            .on('mouseout', vis.bubble_tip.hide);
 
-            vis.node.on("mouseover", function(d) {
-            vis.tip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-            vis.tip.html(d["name"]+ ": " + d["value"])
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
+
+    /*            vis.node.on("mouseover", function(d) {
                 vis.tip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            })
-        ;
+                        .duration(200)
+                        .style("opacity", .9);
+                vis.tip.html(d["name"]+ ": " + d["value"])
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    vis.tip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+            ; */
             //   }
 
     /*
