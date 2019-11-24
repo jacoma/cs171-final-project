@@ -59,7 +59,7 @@ RadarChart.prototype.initVis = function() {
                     label= "Subsidies"
                     break;
                 } */
-            return d.axis + ": " + d.value });
+            return d.axis + ": " + d3.format("0.3s")(d.value) });
 
 
     vis.allAxis = (vis.data[0].map(function(i, j){ return i.axis}));
@@ -153,28 +153,28 @@ RadarChart.prototype.updateRadar = function() {
             .range([5,20]);
 
 //            console.log("Series " + series);
-        vis.g.append("text")
-            .attr("class", "legend")
-            .attr("x", vis.width)
-            .attr("y", series * 20)
-            .style("fill", function (d) {
-                return vis.colorCircles(series);
-            })
-            .attr("text-anchor", "end")
-            .text(function(d){
-                switch(x){
-                    case 0:
-                        return "Population"
-                        break;
-                    case 1:
-                        return "Catch"
-                        break;
-                    case 2:
-                        return "Subsidies"
-                        break;
-                }
+        // vis.g.append("text")
+        //     .attr("class", "legend")
+        //     .attr("x", vis.width)
+        //     .attr("y", series * 20)
+        //     .style("fill", function (d) {
+        //         return vis.colorCircles(series);
+        //     })
+        //     .attr("text-anchor", "end")
+        //     .text(function(d){
+        //         switch(x){
+        //             case 0:
+        //                 return "Population"
+        //                 break;
+        //             case 1:
+        //                 return "Catch"
+        //                 break;
+        //             case 2:
+        //                 return "Subsidies"
+        //                 break;
+        //         }
 
-            });
+        //     });
 
 
         vis.gradientRadial = vis.g.append("defs").selectAll("radialGradient")

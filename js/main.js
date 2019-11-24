@@ -28,7 +28,7 @@ statCatches = [
 var stackedArea, barchart, bubblechart, fishStock, stockStatus;
 
 queue()
-    .defer(d3.csv, "data/landings_2.csv")
+    .defer(d3.csv, "data/landings_top.csv")
     .defer(d3.csv, "data/global_population.csv")
     .await(createVis);
 

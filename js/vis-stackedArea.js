@@ -53,7 +53,7 @@ StackedAreaChart.prototype.initVis = function(){
 	vis.responsivefy();
 
     /*** CREATE SCALES */
-    vis.colorScale = d3.scaleOrdinal(d3.schemePastel1).domain(fishSpecies);
+    vis.colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(fishSpecies);
 
     vis.x = d3.scaleTime()
         .domain(d3.extent(areaYears, d=>parseDate(d)))

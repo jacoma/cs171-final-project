@@ -25,7 +25,7 @@ Statistics.prototype.initVis = function() {
     vis.imgPadding = 10;
     vis.statLength = 90;
 //    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.width = 200;
+    vis.width = 250;
     vis.height= 200;
     vis.statHeight = 40;
 
