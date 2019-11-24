@@ -34,6 +34,8 @@ RadarChart.prototype.initVis = function() {
         ExtraWidthY: 100
     };
 
+    vis.format = d3.format(",")
+
     vis.colorCircles = d3.scaleOrdinal()
     //    .range(["#32a871","#308ea6","#308ea6"]);
         .range(["#e377c2","#17becf","#1f77b4"])
@@ -63,9 +65,9 @@ RadarChart.prototype.initVis = function() {
 
 
     vis.allAxis = (vis.data[0].map(function(i, j){ return i.axis}));
+    //console.log(vis.allAxis);
     vis.total = vis.allAxis.length;
     vis.radius = vis.cfg.factor*Math.min(vis.cfg.w/2, vis.cfg.h/2);
-//    var Format = d3.format('%');
 
 
     this.updateRadar();
@@ -100,9 +102,8 @@ RadarChart.prototype.updateRadar = function() {
             .style("stroke-width", "0.3px")
             .attr("transform", "translate(" + (vis.cfg.w/2-vis.levelFactor) + ", " + (vis.cfg.h/2-vis.levelFactor) + ")");
     }
-    vis.g.call(vis.radar_tip);
 
-
+    //build the axis
     vis.axis = vis.g.selectAll(".axis")
         .data(vis.allAxis)
         .enter()
@@ -129,28 +130,41 @@ RadarChart.prototype.updateRadar = function() {
         .attr("y", function(d, i){return vis.cfg.h/2*(1-Math.cos(i*vis.cfg.radians/vis.total))-20*Math.cos(i*vis.cfg.radians/vis.total);})
         .text(function(t){ return t;});
 
-    vis.data.forEach(function(y, x){
-        dataValues = [];
-        vis.g.selectAll(".nodes")
-//            .remove()
-            .data(y, function(j, i){
-                dataValues.push([
-                    vis.cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/vis.cfg.maxValue)*vis.cfg.factor*Math.sin(i*vis.cfg.radians/vis.total)),
-                    vis.cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/vis.cfg.maxValue)*vis.cfg.factor*Math.cos(i*vis.cfg.radians/vis.total))
-                ]);
-            });
-        dataValues.push(dataValues[0]);
-    });
-    series=0;
 
+
+        vis.radar_tip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([-10, 100])
+            .html(function (d) {
+                return d.axis + ": " + vis.format(d.value)
+            });
+    vis.g.call(vis.radar_tip);
+
+    series=0;
     vis.data.forEach(function(y, x){
         //console.log(x);
         //console.log(d[x]);
+
+        var circleMax
+        switch(series){
+            case 0:
+                circleMax =30
+                break;
+            case 1:
+                circleMax =25
+                break;
+            case 2:
+                circleMax =20
+                break;
+        };
+
         vis.max = d3.max(vis.data[x], function(r) { return + r.value; });
         vis.min = d3.min(vis.data[x], function(r) { return + r.value; })
         vis.scaleRadius = d3.scaleLinear()
             .domain([vis.min, vis.max])
-            .range([5,20]);
+            .range([3,circleMax])
+
+
 
 //            console.log("Series " + series);
         // vis.g.append("text")
@@ -196,18 +210,15 @@ RadarChart.prototype.updateRadar = function() {
             .attr("offset", "100%")
             .attr("stop-color", function(c) {return d3.rgb(vis.colorCircles(series)).darker(1.5);})
 
-//        vis.g.selectAll(".nodes").remove();
+
         var cRadar = vis.g.selectAll(".nodes")
             .data(y).enter()
-            .append("svg:circle")
-            .attr("class", "radar-chart-serie"+series)
+            .append("svg:circle");
+            cRadar.merge(cRadar)
+                .transition().duration(500);
+            cRadar.attr("class", "radar-chart-serie"+series)
             .attr("r", function(j){ return vis.scaleRadius(j.value) })
-            .attr("alt", function(j){return Math.max(j.value, 0)})
             .attr("cx", function(j, i){
-                dataValues.push([
-                    vis.cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/vis.cfg.maxValue)*vis.cfg.factor*Math.sin(i*vis.cfg.radians/vis.total)),
-                    vis.cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/vis.cfg.maxValue)*vis.cfg.factor*Math.cos(i*vis.cfg.radians/vis.total))
-                ]);
                 return vis.cfg.w/2*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.sin(i*vis.cfg.radians/vis.total));
             })
             .attr("cy", function(j, i){
@@ -220,35 +231,32 @@ RadarChart.prototype.updateRadar = function() {
             .on('mouseover', vis.radar_tip.show)
             .on('mouseout', vis.radar_tip.hide);
 
+          vis.g.selectAll(".radarlabel")
+              .data(y)
+              .enter()
+              .append("text")
+              .attr("x", function(j, i){
+                  return vis.cfg.w/2*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.sin(i*vis.cfg.radians/vis.total));
+              })
+              .attr("class", "radarlabel")
+              .attr("y", function(j, i){
+            return ((vis.cfg.h/2) + series)*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.cos(i*vis.cfg.radians/vis.total));
+        })
+/*              .text(function(j){
+                  switch(series){
+                      case 0:
+                          return "Population"
+                          break;
+                      case 1:
+                          return "Catch"
+                          break;
+                      case 2:
+                          return "Subsidies"
+                          break;
+                  }
 
-        /*            .on('mouseover', function (d){
-                        var label
-                        switch(x){
-                            case 0:
-                                label ="Population"
-                                break;
-                            case 1:
-                                label ="Catch"
-                                break;
-                            case 2:
-                                label= "Subsidies"
-                                break;
-                        }
-                        console.log(d.axis + " | " + label + " | "+ d.value)
-
-                        vis.radarTip.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                        vis.radarTip.html((d.axis) + " " + label + ": <br><span>" + (d.value) + "</span>")
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 28) + "px");
-                    })
-                    .on("mouseout", function(d) {
-                        vis.radarTip.transition()
-                            .duration(500)
-                            .style("opacity", 0);
-                    });
-        */
+              });
+*/
         series++;
     });
 

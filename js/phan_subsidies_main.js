@@ -166,14 +166,14 @@ function updateVisualization(data) {
 		.on('click', function(d) {
 			// var curr_year = d.TIME;
             var curr_year;
-            if (d.TIME <= 2018 && d.TIME >= 2008) {
+            if (d.TIME <= 2018 && d.TIME >= 2005) {
                 $("#bubble-year").val(d.TIME);
                 curr_year = d.TIME;
             }
             else {
-                $("#bubble-year").val(2008);
-                curr_year = 2008;
-                alert("No data available for this year. Please select a year between 2008 and 2018!");
+                $("#bubble-year").val(2005);
+                curr_year = 2005;
+                alert("No data available for this year. Please select a year between 2005 and 2018!");
             }
             var curr_selection = d3.select("#select-box").property("value");
 			updateBubbles(curr_year, curr_selection);

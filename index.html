@@ -70,16 +70,16 @@
 		<div class="col-md-12" id="radar-div-row">
 
 		<div id = "viz-radar">
-			<!--select id = "radar-year" onchange="updateRadar()">
+			<select id = "radar-year" onchange="updateRadar()">
 				<option value="2008">2008</option>
 				<option value="2009">2009</option>
-				<option value="20010">2010</option>
-				<option value="20011">2011</option>
-				<option value="20012">2012</option>
+				<option value="2010">2010</option>
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
 				<option value="2013">2013</option>
-				<option value="20014">2014</option>
+				<option value="2014">2014</option>
 				<option value="2015">2015</option>
-				<option value="20016">2016</option>
+				<option value="2016">2016</option>
 				<option value="2017">2017</option>
 			</select-->
 			<p><i>China provides the largest amount of subsidies but ranked 9th for volume of fish landings.</i></p>
@@ -134,7 +134,8 @@
 					</div>
 				</div>
 				<div class="viz-hints">
-					<p><i>**PLACEHOLDER for subsidies and bubblechart interaction hints**</i></p>
+					<p><i>You may select a specific country to filter subsidies.</i></p>
+					<p><i>Clicking on any node in the line chart will filter out bubblechart data for that year.</i></p></p>
 				</div>
 				<div class="col-md-6 order-md-2">
 					<!-- Select box to choose the ranking type -->
@@ -189,9 +190,6 @@
 		<div class="row featurette mt-2 multi-column">
 			<div class="col-md-4 order-md-1">
 				<select id = "bubble-year" onchange="updateBubbles()">
-					<option value="2005">2005</option>
-					<option value="2006">2006</option>
-					<option value="2007">2007</option>
 					<option value="2008">2008</option>
 					<option value="2009">2009</option>
 					<option value="2010">2010</option>
@@ -259,6 +257,18 @@
 				 
 		  </div>
 		  <div class="col-md-6 order-md-1">
+			<select id="aqua-year" onchange="updateAquaculture()">
+        			<option value="2008">2008</option>
+        			<option value="2009">2009</option>
+        			<option value="2010">2010</option>
+        			<option value="2011">2011</option>
+        			<option value="2012">2012</option>
+        			<option value="2013">2013</option>
+        			<option value="2014">2014</option>
+        			<option value="2015">2015</option>
+        			<option value="2016">2016</option>
+        			<option value="2017">2017</option>
+    			</select>
 			<div id = "aqua-chart"></div>
 		  </div>
 		</div>
