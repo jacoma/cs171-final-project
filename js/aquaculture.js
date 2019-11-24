@@ -1,4 +1,4 @@
-var aWidth = 350;
+var aWidth = 300;
 var aHeight = 500;
 
 var svgAqua = d3.select("#aqua-chart").append("svg")
@@ -19,11 +19,12 @@ var data1 = {};
 var data1display = {};
 var data2 = {};
 
-// var aquaTip = d3.tip()
-//    .attr("class", "d3-tip")
-//    .offset([-10, 199]);
+var aquaTip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-10, 199])
+    .html("Test text");
 
-// svgAqua.call(aquaTip);
+svgAqua.call(aquaTip);
 
 d3.csv("data/aqua_timeseries.csv", function(tData) {
     // convert selected values from string to numeric
@@ -96,13 +97,15 @@ function updateAquaculture() {
             return colors(i);
         })
         .attr("d", arc)
-        .merge(chart);
+        .merge(chart)
+        .on("mouseover", function(d, i) {
+            console.log(d.value);
 
-    // chart.on("mouseover", function(d) {
-    //        console.log(d.value);
-
-    //        aquaTip.html("Aquaculture: " + d.value + " tons")
-    //            .show();
-    //    })
-    //    .on("mouseout", aquaTip.hide());
+            aquaTip.html("Country: " + data2[i].Name_EN
+                + "\nAquaculture: " + d.value + " tons")
+                .show();
+        })
+        .on("mouseout", function(d) {
+            aquaTip.hide();
+        });
 }
