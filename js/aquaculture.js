@@ -98,11 +98,10 @@ function updateAquaculture() {
         })
         .attr("d", arc)
         .merge(chart)
-        .on("mouseover", function(d, i) {
+        .on("mouseover", function(d) {
             console.log(d.value);
 
-            aquaTip.html("Country: " + data2[i].Name_EN
-                + "\nAquaculture: " + d.value + " tons")
+            aquaTip.html("Aquaculture: " + d.value + " tons")
                 .show();
         })
         .on("mouseout", function(d) {
