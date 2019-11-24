@@ -216,6 +216,7 @@ RadarChart.prototype.updateRadar = function() {
             .attr("data-id", function(j){return j.area})
             .style("stroke", vis.colorCircles(series)).style("fill-opacity", .9)
             .style("fill", function(d){ return "url(#gradient-" + series +")"; })
+            .style("opacity", .5)
             .on('mouseover', vis.radar_tip.show)
             .on('mouseout', vis.radar_tip.hide);
 

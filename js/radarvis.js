@@ -54,7 +54,7 @@ function createRadar(error, landings, population, subsidies) {
 
 function updateRadar() {
     //radarYear = d3.select("#radar-year").property("value");
-    radarYear = 2017;
+    radarYear = 2014;
 
     var yearPopulation = allPopulation.forEach(function (d) {
         //console.log(parseInt(d[2001])/popMax);
