@@ -38,45 +38,6 @@ AUS,Australia,Aquaculture,2014,5102
 AUS,Australia,Aquaculture,2015,7035
 AUS,Australia,Aquaculture,2016,5364
 AUS,Australia,Aquaculture,2017,8361
-BEL,Belgium,Fishing Sector,2005,860
-BEL,Belgium,Fishing Sector,2006,689
-BEL,Belgium,Fishing Sector,2007,690
-BEL,Belgium,Fishing Sector,2008,735
-BEL,Belgium,Fishing Sector,2009,600
-BEL,Belgium,Fishing Sector,2010,614
-BEL,Belgium,Fishing Sector,2011,587
-BEL,Belgium,Fishing Sector,2012,585
-BEL,Belgium,Fishing Sector,2013,396
-BEL,Belgium,Fishing Sector,2014,571
-BEL,Belgium,Fishing Sector,2015,499
-BEL,Belgium,Fishing Sector,2016,468
-BEL,Belgium,Fishing Sector,2017,482
-BEL,Belgium,Marine Coastal Fishing,2005,100
-BEL,Belgium,Marine Coastal Fishing,2006,79
-BEL,Belgium,Marine Coastal Fishing,2007,102
-BEL,Belgium,Marine Coastal Fishing,2008,140
-BEL,Belgium,Marine Coastal Fishing,2009,112
-BEL,Belgium,Marine Coastal Fishing,2010,105
-BEL,Belgium,Marine Coastal Fishing,2011,92
-BEL,Belgium,Marine Coastal Fishing,2012,108
-BEL,Belgium,Marine Coastal Fishing,2013,60
-BEL,Belgium,Marine Coastal Fishing,2015,67
-BEL,Belgium,Marine Coastal Fishing,2016,66
-BEL,Belgium,Marine Coastal Fishing,2017,50
-BEL,Belgium,Marine Deep-Sea Fishing,2005,471
-BEL,Belgium,Marine Deep-Sea Fishing,2006,610
-BEL,Belgium,Marine Deep-Sea Fishing,2007,588
-BEL,Belgium,Marine Deep-Sea Fishing,2008,595
-BEL,Belgium,Marine Deep-Sea Fishing,2009,488
-BEL,Belgium,Marine Deep-Sea Fishing,2010,509
-BEL,Belgium,Marine Deep-Sea Fishing,2011,495
-BEL,Belgium,Marine Deep-Sea Fishing,2012,477
-BEL,Belgium,Marine Deep-Sea Fishing,2013,336
-BEL,Belgium,Marine Deep-Sea Fishing,2015,432
-BEL,Belgium,Marine Deep-Sea Fishing,2016,402
-BEL,Belgium,Marine Deep-Sea Fishing,2017,432
-BEL,Belgium,Unspecified Fishing,2005,289
-BEL,Belgium,Unspecified Fishing,2014,571
 CAN,Canada,Fishing Sector,2005,47158
 CAN,Canada,Fishing Sector,2006,51677
 CAN,Canada,Fishing Sector,2007,53846
@@ -125,27 +86,6 @@ CAN,Canada,Processing,2013,33147
 CAN,Canada,Processing,2014,31899
 CAN,Canada,Processing,2015,27858
 CAN,Canada,Processing,2016,28718
-CZE,Czech Republic,Aquaculture,2005,1744
-CZE,Czech Republic,Aquaculture,2006,1418
-CZE,Czech Republic,Aquaculture,2007,1116
-CZE,Czech Republic,Aquaculture,2008,1379
-CZE,Czech Republic,Aquaculture,2009,1400
-CZE,Czech Republic,Aquaculture,2010,1428
-CZE,Czech Republic,Aquaculture,2011,1428
-CZE,Czech Republic,Aquaculture,2012,1428
-CZE,Czech Republic,Aquaculture,2013,1428
-CZE,Czech Republic,Aquaculture,2014,1433
-CZE,Czech Republic,Aquaculture,2015,1506
-CZE,Czech Republic,Aquaculture,2016,1506
-CZE,Czech Republic,Aquaculture,2017,1506
-CZE,Czech Republic,Processing,2005,130
-CZE,Czech Republic,Processing,2006,140
-CZE,Czech Republic,Processing,2007,140
-CZE,Czech Republic,Processing,2008,133
-CZE,Czech Republic,Processing,2009,135
-CZE,Czech Republic,Processing,2010,135
-CZE,Czech Republic,Processing,2011,135
-CZE,Czech Republic,Processing,2012,135
 DNK,Denmark,Fishing Sector,2005,3241
 DNK,Denmark,Fishing Sector,2006,2897
 DNK,Denmark,Fishing Sector,2007,2573
@@ -190,45 +130,6 @@ DNK,Denmark,Processing,2012,3733
 DNK,Denmark,Processing,2013,3455
 DNK,Denmark,Processing,2014,3683
 DNK,Denmark,Processing,2015,3641
-FIN,Finland,Fishing Sector,2005,2755
-FIN,Finland,Fishing Sector,2006,2766
-FIN,Finland,Fishing Sector,2007,2628
-FIN,Finland,Fishing Sector,2008,2727
-FIN,Finland,Fishing Sector,2009,2722
-FIN,Finland,Fishing Sector,2010,2861
-FIN,Finland,Fishing Sector,2011,2872
-FIN,Finland,Fishing Sector,2012,2832
-FIN,Finland,Fishing Sector,2013,2652
-FIN,Finland,Inland Waters Fishing,2005,545
-FIN,Finland,Inland Waters Fishing,2006,556
-FIN,Finland,Inland Waters Fishing,2007,554
-FIN,Finland,Inland Waters Fishing,2008,562
-FIN,Finland,Inland Waters Fishing,2009,571
-FIN,Finland,Inland Waters Fishing,2010,611
-FIN,Finland,Inland Waters Fishing,2011,648
-FIN,Finland,Inland Waters Fishing,2012,674
-FIN,Finland,Inland Waters Fishing,2013,561
-FIN,Finland,Marine Coastal Fishing,2005,2210
-FIN,Finland,Marine Coastal Fishing,2006,2210
-FIN,Finland,Marine Coastal Fishing,2007,2074
-FIN,Finland,Marine Coastal Fishing,2008,2165
-FIN,Finland,Marine Coastal Fishing,2009,2151
-FIN,Finland,Marine Coastal Fishing,2010,2250
-FIN,Finland,Marine Coastal Fishing,2011,2224
-FIN,Finland,Marine Coastal Fishing,2012,2158
-FIN,Finland,Marine Coastal Fishing,2013,2091
-FIN,Finland,Aquaculture,2005,439
-FIN,Finland,Aquaculture,2006,494
-FIN,Finland,Aquaculture,2007,491
-FIN,Finland,Aquaculture,2009,490
-FIN,Finland,Aquaculture,2010,477
-FIN,Finland,Aquaculture,2011,469
-FIN,Finland,Processing,2005,865
-FIN,Finland,Processing,2006,824
-FIN,Finland,Processing,2007,936
-FIN,Finland,Processing,2009,885
-FIN,Finland,Processing,2010,870
-FIN,Finland,Processing,2011,930
 FRA,France,Fishing Sector,2005,25459
 FRA,France,Fishing Sector,2006,16957
 FRA,France,Fishing Sector,2008,19354
@@ -275,163 +176,6 @@ FRA,France,Processing,2008,11565
 FRA,France,Processing,2009,15590
 FRA,France,Processing,2011,15963
 FRA,France,Processing,2012,16184
-DEU,Germany,Fishing Sector,2005,2184
-DEU,Germany,Fishing Sector,2006,2133
-DEU,Germany,Fishing Sector,2007,2067
-DEU,Germany,Fishing Sector,2008,1932
-DEU,Germany,Fishing Sector,2009,1508
-DEU,Germany,Fishing Sector,2010,1426
-DEU,Germany,Fishing Sector,2011,1426
-DEU,Germany,Fishing Sector,2012,1318
-DEU,Germany,Fishing Sector,2013,4917
-DEU,Germany,Fishing Sector,2014,4424
-DEU,Germany,Fishing Sector,2015,4404
-DEU,Germany,Fishing Sector,2016,4264
-DEU,Germany,Marine Coastal Fishing,2005,1881
-DEU,Germany,Marine Coastal Fishing,2006,1810
-DEU,Germany,Marine Coastal Fishing,2007,1728
-DEU,Germany,Marine Coastal Fishing,2008,1650
-DEU,Germany,Marine Coastal Fishing,2009,1126
-DEU,Germany,Marine Coastal Fishing,2010,1105
-DEU,Germany,Marine Coastal Fishing,2011,1071
-DEU,Germany,Marine Coastal Fishing,2012,992
-DEU,Germany,Marine Deep-Sea Fishing,2005,303
-DEU,Germany,Marine Deep-Sea Fishing,2006,323
-DEU,Germany,Marine Deep-Sea Fishing,2007,339
-DEU,Germany,Marine Deep-Sea Fishing,2008,282
-DEU,Germany,Marine Deep-Sea Fishing,2009,382
-DEU,Germany,Marine Deep-Sea Fishing,2010,321
-DEU,Germany,Marine Deep-Sea Fishing,2011,355
-DEU,Germany,Marine Deep-Sea Fishing,2012,326
-DEU,Germany,Unspecified Fishing,2013,4917
-DEU,Germany,Unspecified Fishing,2014,4424
-DEU,Germany,Unspecified Fishing,2015,4404
-DEU,Germany,Unspecified Fishing,2016,4264
-DEU,Germany,Processing,2005,8539
-DEU,Germany,Processing,2006,8524
-DEU,Germany,Processing,2007,8155
-DEU,Germany,Processing,2008,8039
-DEU,Germany,Processing,2009,7590
-DEU,Germany,Processing,2010,7316
-DEU,Germany,Processing,2011,6856
-DEU,Germany,Processing,2012,6973
-DEU,Germany,Processing,2013,6649
-DEU,Germany,Processing,2014,6408
-DEU,Germany,Processing,2015,6556
-DEU,Germany,Processing,2016,6160
-GRC,Greece,Fishing Sector,2005,30502
-GRC,Greece,Fishing Sector,2006,30032
-GRC,Greece,Fishing Sector,2007,30965
-GRC,Greece,Fishing Sector,2008,30634
-GRC,Greece,Fishing Sector,2009,39825
-GRC,Greece,Fishing Sector,2010,39616
-GRC,Greece,Fishing Sector,2011,37834
-GRC,Greece,Fishing Sector,2012,36382
-GRC,Greece,Fishing Sector,2013,35976
-GRC,Greece,Fishing Sector,2014,35624
-GRC,Greece,Fishing Sector,2015,34770
-GRC,Greece,Fishing Sector,2016,34421
-GRC,Greece,Fishing Sector,2017,22081
-GRC,Greece,Inland Waters Fishing,2005,200
-GRC,Greece,Inland Waters Fishing,2006,190
-GRC,Greece,Inland Waters Fishing,2007,559
-GRC,Greece,Inland Waters Fishing,2008,513
-GRC,Greece,Inland Waters Fishing,2009,463
-GRC,Greece,Inland Waters Fishing,2010,632
-GRC,Greece,Inland Waters Fishing,2011,80
-GRC,Greece,Inland Waters Fishing,2012,80
-GRC,Greece,Inland Waters Fishing,2013,80
-GRC,Greece,Inland Waters Fishing,2014,100
-GRC,Greece,Inland Waters Fishing,2015,90
-GRC,Greece,Inland Waters Fishing,2016,90
-GRC,Greece,Inland Waters Fishing,2017,90
-GRC,Greece,Marine Coastal Fishing,2005,27669
-GRC,Greece,Marine Coastal Fishing,2006,27279
-GRC,Greece,Marine Coastal Fishing,2007,25793
-GRC,Greece,Marine Coastal Fishing,2008,25528
-GRC,Greece,Marine Coastal Fishing,2009,33660
-GRC,Greece,Marine Coastal Fishing,2010,32016
-GRC,Greece,Marine Coastal Fishing,2011,31236
-GRC,Greece,Marine Coastal Fishing,2012,30286
-GRC,Greece,Marine Coastal Fishing,2013,29978
-GRC,Greece,Marine Coastal Fishing,2014,29726
-GRC,Greece,Marine Coastal Fishing,2015,29230
-GRC,Greece,Marine Coastal Fishing,2016,28878
-GRC,Greece,Marine Coastal Fishing,2017,20413
-GRC,Greece,Marine Deep-Sea Fishing,2005,2633
-GRC,Greece,Marine Deep-Sea Fishing,2006,2563
-GRC,Greece,Marine Deep-Sea Fishing,2007,4613
-GRC,Greece,Marine Deep-Sea Fishing,2008,4593
-GRC,Greece,Marine Deep-Sea Fishing,2009,5702
-GRC,Greece,Marine Deep-Sea Fishing,2010,6968
-GRC,Greece,Marine Deep-Sea Fishing,2011,6518
-GRC,Greece,Marine Deep-Sea Fishing,2012,6016
-GRC,Greece,Marine Deep-Sea Fishing,2013,5918
-GRC,Greece,Marine Deep-Sea Fishing,2014,5798
-GRC,Greece,Marine Deep-Sea Fishing,2015,5450
-GRC,Greece,Marine Deep-Sea Fishing,2016,5453
-GRC,Greece,Marine Deep-Sea Fishing,2017,1578
-GRC,Greece,Aquaculture,2005,5860
-GRC,Greece,Aquaculture,2006,6622
-GRC,Greece,Aquaculture,2007,6092
-GRC,Greece,Aquaculture,2008,6073
-GRC,Greece,Aquaculture,2009,5983
-GRC,Greece,Aquaculture,2010,6032
-GRC,Greece,Aquaculture,2011,5919
-GRC,Greece,Aquaculture,2012,4897
-GRC,Greece,Aquaculture,2013,4796
-GRC,Greece,Aquaculture,2014,4996
-GRC,Greece,Aquaculture,2015,5050
-GRC,Greece,Aquaculture,2016,5062
-GRC,Greece,Aquaculture,2017,5070
-GRC,Greece,Processing,2005,2649
-GRC,Greece,Processing,2006,2918
-GRC,Greece,Processing,2007,2599
-GRC,Greece,Processing,2008,2599
-GRC,Greece,Processing,2009,2319
-GRC,Greece,Processing,2010,2412
-GRC,Greece,Processing,2011,2424
-GRC,Greece,Processing,2012,2224
-GRC,Greece,Processing,2013,2210
-GRC,Greece,Processing,2014,2183
-GRC,Greece,Processing,2015,2062
-GRC,Greece,Processing,2016,2022
-GRC,Greece,Processing,2017,2020
-HUN,Hungary,Fishing Sector,2005,3390
-HUN,Hungary,Fishing Sector,2006,3390
-HUN,Hungary,Fishing Sector,2007,3390
-HUN,Hungary,Fishing Sector,2008,2322
-HUN,Hungary,Fishing Sector,2009,2457
-HUN,Hungary,Fishing Sector,2010,1860
-HUN,Hungary,Fishing Sector,2011,1921
-HUN,Hungary,Fishing Sector,2012,2416
-HUN,Hungary,Fishing Sector,2013,1361
-HUN,Hungary,Fishing Sector,2014,220
-HUN,Hungary,Fishing Sector,2015,133
-HUN,Hungary,Inland Waters Fishing,2005,3390
-HUN,Hungary,Inland Waters Fishing,2006,3390
-HUN,Hungary,Inland Waters Fishing,2007,3390
-HUN,Hungary,Inland Waters Fishing,2008,2322
-HUN,Hungary,Inland Waters Fishing,2009,2457
-HUN,Hungary,Inland Waters Fishing,2010,1860
-HUN,Hungary,Inland Waters Fishing,2011,1921
-HUN,Hungary,Inland Waters Fishing,2012,2416
-HUN,Hungary,Inland Waters Fishing,2013,1361
-HUN,Hungary,Inland Waters Fishing,2014,220
-HUN,Hungary,Inland Waters Fishing,2015,133
-HUN,Hungary,Aquaculture,2005,1551
-HUN,Hungary,Aquaculture,2006,1353
-HUN,Hungary,Aquaculture,2007,1421
-HUN,Hungary,Aquaculture,2008,1404
-HUN,Hungary,Aquaculture,2009,1317
-HUN,Hungary,Aquaculture,2010,1314
-HUN,Hungary,Aquaculture,2011,1343
-HUN,Hungary,Aquaculture,2012,1599
-HUN,Hungary,Aquaculture,2013,1471
-HUN,Hungary,Aquaculture,2014,1670
-HUN,Hungary,Aquaculture,2015,1746
-HUN,Hungary,Aquaculture,2016,2124
-HUN,Hungary,Aquaculture,2017,1910
 ISL,Iceland,Fishing Sector,2005,5000
 ISL,Iceland,Fishing Sector,2006,4500
 ISL,Iceland,Fishing Sector,2007,4400
@@ -471,58 +215,6 @@ ISL,Iceland,Processing,2014,4800
 ISL,Iceland,Processing,2015,3800
 ISL,Iceland,Processing,2016,3800
 ISL,Iceland,Processing,2017,2900
-IRL,Ireland,Fishing Sector,2005,3908
-IRL,Ireland,Fishing Sector,2006,4226
-IRL,Ireland,Fishing Sector,2007,4461
-IRL,Ireland,Fishing Sector,2008,4829
-IRL,Ireland,Fishing Sector,2009,4579
-IRL,Ireland,Fishing Sector,2010,4684
-IRL,Ireland,Fishing Sector,2011,3715
-IRL,Ireland,Fishing Sector,2012,3814
-IRL,Ireland,Fishing Sector,2013,3845
-IRL,Ireland,Fishing Sector,2014,3154
-IRL,Ireland,Fishing Sector,2015,3451
-IRL,Ireland,Fishing Sector,2016,3358
-IRL,Ireland,Fishing Sector,2017,3361
-IRL,Ireland,Unspecified Fishing,2005,3908
-IRL,Ireland,Unspecified Fishing,2006,4226
-IRL,Ireland,Unspecified Fishing,2007,4461
-IRL,Ireland,Unspecified Fishing,2008,4829
-IRL,Ireland,Unspecified Fishing,2009,4579
-IRL,Ireland,Unspecified Fishing,2010,4684
-IRL,Ireland,Unspecified Fishing,2011,3715
-IRL,Ireland,Unspecified Fishing,2012,3814
-IRL,Ireland,Unspecified Fishing,2013,3845
-IRL,Ireland,Unspecified Fishing,2014,3154
-IRL,Ireland,Unspecified Fishing,2015,3451
-IRL,Ireland,Unspecified Fishing,2016,3358
-IRL,Ireland,Unspecified Fishing,2017,3361
-IRL,Ireland,Aquaculture,2005,1635
-IRL,Ireland,Aquaculture,2006,2058
-IRL,Ireland,Aquaculture,2007,1998
-IRL,Ireland,Aquaculture,2008,1964
-IRL,Ireland,Aquaculture,2009,1952
-IRL,Ireland,Aquaculture,2010,1719
-IRL,Ireland,Aquaculture,2011,1756
-IRL,Ireland,Aquaculture,2012,1716
-IRL,Ireland,Aquaculture,2013,1822
-IRL,Ireland,Aquaculture,2014,1827
-IRL,Ireland,Aquaculture,2015,1835
-IRL,Ireland,Aquaculture,2016,1950
-IRL,Ireland,Aquaculture,2017,1916
-IRL,Ireland,Processing,2005,3507
-IRL,Ireland,Processing,2006,2867
-IRL,Ireland,Processing,2007,2867
-IRL,Ireland,Processing,2008,2867
-IRL,Ireland,Processing,2009,2867
-IRL,Ireland,Processing,2010,2867
-IRL,Ireland,Processing,2011,3200
-IRL,Ireland,Processing,2012,3332
-IRL,Ireland,Processing,2013,3534
-IRL,Ireland,Processing,2014,3688
-IRL,Ireland,Processing,2015,3797
-IRL,Ireland,Processing,2016,3946
-IRL,Ireland,Processing,2017,3988
 ITA,Italy,Fishing Sector,2005,32174
 ITA,Italy,Fishing Sector,2006,30351
 ITA,Italy,Fishing Sector,2007,30214
@@ -917,64 +609,6 @@ NOR,Norway,Processing,2014,11681
 NOR,Norway,Processing,2015,11209
 NOR,Norway,Processing,2016,11165
 NOR,Norway,Processing,2017,11382
-POL,Poland,Fishing Sector,2005,4770
-POL,Poland,Fishing Sector,2006,4340
-POL,Poland,Fishing Sector,2007,4309
-POL,Poland,Fishing Sector,2009,3004
-POL,Poland,Fishing Sector,2010,2424
-POL,Poland,Fishing Sector,2011,2401
-POL,Poland,Fishing Sector,2012,2502
-POL,Poland,Fishing Sector,2013,2433
-POL,Poland,Fishing Sector,2014,2706
-POL,Poland,Fishing Sector,2015,2492
-POL,Poland,Fishing Sector,2016,2474
-POL,Poland,Fishing Sector,2017,2378
-POL,Poland,Inland Waters Fishing,2005,1500
-POL,Poland,Inland Waters Fishing,2006,1500
-POL,Poland,Inland Waters Fishing,2007,1500
-POL,Poland,Marine Coastal Fishing,2005,3030
-POL,Poland,Marine Coastal Fishing,2006,2660
-POL,Poland,Marine Coastal Fishing,2007,2639
-POL,Poland,Marine Coastal Fishing,2009,3004
-POL,Poland,Marine Coastal Fishing,2010,715
-POL,Poland,Marine Coastal Fishing,2011,715
-POL,Poland,Marine Coastal Fishing,2012,710
-POL,Poland,Marine Coastal Fishing,2013,660
-POL,Poland,Marine Coastal Fishing,2014,1153
-POL,Poland,Marine Coastal Fishing,2015,1050
-POL,Poland,Marine Coastal Fishing,2016,1069
-POL,Poland,Marine Coastal Fishing,2017,987
-POL,Poland,Marine Deep-Sea Fishing,2005,240
-POL,Poland,Marine Deep-Sea Fishing,2006,180
-POL,Poland,Marine Deep-Sea Fishing,2007,170
-POL,Poland,Marine Deep-Sea Fishing,2010,300
-POL,Poland,Marine Deep-Sea Fishing,2011,300
-POL,Poland,Marine Deep-Sea Fishing,2012,215
-POL,Poland,Marine Deep-Sea Fishing,2013,230
-POL,Poland,Marine Deep-Sea Fishing,2014,220
-POL,Poland,Marine Deep-Sea Fishing,2015,220
-POL,Poland,Marine Deep-Sea Fishing,2016,225
-POL,Poland,Marine Deep-Sea Fishing,2017,225
-POL,Poland,Aquaculture,2005,5000
-POL,Poland,Aquaculture,2006,5000
-POL,Poland,Aquaculture,2007,4202
-POL,Poland,Aquaculture,2009,2000
-POL,Poland,Aquaculture,2010,2000
-POL,Poland,Aquaculture,2011,4926
-POL,Poland,Aquaculture,2012,5550
-POL,Poland,Aquaculture,2013,5430
-POL,Poland,Processing,2005,15900
-POL,Poland,Processing,2006,17500
-POL,Poland,Processing,2007,16500
-POL,Poland,Processing,2009,14500
-POL,Poland,Processing,2010,13500
-POL,Poland,Processing,2011,17800
-POL,Poland,Processing,2012,17600
-POL,Poland,Processing,2013,17800
-POL,Poland,Processing,2014,17700
-POL,Poland,Processing,2015,17302
-POL,Poland,Processing,2016,18190
-POL,Poland,Processing,2017,18349
 PRT,Portugal,Fishing Sector,2005,18085
 PRT,Portugal,Fishing Sector,2006,17261
 PRT,Portugal,Fishing Sector,2007,17021
@@ -1027,26 +661,6 @@ PRT,Portugal,Marine Deep-Sea Fishing,2014,449
 PRT,Portugal,Marine Deep-Sea Fishing,2015,579
 PRT,Portugal,Marine Deep-Sea Fishing,2016,409
 PRT,Portugal,Marine Deep-Sea Fishing,2017,435
-SVK,Slovak Republic,Aquaculture,2005,382
-SVK,Slovak Republic,Aquaculture,2006,313
-SVK,Slovak Republic,Aquaculture,2007,1079
-SVK,Slovak Republic,Aquaculture,2008,929
-SVK,Slovak Republic,Aquaculture,2009,1108
-SVK,Slovak Republic,Aquaculture,2010,895
-SVK,Slovak Republic,Aquaculture,2011,929
-SVK,Slovak Republic,Aquaculture,2012,221
-SVK,Slovak Republic,Aquaculture,2013,403
-SVK,Slovak Republic,Aquaculture,2014,423
-SVK,Slovak Republic,Aquaculture,2015,734
-SVK,Slovak Republic,Aquaculture,2016,641
-SVK,Slovak Republic,Processing,2008,1154
-SVK,Slovak Republic,Processing,2009,1070
-SVK,Slovak Republic,Processing,2011,726
-SVK,Slovak Republic,Processing,2012,646
-SVK,Slovak Republic,Processing,2013,629
-SVK,Slovak Republic,Processing,2014,703
-SVK,Slovak Republic,Processing,2015,680
-SVK,Slovak Republic,Processing,2016,670
 ESP,Spain,Fishing Sector,2005,36709
 ESP,Spain,Fishing Sector,2006,35236
 ESP,Spain,Fishing Sector,2007,33069
@@ -1411,146 +1025,6 @@ CHN,China (People's Republic of),Aquaculture,2012,11751279
 CHN,China (People's Republic of),Aquaculture,2013,11736168
 CHN,China (People's Republic of),Aquaculture,2014,11599961
 CHN,China (People's Republic of),Aquaculture,2015,11520849
-COL,Colombia,Fishing Sector,2011,360447
-COL,Colombia,Fishing Sector,2012,359377
-COL,Colombia,Fishing Sector,2013,359377
-COL,Colombia,Inland Waters Fishing,2011,350000
-COL,Colombia,Inland Waters Fishing,2012,350000
-COL,Colombia,Inland Waters Fishing,2013,350000
-COL,Colombia,Marine Coastal Fishing,2011,10405
-COL,Colombia,Marine Coastal Fishing,2012,9335
-COL,Colombia,Marine Coastal Fishing,2013,9335
-COL,Colombia,Marine Deep-Sea Fishing,2011,42
-COL,Colombia,Marine Deep-Sea Fishing,2012,42
-COL,Colombia,Marine Deep-Sea Fishing,2013,42
-COL,Colombia,Aquaculture,2011,99146
-COL,Colombia,Aquaculture,2012,106877
-COL,Colombia,Aquaculture,2013,105234
-COL,Colombia,Processing,2011,72000
-COL,Colombia,Processing,2012,72000
-COL,Colombia,Processing,2013,72000
-CRI,Costa Rica,Fishing Sector,2005,7871
-CRI,Costa Rica,Fishing Sector,2006,7392
-CRI,Costa Rica,Fishing Sector,2007,6518
-CRI,Costa Rica,Fishing Sector,2008,4983
-CRI,Costa Rica,Fishing Sector,2009,5496
-CRI,Costa Rica,Fishing Sector,2010,5746
-CRI,Costa Rica,Fishing Sector,2011,5906
-CRI,Costa Rica,Fishing Sector,2012,6741
-CRI,Costa Rica,Fishing Sector,2013,7563
-CRI,Costa Rica,Fishing Sector,2014,4846
-CRI,Costa Rica,Fishing Sector,2015,3694
-CRI,Costa Rica,Fishing Sector,2016,3886
-CRI,Costa Rica,Fishing Sector,2017,3337
-CRI,Costa Rica,Fishing Sector,2018,5762
-CRI,Costa Rica,Unspecified Fishing,2005,7871
-CRI,Costa Rica,Unspecified Fishing,2006,7392
-CRI,Costa Rica,Unspecified Fishing,2007,6518
-CRI,Costa Rica,Unspecified Fishing,2008,4983
-CRI,Costa Rica,Unspecified Fishing,2009,5496
-CRI,Costa Rica,Unspecified Fishing,2010,5746
-CRI,Costa Rica,Unspecified Fishing,2011,5906
-CRI,Costa Rica,Unspecified Fishing,2012,6741
-CRI,Costa Rica,Unspecified Fishing,2013,7563
-CRI,Costa Rica,Unspecified Fishing,2014,4846
-CRI,Costa Rica,Unspecified Fishing,2015,3694
-CRI,Costa Rica,Unspecified Fishing,2016,3886
-CRI,Costa Rica,Unspecified Fishing,2017,3337
-CRI,Costa Rica,Unspecified Fishing,2018,5762
-CRI,Costa Rica,Aquaculture,2005,1609
-CRI,Costa Rica,Aquaculture,2006,1745
-CRI,Costa Rica,Aquaculture,2007,3301
-CRI,Costa Rica,Aquaculture,2008,1329
-CRI,Costa Rica,Aquaculture,2009,2036
-CRI,Costa Rica,Aquaculture,2010,1031
-CRI,Costa Rica,Aquaculture,2011,1268
-CRI,Costa Rica,Aquaculture,2012,2119
-CRI,Costa Rica,Aquaculture,2013,1472
-CRI,Costa Rica,Aquaculture,2014,2116
-CRI,Costa Rica,Aquaculture,2015,1358
-CRI,Costa Rica,Aquaculture,2016,1298
-CRI,Costa Rica,Aquaculture,2017,1234
-CRI,Costa Rica,Aquaculture,2018,1704
-CRI,Costa Rica,Processing,2005,1973
-CRI,Costa Rica,Processing,2006,2490
-CRI,Costa Rica,Processing,2007,1958
-CRI,Costa Rica,Processing,2008,2919
-CRI,Costa Rica,Processing,2009,1251
-CRI,Costa Rica,Processing,2010,1659
-CRI,Costa Rica,Processing,2011,2387
-CRI,Costa Rica,Processing,2012,1229
-CRI,Costa Rica,Processing,2013,3700
-CRI,Costa Rica,Processing,2014,1492
-CRI,Costa Rica,Processing,2015,1330
-CRI,Costa Rica,Processing,2016,1105
-CRI,Costa Rica,Processing,2017,1250
-CRI,Costa Rica,Processing,2018,2055
-EST,Estonia,Fishing Sector,2006,4010
-EST,Estonia,Fishing Sector,2007,4181
-EST,Estonia,Fishing Sector,2008,3788
-EST,Estonia,Fishing Sector,2009,2812
-EST,Estonia,Fishing Sector,2010,2977
-EST,Estonia,Fishing Sector,2011,2579
-EST,Estonia,Fishing Sector,2012,2837
-EST,Estonia,Fishing Sector,2013,2857
-EST,Estonia,Fishing Sector,2014,2914
-EST,Estonia,Fishing Sector,2015,2884
-EST,Estonia,Fishing Sector,2016,2879
-EST,Estonia,Inland Waters Fishing,2006,963
-EST,Estonia,Inland Waters Fishing,2007,701
-EST,Estonia,Inland Waters Fishing,2008,596
-EST,Estonia,Inland Waters Fishing,2009,675
-EST,Estonia,Inland Waters Fishing,2010,771
-EST,Estonia,Inland Waters Fishing,2011,576
-EST,Estonia,Inland Waters Fishing,2012,551
-EST,Estonia,Inland Waters Fishing,2013,542
-EST,Estonia,Inland Waters Fishing,2014,545
-EST,Estonia,Inland Waters Fishing,2015,497
-EST,Estonia,Inland Waters Fishing,2016,463
-EST,Estonia,Marine Coastal Fishing,2006,2572
-EST,Estonia,Marine Coastal Fishing,2007,3010
-EST,Estonia,Marine Coastal Fishing,2008,2727
-EST,Estonia,Marine Coastal Fishing,2009,1658
-EST,Estonia,Marine Coastal Fishing,2010,1732
-EST,Estonia,Marine Coastal Fishing,2011,1529
-EST,Estonia,Marine Coastal Fishing,2012,1812
-EST,Estonia,Marine Coastal Fishing,2013,1841
-EST,Estonia,Marine Coastal Fishing,2014,1895
-EST,Estonia,Marine Coastal Fishing,2015,1923
-EST,Estonia,Marine Coastal Fishing,2016,1952
-EST,Estonia,Marine Deep-Sea Fishing,2006,475
-EST,Estonia,Marine Deep-Sea Fishing,2007,470
-EST,Estonia,Marine Deep-Sea Fishing,2008,465
-EST,Estonia,Marine Deep-Sea Fishing,2009,479
-EST,Estonia,Marine Deep-Sea Fishing,2010,474
-EST,Estonia,Marine Deep-Sea Fishing,2011,474
-EST,Estonia,Marine Deep-Sea Fishing,2012,474
-EST,Estonia,Marine Deep-Sea Fishing,2013,474
-EST,Estonia,Marine Deep-Sea Fishing,2014,474
-EST,Estonia,Marine Deep-Sea Fishing,2015,464
-EST,Estonia,Marine Deep-Sea Fishing,2016,464
-EST,Estonia,Aquaculture,2006,95
-EST,Estonia,Aquaculture,2007,90
-EST,Estonia,Aquaculture,2008,96
-EST,Estonia,Aquaculture,2009,118
-EST,Estonia,Aquaculture,2010,89
-EST,Estonia,Aquaculture,2011,100
-EST,Estonia,Aquaculture,2012,84
-EST,Estonia,Aquaculture,2013,96
-EST,Estonia,Aquaculture,2014,92
-EST,Estonia,Aquaculture,2015,97
-EST,Estonia,Aquaculture,2016,87
-EST,Estonia,Processing,2006,2507
-EST,Estonia,Processing,2007,2513
-EST,Estonia,Processing,2008,2090
-EST,Estonia,Processing,2009,1831
-EST,Estonia,Processing,2010,1772
-EST,Estonia,Processing,2011,1916
-EST,Estonia,Processing,2012,1845
-EST,Estonia,Processing,2013,1840
-EST,Estonia,Processing,2014,1827
-EST,Estonia,Processing,2015,1931
-EST,Estonia,Processing,2016,1583
 IDN,Indonesia,Fishing Sector,2005,2590364
 IDN,Indonesia,Fishing Sector,2006,2700174
 IDN,Indonesia,Fishing Sector,2007,2755794
@@ -1598,149 +1072,6 @@ IDN,Indonesia,Aquaculture,2015,3740528
 IDN,Indonesia,Aquaculture,2016,3991954
 IDN,Indonesia,Processing,2014,346253
 IDN,Indonesia,Processing,2015,362741
-LVA,Latvia,Fishing Sector,2005,3755
-LVA,Latvia,Fishing Sector,2006,2430
-LVA,Latvia,Fishing Sector,2007,940
-LVA,Latvia,Fishing Sector,2008,929
-LVA,Latvia,Fishing Sector,2009,820
-LVA,Latvia,Fishing Sector,2010,730
-LVA,Latvia,Fishing Sector,2011,667
-LVA,Latvia,Fishing Sector,2012,645
-LVA,Latvia,Fishing Sector,2013,701
-LVA,Latvia,Fishing Sector,2014,634
-LVA,Latvia,Fishing Sector,2015,711
-LVA,Latvia,Fishing Sector,2016,1111
-LVA,Latvia,Fishing Sector,2017,549
-LVA,Latvia,Inland Waters Fishing,2005,1262
-LVA,Latvia,Inland Waters Fishing,2006,515
-LVA,Latvia,Inland Waters Fishing,2007,75
-LVA,Latvia,Inland Waters Fishing,2008,89
-LVA,Latvia,Inland Waters Fishing,2009,81
-LVA,Latvia,Inland Waters Fishing,2010,65
-LVA,Latvia,Inland Waters Fishing,2011,73
-LVA,Latvia,Inland Waters Fishing,2012,95
-LVA,Latvia,Inland Waters Fishing,2013,104
-LVA,Latvia,Inland Waters Fishing,2014,121
-LVA,Latvia,Inland Waters Fishing,2015,109
-LVA,Latvia,Inland Waters Fishing,2016,108
-LVA,Latvia,Inland Waters Fishing,2017,112
-LVA,Latvia,Marine Coastal Fishing,2005,1300
-LVA,Latvia,Marine Coastal Fishing,2006,1080
-LVA,Latvia,Marine Coastal Fishing,2007,129
-LVA,Latvia,Marine Coastal Fishing,2008,117
-LVA,Latvia,Marine Coastal Fishing,2009,133
-LVA,Latvia,Marine Coastal Fishing,2010,139
-LVA,Latvia,Marine Coastal Fishing,2011,110
-LVA,Latvia,Marine Coastal Fishing,2012,108
-LVA,Latvia,Marine Coastal Fishing,2013,127
-LVA,Latvia,Marine Coastal Fishing,2014,136
-LVA,Latvia,Marine Coastal Fishing,2015,230
-LVA,Latvia,Marine Coastal Fishing,2016,132
-LVA,Latvia,Marine Coastal Fishing,2017,147
-LVA,Latvia,Marine Deep-Sea Fishing,2005,1193
-LVA,Latvia,Marine Deep-Sea Fishing,2006,835
-LVA,Latvia,Marine Deep-Sea Fishing,2007,736
-LVA,Latvia,Marine Deep-Sea Fishing,2008,723
-LVA,Latvia,Marine Deep-Sea Fishing,2009,606
-LVA,Latvia,Marine Deep-Sea Fishing,2010,526
-LVA,Latvia,Marine Deep-Sea Fishing,2011,484
-LVA,Latvia,Marine Deep-Sea Fishing,2012,442
-LVA,Latvia,Marine Deep-Sea Fishing,2013,470
-LVA,Latvia,Marine Deep-Sea Fishing,2014,377
-LVA,Latvia,Marine Deep-Sea Fishing,2015,372
-LVA,Latvia,Marine Deep-Sea Fishing,2016,871
-LVA,Latvia,Marine Deep-Sea Fishing,2017,290
-LVA,Latvia,Aquaculture,2005,336
-LVA,Latvia,Aquaculture,2006,292
-LVA,Latvia,Aquaculture,2007,302
-LVA,Latvia,Aquaculture,2008,326
-LVA,Latvia,Aquaculture,2009,309
-LVA,Latvia,Aquaculture,2010,333
-LVA,Latvia,Aquaculture,2011,341
-LVA,Latvia,Aquaculture,2012,354
-LVA,Latvia,Aquaculture,2013,355
-LVA,Latvia,Aquaculture,2014,391
-LVA,Latvia,Aquaculture,2015,376
-LVA,Latvia,Aquaculture,2016,363
-LVA,Latvia,Aquaculture,2017,356
-LTU,Lithuania,Fishing Sector,2010,706
-LTU,Lithuania,Fishing Sector,2011,768
-LTU,Lithuania,Fishing Sector,2012,732
-LTU,Lithuania,Fishing Sector,2013,763
-LTU,Lithuania,Fishing Sector,2014,750
-LTU,Lithuania,Fishing Sector,2015,691
-LTU,Lithuania,Fishing Sector,2016,607
-LTU,Lithuania,Fishing Sector,2017,550
-LTU,Lithuania,Marine Coastal Fishing,2010,125
-LTU,Lithuania,Marine Coastal Fishing,2011,138
-LTU,Lithuania,Marine Coastal Fishing,2012,132
-LTU,Lithuania,Marine Coastal Fishing,2013,131
-LTU,Lithuania,Marine Coastal Fishing,2014,130
-LTU,Lithuania,Marine Coastal Fishing,2015,141
-LTU,Lithuania,Marine Coastal Fishing,2016,131
-LTU,Lithuania,Marine Coastal Fishing,2017,122
-LTU,Lithuania,Marine Deep-Sea Fishing,2010,581
-LTU,Lithuania,Marine Deep-Sea Fishing,2011,630
-LTU,Lithuania,Marine Deep-Sea Fishing,2012,600
-LTU,Lithuania,Marine Deep-Sea Fishing,2013,632
-LTU,Lithuania,Marine Deep-Sea Fishing,2014,620
-LTU,Lithuania,Marine Deep-Sea Fishing,2015,550
-LTU,Lithuania,Marine Deep-Sea Fishing,2016,476
-LTU,Lithuania,Marine Deep-Sea Fishing,2017,428
-LTU,Lithuania,Aquaculture,2010,348
-LTU,Lithuania,Aquaculture,2011,341
-LTU,Lithuania,Aquaculture,2012,368
-LTU,Lithuania,Aquaculture,2013,431
-LTU,Lithuania,Aquaculture,2014,485
-LTU,Lithuania,Aquaculture,2015,475
-LTU,Lithuania,Aquaculture,2016,501
-LTU,Lithuania,Aquaculture,2017,431
-LTU,Lithuania,Processing,2010,4379
-LTU,Lithuania,Processing,2011,4548
-LTU,Lithuania,Processing,2012,4600
-LTU,Lithuania,Processing,2013,4623
-LTU,Lithuania,Processing,2014,5287
-LTU,Lithuania,Processing,2015,5668
-LTU,Lithuania,Processing,2016,5362
-LTU,Lithuania,Processing,2017,5041
-SVN,Slovenia,Fishing Sector,2007,147
-SVN,Slovenia,Fishing Sector,2008,144
-SVN,Slovenia,Fishing Sector,2009,147
-SVN,Slovenia,Fishing Sector,2010,154
-SVN,Slovenia,Fishing Sector,2011,126
-SVN,Slovenia,Fishing Sector,2012,113
-SVN,Slovenia,Fishing Sector,2013,115
-SVN,Slovenia,Fishing Sector,2014,125
-SVN,Slovenia,Fishing Sector,2015,124
-SVN,Slovenia,Fishing Sector,2016,101
-SVN,Slovenia,Marine Coastal Fishing,2007,147
-SVN,Slovenia,Marine Coastal Fishing,2008,144
-SVN,Slovenia,Marine Coastal Fishing,2009,147
-SVN,Slovenia,Marine Coastal Fishing,2010,154
-SVN,Slovenia,Marine Coastal Fishing,2011,126
-SVN,Slovenia,Marine Coastal Fishing,2012,113
-SVN,Slovenia,Marine Coastal Fishing,2013,115
-SVN,Slovenia,Marine Coastal Fishing,2014,125
-SVN,Slovenia,Marine Coastal Fishing,2015,124
-SVN,Slovenia,Marine Coastal Fishing,2016,101
-SVN,Slovenia,Aquaculture,2007,310
-SVN,Slovenia,Aquaculture,2008,195
-SVN,Slovenia,Aquaculture,2009,228
-SVN,Slovenia,Aquaculture,2010,218
-SVN,Slovenia,Aquaculture,2011,206
-SVN,Slovenia,Aquaculture,2012,210
-SVN,Slovenia,Aquaculture,2013,231
-SVN,Slovenia,Aquaculture,2014,240
-SVN,Slovenia,Aquaculture,2015,215
-SVN,Slovenia,Aquaculture,2016,212
-SVN,Slovenia,Processing,2008,250
-SVN,Slovenia,Processing,2009,223
-SVN,Slovenia,Processing,2010,266
-SVN,Slovenia,Processing,2011,379
-SVN,Slovenia,Processing,2012,354
-SVN,Slovenia,Processing,2013,351
-SVN,Slovenia,Processing,2014,221
-SVN,Slovenia,Processing,2015,209
 TWN,Chinese Taipei,Fishing Sector,2005,246580
 TWN,Chinese Taipei,Fishing Sector,2006,242313
 TWN,Chinese Taipei,Fishing Sector,2007,243835
@@ -1835,28 +1166,6 @@ THA,Thailand,Processing,2012,4849
 THA,Thailand,Processing,2014,51075
 THA,Thailand,Processing,2015,128984
 THA,Thailand,Processing,2016,271468
-AUT,Austria,Fishing Sector,2005,200
-AUT,Austria,Fishing Sector,2006,200
-AUT,Austria,Fishing Sector,2007,190
-AUT,Austria,Fishing Sector,2008,190
-AUT,Austria,Fishing Sector,2009,190
-AUT,Austria,Fishing Sector,2010,190
-AUT,Austria,Fishing Sector,2011,180
-AUT,Austria,Fishing Sector,2012,180
-AUT,Austria,Fishing Sector,2013,180
-AUT,Austria,Fishing Sector,2014,180
-AUT,Austria,Fishing Sector,2015,180
-AUT,Austria,Fishing Sector,2016,180
-AUT,Austria,Fishing Sector,2017,180
-LVA,Latvia,Processing,2017,50
-POL,Poland,Unspecified Fishing,2010,1409
-POL,Poland,Unspecified Fishing,2011,1386
-POL,Poland,Unspecified Fishing,2012,1577
-POL,Poland,Unspecified Fishing,2013,1543
-POL,Poland,Unspecified Fishing,2014,1333
-POL,Poland,Unspecified Fishing,2015,1222
-POL,Poland,Unspecified Fishing,2016,1180
-POL,Poland,Unspecified Fishing,2017,1166
 ISL,Iceland,Unspecified Fishing,2005,5000
 ISL,Iceland,Unspecified Fishing,2006,4500
 ISL,Iceland,Unspecified Fishing,2007,4400
@@ -1888,19 +1197,6 @@ ARG,Argentina,Marine Coastal Fishing,2014,13929
 ARG,Argentina,Marine Coastal Fishing,2015,13866
 ARG,Argentina,Marine Coastal Fishing,2016,12791
 ARG,Argentina,Marine Coastal Fishing,2017,12979
-AUT,Austria,Aquaculture,2005,2105
-AUT,Austria,Aquaculture,2006,2105
-AUT,Austria,Aquaculture,2007,2105
-AUT,Austria,Aquaculture,2008,2225
-AUT,Austria,Aquaculture,2009,2240
-AUT,Austria,Aquaculture,2010,2240
-AUT,Austria,Aquaculture,2011,2230
-AUT,Austria,Aquaculture,2012,2270
-AUT,Austria,Aquaculture,2013,2300
-AUT,Austria,Aquaculture,2014,2300
-AUT,Austria,Aquaculture,2015,2300
-AUT,Austria,Aquaculture,2016,2300
-AUT,Austria,Aquaculture,2017,2300
 GBR,United Kingdom,Unspecified Fishing,2016,11757
 GBR,United Kingdom,Unspecified Fishing,2017,11692
 PRT,Portugal,Processing,2010,7376
@@ -1909,28 +1205,3 @@ PRT,Portugal,Processing,2012,7167
 PRT,Portugal,Processing,2013,6726
 PRT,Portugal,Processing,2014,7068
 PRT,Portugal,Processing,2015,7148
-AUT,Austria,Inland Waters Fishing,2005,200
-AUT,Austria,Inland Waters Fishing,2006,200
-AUT,Austria,Inland Waters Fishing,2007,190
-AUT,Austria,Inland Waters Fishing,2008,190
-AUT,Austria,Inland Waters Fishing,2009,190
-AUT,Austria,Inland Waters Fishing,2010,190
-AUT,Austria,Inland Waters Fishing,2011,180
-AUT,Austria,Inland Waters Fishing,2012,180
-AUT,Austria,Inland Waters Fishing,2013,180
-AUT,Austria,Inland Waters Fishing,2014,180
-AUT,Austria,Inland Waters Fishing,2015,180
-AUT,Austria,Inland Waters Fishing,2016,180
-AUT,Austria,Inland Waters Fishing,2017,180
-AUT,Austria,Processing,2005,267
-AUT,Austria,Processing,2006,267
-AUT,Austria,Processing,2007,156
-AUT,Austria,Processing,2008,143
-AUT,Austria,Processing,2009,130
-AUT,Austria,Processing,2010,125
-AUT,Austria,Processing,2011,139
-AUT,Austria,Processing,2012,134
-AUT,Austria,Processing,2013,134
-AUT,Austria,Processing,2014,130
-AUT,Austria,Processing,2015,
-AUT,Austria,Processing,2016,153
