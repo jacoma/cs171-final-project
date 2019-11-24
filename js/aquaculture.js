@@ -19,6 +19,12 @@ var data1 = {};
 var data1display = {};
 var data2 = {};
 
+// var aquaTip = d3.tip()
+//    .attr("class", "d3-tip")
+//    .offset([-10, 199]);
+
+// svgAqua.call(aquaTip);
+
 d3.csv("data/aqua_timeseries.csv", function(tData) {
     // convert selected values from string to numeric
     tData.forEach(function(d) {
@@ -91,4 +97,12 @@ function updateAquaculture() {
         })
         .attr("d", arc)
         .merge(chart);
+
+    // chart.on("mouseover", function(d) {
+    //        console.log(d.value);
+
+    //        aquaTip.html("Aquaculture: " + d.value + " tons")
+    //            .show();
+    //    })
+    //    .on("mouseout", aquaTip.hide());
 }
