@@ -21,7 +21,7 @@ var data2 = {};
 
 var aquaTip = d3.tip()
     .attr("class", "d3-tip")
-    .offset([20, 50])
+    .offset([40, 100])
     .html("Test text");
 
 svgAqua.call(aquaTip);
