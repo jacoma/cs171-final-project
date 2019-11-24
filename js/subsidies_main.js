@@ -1,10 +1,10 @@
 
 // SVG drawing area
 
-var margin = {top: 100, right: 40, bottom: 60, left: 200};
+var margin = {top: 100, right: 40, bottom: 60, left: 50};
 
-var width = 800 - margin.left - margin.right,
-		height = 500 - margin.top - margin.bottom;
+var width = 520 - margin.left - margin.right,
+		height = 450 - margin.top - margin.bottom;
 
 var svg = d3.select("#viz-subsidies").append("svg")
 		.attr("width", width + margin.left + margin.right)
@@ -157,8 +157,19 @@ function updateVisualization(data) {
 	circles.on('mouseover', tool_tip.show)
 		.on('mouseout', tool_tip.hide)
 		.on('click', function(d) {
-			console.log("just clicked!");
-			updateBubbles();
+			// var curr_year = d.TIME;
+            var curr_year;
+            if (d.TIME <= 2018 && d.TIME >= 2005) {
+                $("#bubble-year").val(d.TIME);
+                curr_year = d.TIME;
+            }
+            else {
+                $("#bubble-year").val(2005);
+                curr_year = 2005;
+                alert("No data available for this year. Please select a year between 2005 and 2018!");
+            }
+            var curr_selection = d3.select("#select-box").property("value");
+			updateBubbles(curr_year, curr_selection);
 		});
 	//Exit
 	yearly_value_pts.exit().remove();
@@ -178,7 +189,7 @@ function updateVisualization(data) {
 		.call(xAxis);
 
 	svg.selectAll(".ylabel")
-		.attr("x", -100)
+		.attr("x", -50)
 		.attr("y", -10)
 		.attr("text-anchor", "center")
 		.attr("class", "ylabel")
@@ -196,7 +207,7 @@ function updateVisualization(data) {
 			return "Global Fisheries Funding from 2000 - 2018"
 		})
 		.attr("text-anchor","middle")
-		.style("font-size", "20px")
+		.style("font-size", "25px")
 		.attr("fill","Grey");
 }
 
@@ -211,8 +222,9 @@ function changeSelection() {
         if (d.LOCATION == curr_selection)
             curr_data.push(d);
     });
-
+    var curr_year = d3.select("#bubble-year").property("value");
 	updateVisualization(curr_data);
+	updateBubbles(curr_year,curr_selection);
 }
 
 /*
