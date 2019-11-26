@@ -18,7 +18,7 @@ var config = {
 //    color: radarColor
 }
 
-//var radarData=[[],[],[]];
+//variables to create radar data
 var radarData=[[], [], []];
 var allLandings;
 var allPopulation;
@@ -28,6 +28,10 @@ var sortDataA = [];
 var sortDataB = [];
 var sortDataC = [];
 var radarChart;
+
+
+//
+
 
 queue()
     .defer(d3.csv, "data/landings_SA2.csv")
@@ -45,6 +49,7 @@ function createRadar(error, landings, population, subsidies) {
         //expects arrays of objects
 //    console.log(radarData);
     updateRadar();
+//    updateCircles();
     }
 
 
@@ -112,9 +117,20 @@ function updateRadar() {
     } else {
         radarChart = new RadarChart("#viz-radar", radarData, config)
     }
+}
+
+
+function updateCircles(){
+
+
+
+    if (circlesChart) {
+        circlesChart.updateCircles();
+    } else {
+        circlesChart = new RadarChart("#viz-radar", radarData, config)
+    }
 
 
 }
-
 
 

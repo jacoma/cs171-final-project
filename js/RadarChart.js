@@ -69,14 +69,8 @@ RadarChart.prototype.initVis = function() {
     vis.total = vis.allAxis.length;
     vis.radius = vis.cfg.factor*Math.min(vis.cfg.w/2, vis.cfg.h/2);
 
-
-    this.updateRadar();
-}
-
-RadarChart.prototype.updateRadar = function() {
-
     vis = this;
-    d3.select(vis.parentElement).select("svg").remove();
+    //d3.select(vis.parentElement).select("svg").remove();
     vis.g = d3.select(vis.parentElement)
         .append("svg")
         .attr("width", vis.cfg.w+vis.cfg.ExtraWidthX)
@@ -132,13 +126,19 @@ RadarChart.prototype.updateRadar = function() {
 
 
 
-        vis.radar_tip = d3.tip()
-            .attr("class", "d3-tip")
-            .offset([-10, 100])
-            .html(function (d) {
-                return d.axis + ": " + vis.format(d.value)
-            });
+    vis.radar_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 100])
+        .html(function (d) {
+            return d.axis + ": " + vis.format(d.value)
+        });
     vis.g.call(vis.radar_tip);
+
+    this.updateRadar();
+}
+
+RadarChart.prototype.updateRadar = function() {
+console.log("updating radar");
 
     series=0;
     vis.data.forEach(function(y, x){
@@ -190,15 +190,24 @@ RadarChart.prototype.updateRadar = function() {
 
         //     });
 
+        vis.g.selectAll(".gradient-" + series).remove();
+        vis.g.selectAll(".radar-chart-serie"+series).remove();
 
-        vis.gradientRadial = vis.g.append("defs").selectAll("radialGradient")
+        vis.gradientRadial = vis.g.append("defs")
+            .attr("class",function(d) { return "gradient-" + series } )
+            .selectAll("radialGradient")
+            //.remove()
             .data(vis.data[x])
             .enter()
-            .append("radialGradient")
-            .attr("id", function(d) { return "gradient-" + series })
+            .append("radialGradient");
+            vis.gradientRadial.merge(vis.gradientRadial)
+                .transition().duration(250);
+            vis.gradientRadial.attr("id", function(d) { return "gradient-" + series })
+                .attr("class", function(d) { return "gradient-" + series } )
             .attr("cx", "30%")
             .attr("cy", "30%")
-            .attr("r", "65%");
+            .attr("r", "65%")
+            .exit().remove();
 
         vis.gradientRadial.append("stop")
             .attr("offset", "0%")
@@ -210,13 +219,13 @@ RadarChart.prototype.updateRadar = function() {
             .attr("offset", "100%")
             .attr("stop-color", function(c) {return d3.rgb(vis.colorCircles(series)).darker(1.5);})
 
-
-        var cRadar = vis.g.selectAll(".nodes")
+        vis.cRadar = vis.g.selectAll(".nodes")
+            .remove()
             .data(y).enter()
             .append("svg:circle");
-            cRadar.merge(cRadar)
+            vis.cRadar.merge(vis.cRadar)
                 .transition().duration(500);
-            cRadar.attr("class", "radar-chart-serie"+series)
+            vis.cRadar.attr("class", "radar-chart-serie"+series)
             .attr("r", function(j){ return vis.scaleRadius(j.value) })
             .attr("cx", function(j, i){
                 return vis.cfg.w/2*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.sin(i*vis.cfg.radians/vis.total));
@@ -230,6 +239,7 @@ RadarChart.prototype.updateRadar = function() {
             .style("opacity", .5)
             .on('mouseover', vis.radar_tip.show)
             .on('mouseout', vis.radar_tip.hide);
+            //cRadar.exit().remove();
 
           vis.g.selectAll(".radarlabel")
               .data(y)
@@ -259,7 +269,5 @@ RadarChart.prototype.updateRadar = function() {
 */
         series++;
     });
-
-
 
 }
