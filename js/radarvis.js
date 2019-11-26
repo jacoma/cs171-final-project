@@ -43,11 +43,7 @@ function createRadar(error, landings, population, subsidies) {
     allSubsidies = subsidies;
         //create data from 3 data sets
         //expects arrays of objects
-
-
-
-
-    console.log(radarData);
+//    console.log(radarData);
     updateRadar();
     }
 

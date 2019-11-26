@@ -7,11 +7,12 @@
  * @param _config					-- variable from the dataset (e.g. 'electricity') and title for each bar chart
  */
 
-Statistics = function(_parentElement, _data, _title){
+Statistics = function(_parentElement, _data, _title, _fade){
     this.parentElement = _parentElement;
     this.data = _data;
     this.displayData = _data;
     this.displayTitle = _title
+    this.fade = _fade;
 
     this.initVis();
 }
@@ -49,6 +50,10 @@ Statistics.prototype.initVis = function() {
 //            d3.min(vis.displayData, function(d) { return +d.Metric; }),
 //            d3.max(vis.displayData, function(d) { return +d.Metric; })])
         .range([16,100]);
+
+    vis.fadeScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([1, 0]);
 
 
 var title = vis.statisticSVG.append("text")
@@ -92,6 +97,13 @@ Statistics.prototype.updateVis = function() {
         .attr('y', 0)
         .attr('width', function(d) { return vis.xScaleImg(d.Metric) })
         .attr('height', function(d) {return vis.yScaleImg(d.Metric) })
+        .style('opacity', function(d) {
+            if (vis.fade==true) {
+                console.log(vis.fadeScale(d.Metric));
+                return vis.fadeScale(d.Metric)
+            }
+            else{ return 1}
+        })
 //        .attr('width', function(d) { return d.Metric })
 //        .attr('height', function(d) {return d.Metric/2 })
         .attr("xlink:href", "img/trout-sillouette.svg");
