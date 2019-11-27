@@ -25,7 +25,7 @@ statCatches = [
 
 statIllegal = [
     {Stat: "Leagal Catch", Metric: 70},
-    {stat: "Illegal Catch", Metric: 30}
+    {Stat: "Illegal Catch", Metric: 30}
 ]
 
 statConsumption = [
