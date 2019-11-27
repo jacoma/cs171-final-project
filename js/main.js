@@ -28,6 +28,11 @@ statIllegal = [
     {stat: "Illegal Catch", Metric: 30}
 ]
 
+statConsumption = [
+    {Stat: "Wild Seafood", Metric: 75},
+    {Stat: "Farmed Seafood", Metric: 100}
+]
+
 
 /*** VARIABLES FOR VIZ */
 var stackedArea, barchart, bubblechart, fishStock, stockStatus;
@@ -83,6 +88,9 @@ function createVis(error, landings, bubbles){
     stockDecrease = new Statistics("viz-statusDecrease", statCatches, "% decrease catch since 1960", true);
 
     illegalFish = new Statistics("viz-illegal", statIllegal, "% Illegal Fishing", false);
+
+    consumption = new Statistics("viz-consumption", statConsumption, "% of Production Consumed", false);
+
     // (5) Bind event handler
     $(MyEventHandler).bind("selectionChanged", function(event, speciesFilter, countryFilter, MyEventHandler){
 

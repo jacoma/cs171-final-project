@@ -30,8 +30,6 @@ var sortDataC = [];
 var radarChart;
 
 
-//
-
 
 queue()
     .defer(d3.csv, "data/landings_SA2.csv")

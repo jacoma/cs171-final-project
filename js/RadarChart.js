@@ -17,10 +17,14 @@ RadarChart = function(_parentElement, _data, _options){
 
 RadarChart.prototype.initVis = function() {
     vis = this;
+    vis.oMargin = {top:10, right:20, bottom:10, left:0};
+
+
+    //radar chart configs
     vis.cfg = {
         //radius: 5,
-        w: 400,
-        h: 400,
+        w: 300,
+        h: 300,
         factor: 1,
         factorLegend: .85,
         levels: 3,
@@ -31,8 +35,10 @@ RadarChart.prototype.initVis = function() {
         TranslateX: 50,
         TranslateY: 30,
         ExtraWidthX: 100,
-        ExtraWidthY: 100
+        ExtraWidthY: 80
     };
+
+    vis.hCircleChart = 50;
 
     vis.format = d3.format(",")
 
@@ -61,7 +67,7 @@ RadarChart.prototype.initVis = function() {
                     label= "Subsidies"
                     break;
                 } */
-            return d.axis + ": " + d3.format("0.3s")(d.value) });
+            return d.axis + series + ": " + d3.format("0.3s")(d.value) });
 
 
     vis.allAxis = (vis.data[0].map(function(i, j){ return i.axis}));
@@ -71,17 +77,30 @@ RadarChart.prototype.initVis = function() {
 
     vis = this;
     //d3.select(vis.parentElement).select("svg").remove();
-    vis.g = d3.select(vis.parentElement)
+    vis.svgRadar = d3.select(vis.parentElement)
         .append("svg")
-        .attr("width", vis.cfg.w+vis.cfg.ExtraWidthX)
-        .attr("height", vis.cfg.h+vis.cfg.ExtraWidthY)
-        .append("g")
+        .attr("width", 800)
+        .attr("height", 550);
+
+    // group for the Radar
+        vis.r = vis.svgRadar.append("g")
+            .attr("width", vis.cfg.w+vis.cfg.ExtraWidthX)
+            .attr("height", vis.cfg.h+vis.cfg.ExtraWidthY)
         .attr("transform", "translate(" + vis.cfg.TranslateX + "," + vis.cfg.TranslateY + ")");
 
-    //Circular segments
+    // group for teh circles
+        vis.c = vis.svgRadar.append("g")
+            .attr("height", 180)
+            .attr("width", 800 - vis.oMargin.right - vis.oMargin.left)
+            .attr("transform", "translate(" + vis.oMargin.left +", " + 380 +")");
+
+
+
+
+    //Circular segments in Radar
     for(var j=0; j<vis.cfg.levels; j++){
         vis.levelFactor = vis.cfg.factor*vis.radius*((j+1)/vis.cfg.levels);
-        vis.g.selectAll(".levels")
+        vis.r.selectAll(".levels")
             .remove()
             .data(vis.allAxis)
             .enter()
@@ -97,8 +116,8 @@ RadarChart.prototype.initVis = function() {
             .attr("transform", "translate(" + (vis.cfg.w/2-vis.levelFactor) + ", " + (vis.cfg.h/2-vis.levelFactor) + ")");
     }
 
-    //build the axis
-    vis.axis = vis.g.selectAll(".axis")
+    //build the Radar axis
+    vis.axis = vis.r.selectAll(".axis")
         .data(vis.allAxis)
         .enter()
         .append("g")
@@ -125,6 +144,22 @@ RadarChart.prototype.initVis = function() {
         .text(function(t){ return t;});
 
 
+//circles Axis
+    vis.cText = vis.c.selectAll("text")
+        .data(vis.allAxis)
+        .enter()
+        .append("text")
+        .attr("class", "legend")
+        .style("font-family", "sans-serif")
+        .style("font-size", "10px")
+        .attr("text-anchor", "middle")
+        .attr("x", function(j, i){
+            return 25 + (25 * i);
+        })
+        .attr("y", 150)
+        .text(function(t){ return t ;});
+    vis.cText.selectAll("text").attr("transform", "rotate(-65)");
+
 
     vis.radar_tip = d3.tip()
         .attr("class", "d3-tip")
@@ -132,9 +167,10 @@ RadarChart.prototype.initVis = function() {
         .html(function (d) {
             return d.axis + ": " + vis.format(d.value)
         });
-    vis.g.call(vis.radar_tip);
+    vis.r.call(vis.radar_tip);
 
     this.updateRadar();
+   // this.updateCircles();
 }
 
 RadarChart.prototype.updateRadar = function() {
@@ -165,35 +201,10 @@ console.log("updating radar");
             .range([3,circleMax])
 
 
+        vis.r.selectAll(".gradient-" + series).remove();
+        vis.r.selectAll(".radar-chart-serie"+series).remove();
 
-//            console.log("Series " + series);
-        // vis.g.append("text")
-        //     .attr("class", "legend")
-        //     .attr("x", vis.width)
-        //     .attr("y", series * 20)
-        //     .style("fill", function (d) {
-        //         return vis.colorCircles(series);
-        //     })
-        //     .attr("text-anchor", "end")
-        //     .text(function(d){
-        //         switch(x){
-        //             case 0:
-        //                 return "Population"
-        //                 break;
-        //             case 1:
-        //                 return "Catch"
-        //                 break;
-        //             case 2:
-        //                 return "Subsidies"
-        //                 break;
-        //         }
-
-        //     });
-
-        vis.g.selectAll(".gradient-" + series).remove();
-        vis.g.selectAll(".radar-chart-serie"+series).remove();
-
-        vis.gradientRadial = vis.g.append("defs")
+        vis.gradientRadial = vis.r.append("defs")
             .attr("class",function(d) { return "gradient-" + series } )
             .selectAll("radialGradient")
             //.remove()
@@ -219,8 +230,7 @@ console.log("updating radar");
             .attr("offset", "100%")
             .attr("stop-color", function(c) {return d3.rgb(vis.colorCircles(series)).darker(1.5);})
 
-        vis.cRadar = vis.g.selectAll(".nodes")
-            .remove()
+        vis.cRadar = vis.r.selectAll(".nodes")
             .data(y).enter()
             .append("svg:circle");
             vis.cRadar.merge(vis.cRadar)
@@ -233,15 +243,13 @@ console.log("updating radar");
             .attr("cy", function(j, i){
                 return vis.cfg.h/2*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.cos(i*vis.cfg.radians/vis.total));
             })
-            .attr("data-id", function(j){return j.area})
             .style("stroke", vis.colorCircles(series)).style("fill-opacity", .9)
             .style("fill", function(d){ return "url(#gradient-" + series +")"; })
             .style("opacity", .5)
             .on('mouseover', vis.radar_tip.show)
             .on('mouseout', vis.radar_tip.hide);
-            //cRadar.exit().remove();
 
-          vis.g.selectAll(".radarlabel")
+          vis.r.selectAll(".radarlabel")
               .data(y)
               .enter()
               .append("text")
@@ -267,7 +275,57 @@ console.log("updating radar");
 
               });
 */
+//            console.log("Series " + series);
+        vis.c.append("text")
+            .attr("class", "legend")
+            .attr("x", 25)
+            .attr("y", 15 + (series * 50))
+            .style("fill", function (d) {
+                return vis.colorCircles(series);
+            })
+            .attr("text-anchor", "start")
+            .text(function(d){
+                switch(x){
+                    case 0:
+                        return "Population"
+                        break;
+                    case 1:
+                        return "Catch"
+                        break;
+                    case 2:
+                        return "Subsidies"
+                        break;
+                }
+            });
+
+
+        // circle chart below radar chart
+
+        vis.c.selectAll(".gradient-" + series).remove();
+        vis.c.selectAll(".circle-chart-serie"+series).remove();
+        vis.cCircle = vis.c.selectAll(".nodes")
+            .data(y)
+            .enter()
+            .append("svg:circle");
+        vis.cCircle.attr("class", "circle-chart-serie"+series)
+            .attr("r", function(j){ return vis.scaleRadius(j.value) })
+            .attr("cy", function(j, i){
+                return 30 + (50 * series);
+            })
+            .attr("cx", function(j, i){
+                return 25 + (25 * i);
+            })
+            .attr("data-id", function(j){return j.area})
+            .style("stroke", vis.colorCircles(series)).style("fill-opacity", .9)
+            .style("fill", function(d){ return "url(#gradient-" + series +")"; })
+            .style("opacity", .5)
+            .on('mouseover', vis.radar_tip.show)
+            .on('mouseout', vis.radar_tip.hide);
+
         series++;
     });
 
+
 }
+
+
