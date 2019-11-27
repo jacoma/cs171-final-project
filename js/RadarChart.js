@@ -32,7 +32,7 @@ RadarChart.prototype.initVis = function() {
         radians: 2 * Math.PI,
         opacityArea: 0.5,
 //        ToRight: 5,
-        TranslateX: 50,
+        TranslateX: 65,
         TranslateY: 30,
         ExtraWidthX: 100,
         ExtraWidthY: 80
@@ -157,8 +157,9 @@ RadarChart.prototype.initVis = function() {
             return 25 + (25 * i);
         })
         .attr("y", 150)
-        .text(function(t){ return t ;});
-    vis.cText.selectAll("text").attr("transform", "rotate(-65)");
+        .text(function(t){ return t ;})
+        .selectAll("text")
+            .attr("transform", "rotate(-65)");
 
 
     vis.radar_tip = d3.tip()
@@ -177,6 +178,7 @@ RadarChart.prototype.updateRadar = function() {
 console.log("updating radar");
 
     series=0;
+
     vis.data.forEach(function(y, x){
         //console.log(x);
         //console.log(d[x]);
@@ -200,6 +202,30 @@ console.log("updating radar");
             .domain([vis.min, vis.max])
             .range([3,circleMax])
 
+        vis.r.append("text")
+            .attr("class", "legend")
+            .attr("x", -60)
+            .attr("id", "legend-" + series)
+            .attr("y", series * 15)
+            .style("font-size", "12px")
+            .style("fill", function (d) {
+                return vis.colorCircles(series);
+            })
+            .attr("text-anchor", "start")
+            .html(function(d){
+                switch(x){
+                    case 0:
+                        return "<a id='legend-'" + series +" onclick='removeLevel("+ series + ")'>- Population</a>"
+                        break;
+                    case 1:
+                        return "<a id='legend-'" + series +" onclick='removeLevel("+ series + ")'>- Catch</a>"
+                        break;
+                    case 2:
+                        return "<a id='legend-'" + series +" onclick='removeLevel("+ series + ")'>- Subsidies</a>"
+                        break;
+                }
+
+            });
 
         vis.r.selectAll(".gradient-" + series).remove();
         vis.r.selectAll(".radar-chart-serie"+series).remove();
@@ -247,9 +273,10 @@ console.log("updating radar");
             .style("fill", function(d){ return "url(#gradient-" + series +")"; })
             .style("opacity", .5)
             .on('mouseover', vis.radar_tip.show)
-            .on('mouseout', vis.radar_tip.hide);
+            .on('mouseout', vis.radar_tip.hide)
+            .on('click', function(d){ return createCountry(d.axis)});
 
-          vis.r.selectAll(".radarlabel")
+/*          vis.r.selectAll(".radarlabel")
               .data(y)
               .enter()
               .append("text")
@@ -260,7 +287,7 @@ console.log("updating radar");
               .attr("y", function(j, i){
             return ((vis.cfg.h/2) + series)*(1-(Math.max(j.value, 0)/vis.max)*vis.cfg.factor*Math.cos(i*vis.cfg.radians/vis.total));
         })
-/*              .text(function(j){
+              .text(function(j){
                   switch(series){
                       case 0:
                           return "Population"
@@ -320,7 +347,8 @@ console.log("updating radar");
             .style("fill", function(d){ return "url(#gradient-" + series +")"; })
             .style("opacity", .5)
             .on('mouseover', vis.radar_tip.show)
-            .on('mouseout', vis.radar_tip.hide);
+            .on('mouseout', vis.radar_tip.hide)
+            .on('click', function(d){ return createCountry(d.axis)});
 
         series++;
     });
@@ -329,3 +357,53 @@ console.log("updating radar");
 }
 
 
+function createCountry(country){
+    console.log(country)
+
+
+}
+
+function removeLevel(level){
+    console.log(level);
+    switch(level){
+        case 0:
+            text= "Population"
+            break;
+        case 1:
+            text="Catch"
+            break;
+        case 2:
+            text ="Subsidies"
+            break;
+    }
+
+
+    vis.r.selectAll(".radar-chart-serie" + level)
+        .style("display", "none");
+
+    vis.r.selectAll("#legend-" + level)
+        .html("<a id='legend-'" + level +" onclick='addLevel("+ level + ")'>+ " + text +"</a>" )
+
+}
+
+function addLevel(level){
+//    console.log(level);
+    switch(level){
+        case 0:
+            text= "Population"
+            break;
+        case 1:
+            text="Catch"
+            break;
+        case 2:
+            text ="Subsidies"
+            break;
+    }
+
+    vis.r.selectAll(".radar-chart-serie" + level)
+        .style("display", "inline");
+
+    vis.r.selectAll("#legend-" + level)
+        .html("<a id='legend-'" + level +" onclick='removeLevel("+ level + ")'>- " + text +"</a>" )
+
+}
