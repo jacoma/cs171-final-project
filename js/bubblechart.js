@@ -23,7 +23,7 @@ BubbleChart = function(_parentElement, _data, _country){
 BubbleChart.prototype.initVis = function() {
     var vis = this;
     vis.width = 250;
-    vis.height=250;
+    vis.height=400;
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height );
@@ -51,7 +51,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
 
 
     var simulation = d3.forceSimulation(data)
-        .force("charge", d3.forceManyBody().strength([-35]))
+        .force("charge", d3.forceManyBody().strength([-65]))
         .force("x", d3.forceX())
         .force("y", d3.forceY())
         .on("tick", ticked);

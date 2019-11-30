@@ -212,3 +212,16 @@
   top: 100%;
   left: 0;
 }
+
+.comparePath {
+    stroke: #80bdff;
+    fill: none;
+    stroke-width: 2px;
+    opacity: .7;
+}
+.highlightPath {
+    stroke: #0056b3;
+    fill: none;
+    stroke-width: 3px;
+    opacity: 1;
+}
