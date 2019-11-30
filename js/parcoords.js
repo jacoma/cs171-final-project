@@ -1,6 +1,6 @@
 
 
-var pcMargin = {top: 0, right: 0, bottom: 0, left: 10};
+var pcMargin = {top: 10, right: 0, bottom: 40, left: 10};
 
 
 var pcWidth = 800 - pcMargin.left - pcMargin.right,
@@ -9,15 +9,16 @@ var pcWidth = 800 - pcMargin.left - pcMargin.right,
 itemWidth = 390;
 
 var arrayTops = [];
+var fishTitle;
 
-var svgCompare = d3.select("#compare").append("svg")
+var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight)
     .append("g")
     .attr("transform", "translate(" + 0 + "," + 0 + ")");
 
 
-var svgFishing = d3.select("#compare").append("svg")
+var svgFishing = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight)
     .append("g")
@@ -64,7 +65,7 @@ function loadCompareData(error, subsidies, landings, population) {
         parallelCompare.push(tempCompare);
     })
     parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
-    console.log(parallelCompare);
+    //console.log(parallelCompare);
 
     createParalell()
 }
@@ -80,13 +81,13 @@ function createParalell() {
         if (name == "Country") {
             y[name] = d3.scaleBand()
                 .domain(["Argentina", "Australia", "Canada", "Chile", "China", "Chinese Taipei", "Denmark", "France", "Iceland", "Indonesia", "Italy", "Japan", "Korea", "Mexico", "Netherlands", "New Zealand", "Norway", "Peru", "Portugal", "Spain", "Sweden", "Thailand", "Turkey", "UK", "USA"])
-                .range([pcHeight, 0])
+                .range([pcHeight-20, 0])
         } else {
             y[name] = d3.scaleLinear()
                 .domain(d3.extent(parallelCompare, function (d) {
                     return +d[name];
                 }))
-                .range([pcHeight, 0])
+                .range([pcHeight-20, 0])
         }
     }
 
@@ -120,7 +121,8 @@ function createParalell() {
         .on("mouseout", function() {
             d3.select(this).classed("comparePath", true)
             d3.select(this).classed("highlightPath", false)
-        });
+        })
+        .on("click", function(d){ createFishing(d.Country)});
 
     // Draw the axis:
     var axes = svgCompare.selectAll(".compareAxis")
@@ -140,12 +142,13 @@ function createParalell() {
                 d3.select(this).call(d3.axisRight().scale(y[d]));
             }
         })
-        .append("text")
+        axes.append("text")
         .style("text-anchor", "middle")
-        .attr("y", -9)
+        .attr("y", -10)
         .text(function (d) {
             return d;
         })
+            .attr("class", "pcLegend")
         .style("fill", "#919190")
 
     svgCompare.selectAll(".compareAxis").append("g")
@@ -196,27 +199,24 @@ createFishing();
 
 
 
-function createFishing() {
+function createFishing(country) {
 //****************FISHING VIS ***************************
 
-    queue()
-        .defer(d3.csv, "data/Subsidies_SA.csv")
-        .defer(d3.csv, "data/FishLandings3.csv")
-        .await(loadData);
+    var testYear = 2014;
+    //console.log(country);
+if (!country) {
+//    console.log(parallelCompare);
+
+    arrayTops = parallelCompare.sort(function (a, b) {
+        return d3.descending(a.Landings, b.Landings)
+    }).slice(0, 5);
+    //console.log(arrayTops);
+    fishTitle = "Top 5 Landings in " + testYear;
 }
-function loadData(error, subsidies, landings){
-var testYear = 2014;
+else{
+    console.log(country);
 
-    var topSubsidies = subsidies.forEach(function (d) {
-        var tops = {
-            country: d.Country,
-            value: parseInt(d[testYear])
-        };
-        arrayTops.push(tops)
-    });
-    arrayTops = arrayTops.sort(function(a, b) {return d3.descending(a.value, b.value) }).slice(0,5);
-//    console.log(arrayTops);
-
+}
     updateFishers();
 }
 
@@ -231,16 +231,27 @@ function updateFishers() {
 
 
     count = 1;
-    maxLine = d3.max(arrayTops, function(d) { return + d.value; });
-    minLine = d3.min(arrayTops, function(d) { return + d.value; })
+    maxLine = d3.max(arrayTops, function(d) { return + d.Subsidies; });
+    minLine = d3.min(arrayTops, function(d) { return + d.Subsidies; })
     yScale.domain([minLine, maxLine])
-    fishScale.domain([minLine, maxLine]);
+
+    maxFish = d3.max(arrayTops, function(d) { return + d.Landings; });
+    minFish = d3.min(arrayTops, function(d) { return + d.Landings; })
+    fishScale.domain([minFish, maxFish]);
+
+    t = svgFishing.append("text")
+        .attr("x", 25)
+        .attr("y", 10)
+        .attr("text-anchor", "start")
+        .text(function(d) {return fishTitle })
+        .attr("class", "pcFishTitle");
 
     g = svgFishing.selectAll("g")
         .data(arrayTops)
         .enter()
         .append("g")
-        .attr("class", "fisher");
+        .attr("class", "fisher")
+        .attr("transform", "translate(0,20)");
 
     g.append("svg:image")
         .attr('x', function(d, i){ return colWidth-50 + (i * colWidth); })
@@ -251,12 +262,11 @@ function updateFishers() {
         //        .attr('height', function(d) {return d.Metric/2 })
         .attr("xlink:href", "img/angler-silhuette.jpg");
 
-    //https://www.publicdomainpictures.net/en/view-image.php?image=143103&picture=angler-silhouette
     g.append("line")
         .attr("x1", function(d, i){ return colWidth + (i * colWidth); })
         .attr("y1", 20)
         .attr("x2", function(d, i){ return colWidth + (i * colWidth); })
-        .attr("y2", function(d){return yScale(d.value);})
+        .attr("y2", function(d){return yScale(d.Subsidies);})
         .attr("class", "line")
         .style("stroke", "black")
         .style("stroke-width", "1px");
@@ -265,20 +275,20 @@ function updateFishers() {
         .attr("x", 0)
         .attr("y", -20)
 //        .attr('y', function(d){return yScale(d.value);})
-        .attr('width', function(d) { return fishScale(d.value) })
-        .attr('height', function(d) {return fishScale(d.value)/2 })
+        .attr('width', function(d) { return fishScale(d.Landings) })
+        .attr('height', function(d) {return fishScale(d.Landings)/2 })
         .attr("xlink:href", "img/trout-sillouette.svg")
         .attr("transform",function (d, i) { return "translate(" + (colWidth + (i * colWidth) +i*3) + ", " +
-            yScale(d.value) +")rotate(-90)" });
+            yScale(d.Subsidies) +")rotate(-90)" });
 
     g.append("text")
-        .attr('x', -100)
+        .attr('x', -50)
 //        .attr('y', function(d){return yScale(d.value)/2;})
         .attr("y", 0)
-        .attr("class", "subText")
-        .text(function(d){return "Subsidies: " + d.value})
+        .attr("class", "pcLegend")
+        .text(function(d){return "Subsidies: " + d.Subsidies})
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
-            yScale(d.value)/2 +")rotate(-90)" });
+            yScale(d.Subsidies)/2 +")rotate(-90)" });
 
 
 }

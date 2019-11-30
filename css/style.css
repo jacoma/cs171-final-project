@@ -213,6 +213,25 @@
   left: 0;
 }
 
+/***************************/
+/*  PARALLEL COORDINATES  */
+/*************************/
+
+.pcLegend{
+    fill: #919190;
+    font-size: 11px;
+}
+
+pcFishTitle {
+    fill: #80bdff;
+    font-family: Arial;
+    font-size: 18px;
+}
+
+.compareAxis{
+    font-size: 11px;
+}
+
 .comparePath {
     stroke: #80bdff;
     fill: none;
