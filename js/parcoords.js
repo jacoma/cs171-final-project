@@ -24,6 +24,12 @@ var svgFishing = d3.select("#viz-parcoords").append("svg")
     .append("g")
     .attr("transform", "translate(" + 0 + "," + 0 + ")");
 
+var compareYear = "2017";
+var currentYearSubs = [];
+var currentYearLands = [];
+
+formatNum = d3.format(",");
+
 //****************PARALLEL VIS ***************************
 
 var parallelCompare = [];
@@ -36,12 +42,17 @@ queue()
     .await(loadCompareData);
 
 function loadCompareData(error, subsidies, landings, population) {
-    var compareYear = "2014";
-    var currentYearSubs = [];
-    var currentYearLands = [];
     compareLandings = landings;
     comparePopulation = population;
     compareSubsidies = subsidies;
+
+    //console.log(parallelCompare);
+
+    createParalell()
+}
+
+function createParalell() {
+    compareYear = d3.select("#radar-year").property("value");
 
     compareSubsidies.forEach(function(d){
         temp = {Country: d.Country, Value: d[compareYear]}
@@ -65,12 +76,7 @@ function loadCompareData(error, subsidies, landings, population) {
         parallelCompare.push(tempCompare);
     })
     parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
-    //console.log(parallelCompare);
 
-    createParalell()
-}
-
-function createParalell() {
 
     //take out country since its the label
     dimensions = d3.keys(parallelCompare[0])//.filter(function(d) { return d != "Country" });
@@ -202,7 +208,7 @@ createFishing();
 function createFishing(country) {
 //****************FISHING VIS ***************************
 
-    var testYear = 2014;
+//    var testYear = 2014;
     //console.log(country);
 if (!country) {
 //    console.log(parallelCompare);
@@ -211,7 +217,7 @@ if (!country) {
         return d3.descending(a.Landings, b.Landings)
     }).slice(0, 5);
     //console.log(arrayTops);
-    fishTitle = "Top 5 Landings in " + testYear;
+    fishTitle = "Top 5 Landings in " + compareYear;
 }
 else{
     console.log(country);
@@ -223,7 +229,7 @@ else{
 function updateFishers() {
 // Create scales and axis for fishing
     var yScale = d3.scaleLinear()
-        .range([200, pcHeight - 45]);
+        .range([60, pcHeight - 45]);
     var fishScale = d3.scaleLinear()
         .range([30, 90]);
 
@@ -282,14 +288,31 @@ function updateFishers() {
             yScale(d.Subsidies) +")rotate(-90)" });
 
     g.append("text")
-        .attr('x', -50)
-//        .attr('y', function(d){return yScale(d.value)/2;})
+        .attr('x', -290)
         .attr("y", 0)
         .attr("class", "pcLegend")
-        .text(function(d){return "Subsidies: " + d.Subsidies})
+        .text(function(d){return "Subsidies: " + formatNum(d.Subsidies)})
+        .attr("text-anchor", "start")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
-            yScale(d.Subsidies)/2 +")rotate(-90)" });
+            30 +")rotate(-90)" });
 
+    g.append("text")
+        .attr('x', -290)
+        .attr("y", 25)
+        .attr("class", "pcLegend")
+        .text(function(d){return "Landings: " + formatNum(d.Landings)})
+        .attr("text-anchor", "start")
+        .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
+            30 +")rotate(-90)" });
+
+    g.append("text")
+        .attr('x', 10)
+        .attr("y", 25)
+        .attr("class", "pcLegend")
+        .text(function(d){return d.Country})
+        .attr("text-anchor", "middle")
+        .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
+            0 +")" });
 
 }
 
