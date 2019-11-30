@@ -29,7 +29,7 @@ var sortDataB = [];
 var sortDataC = [];
 var radarChart;
 
-
+// variable for country radar
 
 queue()
     .defer(d3.csv, "data/landings_SA2.csv")
@@ -47,7 +47,7 @@ function createRadar(error, landings, population, subsidies) {
         //expects arrays of objects
 //    console.log(radarData);
     updateRadar();
-//    updateCircles();
+
     }
 
 

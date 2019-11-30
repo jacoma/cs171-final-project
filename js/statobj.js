@@ -55,6 +55,16 @@ Statistics.prototype.initVis = function() {
         .domain([0, 100])
         .range([1, 0]);
 
+    vis.stat_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([0, 100])
+//      .html("testing tool tip")
+        .html(function(d){ return d.Tip });
+
+    vis.statisticSVG.call(vis.stat_tip);
+
+
+
 
 var title = vis.statisticSVG.append("text")
     .attr("class", "stat_metric")
@@ -106,7 +116,9 @@ Statistics.prototype.updateVis = function() {
         })
 //        .attr('width', function(d) { return d.Metric })
 //        .attr('height', function(d) {return d.Metric/2 })
-        .attr("xlink:href", "img/trout-sillouette.svg");
+        .attr("xlink:href", "img/trout-sillouette.svg")
+        .on('mouseover', vis.stat_tip.show)
+        .on('mouseout', vis.stat_tip.hide);
 
     row.append("text")
         .attr('x', 0)
