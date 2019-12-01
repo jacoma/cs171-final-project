@@ -47,7 +47,7 @@ function wrangleData(){
         return d3.sum(v, function(d) {return d.Value; })},
         function(d) {
         return d.COUNTRY + "-" + d.Country})
-    console.log(tempEmpData);
+    //console.log(tempEmpData);
     var tempData = Array.from(tempEmpData);
     //console.log(tempData);
     for (i=0;i<tempData.length; i++){
@@ -84,12 +84,12 @@ function wrangleData(){
 
 function drawChart() {
     if (empChart) {
-        console.log("chart already exists");
+        //console.log("chart already exists");
         empChart.updateVis(employmentData, selectedCountry);
         vesselChart.updateVis(vesselData, selectedCountry);
         exportChart.updateVis(exportData, selectedCountry);
     } else {
-        console.log(selectedCountry);
+        //console.log(selectedCountry);
         empChart = new BubbleChart("viz-employment", employmentData, selectedCountry);
         vesselChart = new BubbleChart("viz-vessels", vesselData, selectedCountry)
         exportChart = new BubbleChart("viz-exports", exportData, selectedCountry)

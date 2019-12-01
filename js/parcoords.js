@@ -1,7 +1,4 @@
-
-
-var pcMargin = {top: 10, right: 0, bottom: 40, left: 10};
-
+var pcMargin = {top: 10, right: 0, bottom: 0, left: 10};
 
 var pcWidth = 800 - pcMargin.left - pcMargin.right,
     pcHeight = 400 - pcMargin.top - pcMargin.bottom;
@@ -10,12 +7,19 @@ itemWidth = 390;
 
 var arrayTops = [];
 var fishTitle;
+var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"];
+parcoords_tip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-5, 100])
+    .html(function(d){ console.log("test"); return d.Country });
+
 
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight)
     .append("g")
-    .attr("transform", "translate(" + 0 + "," + 0 + ")");
+    .attr("transform", "translate(" + 0 + "," + 20 + ")");
+svgCompare.call(parcoords_tip);
 
 
 var svgFishing = d3.select("#viz-parcoords").append("svg")
@@ -24,10 +28,10 @@ var svgFishing = d3.select("#viz-parcoords").append("svg")
     .append("g")
     .attr("transform", "translate(" + 0 + "," + 0 + ")");
 
-var compareYear = "2017";
+var compareYear;
 var currentYearSubs = [];
 var currentYearLands = [];
-
+var dimensions;
 formatNum = d3.format(",");
 
 //****************PARALLEL VIS ***************************
@@ -52,8 +56,9 @@ function loadCompareData(error, subsidies, landings, population) {
 }
 
 function createParalell() {
+    parallelCompare =[];
     compareYear = d3.select("#radar-year").property("value");
-
+    //console.log(compareYear);
     compareSubsidies.forEach(function(d){
         temp = {Country: d.Country, Value: d[compareYear]}
         currentYearSubs.push(temp)
@@ -77,9 +82,8 @@ function createParalell() {
     })
     parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
 
-
-    //take out country since its the label
-    dimensions = d3.keys(parallelCompare[0])//.filter(function(d) { return d != "Country" });
+    console.log(parallelCompare)
+    dimensions = d3.keys(parallelCompare[0])
     var y = {}
     for (i in dimensions) {
         name = dimensions[i]
@@ -103,32 +107,6 @@ function createParalell() {
         .padding(1)
         .domain(dimensions);
 
-    function path(d) {
-//        console.log(d)
-        return d3.line()(dimensions.map(function (p) {
-//            console.log(p);
-//            console.log(x(p) +" | " + d[p]);
-            var temp = d[p];
-//            console.log(y[p](temp));
-            return [x(p), y[p](temp)]
-        }))
-    }
-
-    svgCompare.selectAll("comparePath")
-        .data(parallelCompare)
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .attr("class", "comparePath")
-        .on("mouseover", function() {
-            d3.select(this).classed("comparePath", false)
-            d3.select(this).classed("highlightPath", true)
-        } )
-        .on("mouseout", function() {
-            d3.select(this).classed("comparePath", true)
-            d3.select(this).classed("highlightPath", false)
-        })
-        .on("click", function(d){ createFishing(d.Country)});
 
     // Draw the axis:
     var axes = svgCompare.selectAll(".compareAxis")
@@ -155,7 +133,42 @@ function createParalell() {
             return d;
         })
             .attr("class", "pcLegend")
-        .style("fill", "#919190")
+        .style("fill", "#0056b3")
+
+
+    function path(d) {
+//        console.log(d)
+        return d3.line()(dimensions.map(function (p) {
+//            console.log(p);
+//            console.log(x(p) +" | " + d[p]);
+            var temp = d[p];
+//            console.log(y[p](temp));
+            return [x(p), y[p](temp)]
+        }))
+    }
+
+    svgCompare.selectAll(".comparePath").remove();
+    var cPath = svgCompare.selectAll(".comparePath")
+        .data(parallelCompare)
+        .enter()
+        .append("path")
+        //.transition()
+        //.duration(500)
+        .attr("d", path)
+        .attr("class", "comparePath")
+        .on("mouseover", function() {
+            d3.select(this).classed("comparePath", false);
+            d3.select(this).classed("highlightPath", true);
+            parcoords_tip.show;
+        })
+        .on("mouseout", function() {
+            d3.select(this).classed("comparePath", true);
+            d3.select(this).classed("highlightPath", false);
+            parcoords_tip.hide;
+        })
+        .on("click", function(d){ createFishing(d.Country)});
+
+
 
     svgCompare.selectAll(".compareAxis").append("g")
         .attr("class", "brush")
@@ -204,12 +217,9 @@ createFishing();
 }
 
 
-
 function createFishing(country) {
 //****************FISHING VIS ***************************
-
-//    var testYear = 2014;
-    //console.log(country);
+arrayTops=[];
 if (!country) {
 //    console.log(parallelCompare);
 
@@ -220,8 +230,21 @@ if (!country) {
     fishTitle = "Top 5 Landings in " + compareYear;
 }
 else{
-    console.log(country);
+//    console.log(country);
+    var sub = compareSubsidies.filter(function(d){ return d.Country == country})
+    var land = compareLandings.filter(function(d){ return d.Country == country})
 
+//    console.log(land)
+    yearArray.forEach(function(d){
+//        console.log(sub[0][d]);
+        tempCompare = {
+            Year: d,
+            Subsidies: parseInt(sub[0][d]),
+            Landings: parseInt(land[0][d]),
+        }
+        arrayTops.push(tempCompare);
+    });
+//    console.log(arrayTops);
 }
     updateFishers();
 }
@@ -229,11 +252,11 @@ else{
 function updateFishers() {
 // Create scales and axis for fishing
     var yScale = d3.scaleLinear()
-        .range([60, pcHeight - 45]);
+        .range([60, pcHeight - 90]);
     var fishScale = d3.scaleLinear()
         .range([30, 90]);
 
-    var colWidth = itemWidth / 5;
+    var colWidth = (itemWidth-20) / 5;
 
 
     count = 1;
@@ -245,9 +268,11 @@ function updateFishers() {
     minFish = d3.min(arrayTops, function(d) { return + d.Landings; })
     fishScale.domain([minFish, maxFish]);
 
+    svgFishing.selectAll("g").remove();
+
     t = svgFishing.append("text")
         .attr("x", 25)
-        .attr("y", 10)
+        .attr("y", 15)
         .attr("text-anchor", "start")
         .text(function(d) {return fishTitle })
         .attr("class", "pcFishTitle");
@@ -266,16 +291,28 @@ function updateFishers() {
         .attr('height', 60)
         .attr('translate', "transform(0,0)rotate(90)")
         //        .attr('height', function(d) {return d.Metric/2 })
-        .attr("xlink:href", "img/angler-silhuette.jpg");
+        .attr("xlink:href", "img/angler-silhuette.jpg")
+
+/*    g.append("line")
+        .attr("x1", function(d, i){ return colWidth + (i * colWidth); })
+        .attr("y1", 20)
+        .attr("x2", function(d, i){ return colWidth + (i * colWidth); })
+        .attr("y2", function(d){return pcHeight;})
+        .attr("class", "line")
+        .style("stroke", "#80bdff;")
+        .style("stroke-width", "1.5px");
+*/
 
     g.append("line")
         .attr("x1", function(d, i){ return colWidth + (i * colWidth); })
         .attr("y1", 20)
         .attr("x2", function(d, i){ return colWidth + (i * colWidth); })
+        .attr("y2", 20)
+        .transition().duration(1000)
         .attr("y2", function(d){return yScale(d.Subsidies);})
-        .attr("class", "line")
+        .attr("class", "fishLine")
         .style("stroke", "black")
-        .style("stroke-width", "1px");
+        .style("stroke-width", "1.5px");
 
     g.append("svg:image")
         .attr("x", 0)
@@ -283,12 +320,18 @@ function updateFishers() {
 //        .attr('y', function(d){return yScale(d.value);})
         .attr('width', function(d) { return fishScale(d.Landings) })
         .attr('height', function(d) {return fishScale(d.Landings)/2 })
+        .attr("class", "pcFishImg")
         .attr("xlink:href", "img/trout-sillouette.svg")
-        .attr("transform",function (d, i) { return "translate(" + (colWidth + (i * colWidth) +i*3) + ", " +
-            yScale(d.Subsidies) +")rotate(-90)" });
+        .transition().duration(1000)
+        .attr("transform",function (d, i) {
+            tempY = yScale(d.Subsidies)+fishScale(d.Landings);
+            console.log(tempY);
+            return "translate(" + (colWidth + (i * colWidth) +i*3) + ", " +
+            tempY +")rotate(-90)"
+        });
 
     g.append("text")
-        .attr('x', -290)
+        .attr('x', -340)
         .attr("y", 0)
         .attr("class", "pcLegend")
         .text(function(d){return "Subsidies: " + formatNum(d.Subsidies)})
@@ -297,7 +340,7 @@ function updateFishers() {
             30 +")rotate(-90)" });
 
     g.append("text")
-        .attr('x', -290)
+        .attr('x', -340)
         .attr("y", 25)
         .attr("class", "pcLegend")
         .text(function(d){return "Landings: " + formatNum(d.Landings)})
@@ -307,8 +350,9 @@ function updateFishers() {
 
     g.append("text")
         .attr('x', 10)
-        .attr("y", 25)
+        .attr("y", 15)
         .attr("class", "pcLegend")
+        .style("fill", "#0056b3")
         .text(function(d){return d.Country})
         .attr("text-anchor", "middle")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
