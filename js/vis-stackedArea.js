@@ -106,29 +106,50 @@ StackedAreaChart.prototype.initVis = function(){
          .attr("display", "none")
          .attr("transform", `translate(10, -10)`);
 
-    /*** MOUSEOVER EVENTS */
-    vis.highlight = function(d){
-        vis.tooltip.attr("display", null);
+    /*** LEGEND */
+    var legendRectSize = 20
+    var legendWidth = $("#start-story").width() - vis.margin.left - vis.margin.right;
+    d3.select("#landings-legend")
+        .append("svg")
+        .attr("id", "legend-svg")
+        .attr("width", legendWidth)
+        .attr("height", legendRectSize*2)
+    .selectAll(".legend-rect")
+        .data(fishSpecies)
+        .enter()
+        .append("rect")
+            .attr("class", "legend-rect")
+            .attr("x", function(d,i){ return 5 + i*(legendWidth/fishSpecies.length)})
+            .attr("y", 10) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("width", legendRectSize)
+            .attr("height", legendRectSize)
+            .style("fill", function(d){ return vis.colorScale(d)});
+      
+          // Add one dot in the legend for each name.
+    d3.select("#legend-svg").selectAll(".legend-labels")
+        .data(fishSpecies)
+        .enter()
+        .append("text")
+        .attr("class", "legend-labels")
+        .attr("x", function(d,i){ return (legendRectSize + 10) + i*(legendWidth/fishSpecies.length)})
+        .attr("y", (15 + legendRectSize/2)) // 100 is where the first dot appears. 25 is the distance between dots
+            .style("fill", function(d){ return vis.colorScale(d)})
+            .text(function(d){ return d})
+            .attr("text-anchor", "left");
 
-        d3.selectAll(".area").style("opacity", .2);
+    d3.selectAll(".legend-rect,.legend-labels").on("click", function(d) {
+            // 3. Trigger the event 'selectionChanged' of our event handler
+            $(vis.eventHandler).trigger("selectionChanged", [d, ""]);
+        })
+        .on("mouseover", function(d){
+            fish = fishSpecies.indexOf(d);
+            d3.selectAll(".area").style("opacity", .2);
 
-        d3.select(this).style("opacity", 1);
-    }
-
-    vis.noHighlight = function(d){
-        d3.selectAll(".area").style("opacity", 1);
-        vis.tooltip.attr("display", "none");
-    }
-
-    vis.mouseMove = function(d){
-        var x0 = vis.x.invert(d3.mouse(this)[0]);
-        var xYear = x0.getFullYear();
-
-        i = areaYears.indexOf(xYear.toString());
-        value = d[i].data[d.key];
-
-        vis.tooltip.text(d.key + ": " + d3.format("0.3s")(value));
-    }
+            d3.select("#area-"+fish).style("opacity", 1);
+        })
+        .on("mouseout", function(d){
+            d3.selectAll(".area").style("opacity", 1);
+        })
 
     vis.wrangleData();
 }
@@ -168,8 +189,6 @@ StackedAreaChart.prototype.wrangleData = function(){
         .keys(vis.fishKeys);
 
     vis.stackedData = vis.stack(yearlyData);
-
-    console.log(vis.stackedData);
 
     /*** FILTER DATA BASED ON SELECTION */
     if(vis.speciesFilter){
@@ -212,6 +231,7 @@ StackedAreaChart.prototype.updateVis = function(){
     categories.enter()
         .append("path")
         .attr("class", "area")
+        .attr("id", function(d, i){return "area-"+i})
         .merge(categories)
         .transition(vis.t)
         .style("opacity", .8)
@@ -236,15 +256,36 @@ StackedAreaChart.prototype.updateVis = function(){
             // 3. Trigger the event 'selectionChanged' of our event handler
             $(vis.eventHandler).trigger("selectionChanged", [vis.fishKeys[i], ""]);
         })
-        .on("mouseover", vis.highlight)
-        .on("mousemove", vis.mouseMove)
-        .on("mouseout", vis.noHighlight);
+        .on("mouseover", function(d){
+            vis.tooltip.attr("display", null);
+    
+            d3.selectAll(".area").style("opacity", .2);
+    
+            d3.select(this).style("opacity", 1);
+        })
+        .on("mousemove", function(d){
+            var x0 = vis.x.invert(d3.mouse(this)[0]);
+            var xYear = x0.getFullYear();
+
+            i = areaYears.indexOf(xYear.toString());
+            value = d[i].data[d.key];
+
+            vis.tooltip.text(d.key + ": " + d3.format("0.3s")(value));
+    })
+        .on("mouseout", function(d){
+            d3.selectAll(".area").style("opacity", 1);
+            vis.tooltip.attr("display", "none");
+        });
 
     categories.exit().remove();
 
 	/*** CREATE AXES */ 
 	vis.svg.select(".x-axis").call(vis.xAxis).select(".domain").remove();
     vis.svg.select(".y-axis").call(vis.yAxis).select(".domain").remove();
+      
+      
+      
+   
 }
 
 StackedAreaChart.prototype.responsivefy = function(){

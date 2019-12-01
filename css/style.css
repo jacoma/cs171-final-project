@@ -149,6 +149,10 @@
   fill: #96AB96;
 }
 
+.legend-labels {
+  font-size: 12px;
+}
+
 /****************/
 /*  RADAR CHART  */
 /****************/
