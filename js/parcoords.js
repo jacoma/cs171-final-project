@@ -37,6 +37,7 @@ formatNum = d3.format(",");
 //****************PARALLEL VIS ***************************
 //reference: https://www.d3-graph-gallery.com/graph/parallel_basic.html
 //reference: https://bl.ocks.org/syntagmatic/05a5b0897a48890133beb59c815bd953
+//reference: https://stackoverflow.com/questions/46591962/d3-v4-parallel-coordinate-plot-brush-selection
 
 var parallelCompare = [];
 var compareSubsidies, compareLandings, comparePopulation;
@@ -171,7 +172,11 @@ function createParallel() {
             d3.select(this).classed("comparePath", true);
             d3.select(this).classed("highlightPath", false);
         })
-        .on("click", function(d){ createFishing(d.Country)});
+        .on("click", function(d){
+            createFishing(d.Country)
+            var b=context.select(".brush")
+                b.select("background").remove();
+        });
 
 
 
@@ -244,9 +249,9 @@ if (!country) {
 
     arrayTops = parallelCompare.sort(function (a, b) {
         return (b.Landings - a.Landings)
-    }).slice(0, 5);
+    })//.slice(0, 5);
 //    console.log(arrayTops);
-    fishTitle = "Top 5 Landings in " + compareYear;
+    fishTitle = "Subsidies and Landings in " + compareYear;
 }
 else{
 //    console.log(country);
@@ -305,17 +310,19 @@ function updateFishers() {
         .data(arrayTops)
         .enter()
         .append("g")
+//        .merge("g")
+//        .transition().duration(200)
         .attr("class", "fisher")
         .attr("transform", "translate(0,20)");
 
-    //rect for panning
+    /*rect for panning
     g.append("rect")
         .attr("x", 0)
         .attr("y", 0)
-        .attr("width", colWidth * arrayTops.length)
+        .attr("width", colWidth)
         .attr("height", pcHeight)
         .style("fill", "none");
-
+*/
     g.append("svg:image")
         // -50 nudges the angler over to the line
         .attr('x', function(d, i){ return colWidth-50 + (i * colWidth); })
@@ -341,7 +348,7 @@ function updateFishers() {
         .attr("y1", 20)
         .attr("x2", function(d, i){ return colWidth + (i * colWidth); })
         .attr("y2", 20)
-        .transition().duration(1000)
+        .transition("fish").duration(1250)
         .attr("y2", function(d){return yScale(d.Subsidies);})
         .attr("class", "fishLine")
         .style("stroke", "black")
@@ -355,7 +362,8 @@ function updateFishers() {
         .attr('height', function(d) {return fishScale(d.Landings)/2 })
         .attr("class", "pcFishImg")
         .attr("xlink:href", "img/trout-sillouette.svg")
-        .transition().duration(1000)
+//        .transition().delay(1000)
+        .transition("fish").duration(50)
         .attr("transform",function (d, i) {
             tempY = yScale(d.Subsidies)+fishScale(d.Landings);
             tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));

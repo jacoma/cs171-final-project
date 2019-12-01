@@ -46,7 +46,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
     var vis = this;
     //console.log(data);
     //console.log(vis.displayData.length)
-    console.log(country);
+    //console.log(country);
 
 
 
@@ -97,8 +97,8 @@ BubbleChart.prototype.updateVis = function(data, country) {
 //        .attr("class", "tooltip")
 //        .style("opacity", 0);
 
-        var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
-
+//        var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
+        var colorCircles = d3.scaleOrdinal(d3.schemeBlues[3]);
         var scaleRadius = d3.scaleLog()
             .domain([
                 d3.min(data, function(d) { return +d.value; }),
@@ -143,7 +143,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
             })
             .attr("class", "bubbles")
             .style("fill", function (d) {
-                return colorCircles(d["key"])
+                return colorCircles(d["subs"])
             })
             .style("fill", function (d) {
                 return "url(#gradient-" + d["key"] + ")";
