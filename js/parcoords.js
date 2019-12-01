@@ -1,4 +1,4 @@
-var pcMargin = {top: 10, right: 0, bottom: 0, left: 10};
+var pcMargin = {top: 0, right: 0, bottom: 0, left: 0};
 
 var pcWidth = 800 - pcMargin.left - pcMargin.right,
     pcHeight = 400 - pcMargin.top - pcMargin.bottom;
@@ -8,18 +8,18 @@ itemWidth = 390;
 var arrayTops = [];
 var fishTitle;
 var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"];
-parcoords_tip = d3.tip()
+
+var parcoords_tip = d3.tip()
     .attr("class", "d3-tip")
     .offset([-5, 100])
-    .html(function(d){ console.log("test"); return d.Country });
-
+    .html(function(d){ console.log("test"); return "test" });
 
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight)
     .append("g")
-    .attr("transform", "translate(" + 0 + "," + 20 + ")");
-svgCompare.call(parcoords_tip);
+    .attr("transform", "translate(" + 0 + "," + 20 + ")")
+    .call(parcoords_tip);
 
 
 var svgFishing = d3.select("#viz-parcoords").append("svg")
@@ -35,6 +35,8 @@ var dimensions;
 formatNum = d3.format(",");
 
 //****************PARALLEL VIS ***************************
+//reference: https://www.d3-graph-gallery.com/graph/parallel_basic.html
+//reference: https://bl.ocks.org/syntagmatic/05a5b0897a48890133beb59c815bd953
 
 var parallelCompare = [];
 var compareSubsidies, compareLandings, comparePopulation;
@@ -52,23 +54,24 @@ function loadCompareData(error, subsidies, landings, population) {
 
     //console.log(parallelCompare);
 
-    createParalell()
+    createParallel()
 }
 
-function createParalell() {
+function createParallel() {
     parallelCompare =[];
+    currentYearLands=[];
+    currentYearSubs=[];
     compareYear = d3.select("#radar-year").property("value");
-    //console.log(compareYear);
+    console.log(compareYear);
     compareSubsidies.forEach(function(d){
         temp = {Country: d.Country, Value: d[compareYear]}
         currentYearSubs.push(temp)
     })
-
     compareLandings.forEach(function(d){
         temp = {Country: d.Country, Value: d[compareYear]}
         currentYearLands.push(temp)
     })
-
+    //console.log(currentYearLands)
     comparePopulation.forEach(function(d){
         var sub = currentYearSubs.filter(function(e) {return e.Country == d.Country_Name});
         var land = currentYearLands.filter(function(e) {return e.Country == d.Country_Name});
@@ -78,9 +81,11 @@ function createParalell() {
             Population: parseInt(d[compareYear]),
             Landings: parseInt(land[0].Value),
         }
+        //console.log(tempCompare)
         parallelCompare.push(tempCompare);
     })
-    parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
+    console.log(parallelCompare)
+//    parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
 
     console.log(parallelCompare)
     dimensions = d3.keys(parallelCompare[0])
@@ -157,14 +162,14 @@ function createParalell() {
         .attr("d", path)
         .attr("class", "comparePath")
         .on("mouseover", function() {
+            parcoords_tip.show;
             d3.select(this).classed("comparePath", false);
             d3.select(this).classed("highlightPath", true);
-            parcoords_tip.show;
         })
         .on("mouseout", function() {
+            parcoords_tip.hide;
             d3.select(this).classed("comparePath", true);
             d3.select(this).classed("highlightPath", false);
-            parcoords_tip.hide;
         })
         .on("click", function(d){ createFishing(d.Country)});
 
@@ -175,7 +180,7 @@ function createParalell() {
         .each(function (d) {
             d3.select(this).call(d.brush = d3.brushY()
                 .extent([[-10, 0], [10, pcHeight]])
-                .on("start", brushstart)
+                //.on("start", brushstart)
                 .on("brush", brush)
                 .on("end", brush)
             )
@@ -190,11 +195,15 @@ function createParalell() {
 
     function brush() {
         //render.invalidate();
-
         var actives = [];
         svgCompare.selectAll(".compareAxis .brush")
             .filter(function (d) {
-                console.log(d);
+                //console.log(d);
+                //console.log(d3.brushSelection(this))
+//                if(d3.brushSelection(this)) {
+//                    console.log(y[d](d3.brushSelection(this)[0]))
+//                tempFilter =
+//                }
                 return d3.brushSelection(this);
             })
             .each(function (d) {
@@ -203,14 +212,24 @@ function createParalell() {
                     extent: d3.brushSelection(this)
                 });
             });
-        console.log(actives);
-        var selected = parallelCompare.filter(function (d) {
+//        console.log(actives);
+
+/*        var selected = parallelCompare.filter(function (d) {
             if (actives.every(function (active) {
-//                var dim = active.dimension;
-//                return dim.type.within(d[dim.key], active.extent, dim);
+                //console.log(active.extent)
+                var dim = active.dimension;
+//                console.log(dim.type.within(d[dim.key], active.extent, dim));
             })) {
                 return true;
             }
+        });
+
+ */
+        g.style('display', function(d) {
+            return actives.every(function(active) {
+                const dim = active.dimension;
+                return active.extent[0] <= y[dim](d[dim]) && y[dim](d[dim]) <= active.extent[1];
+            }) ? null : 'none';
         });
     }
 createFishing();
@@ -224,9 +243,9 @@ if (!country) {
 //    console.log(parallelCompare);
 
     arrayTops = parallelCompare.sort(function (a, b) {
-        return d3.descending(a.Landings, b.Landings)
+        return (b.Landings - a.Landings)
     }).slice(0, 5);
-    //console.log(arrayTops);
+//    console.log(arrayTops);
     fishTitle = "Top 5 Landings in " + compareYear;
 }
 else{
@@ -244,6 +263,8 @@ else{
         }
         arrayTops.push(tempCompare);
     });
+    fishTitle = "Landings for " + country;
+
 //    console.log(arrayTops);
 }
     updateFishers();
@@ -258,8 +279,8 @@ function updateFishers() {
 
     var colWidth = (itemWidth-20) / 5;
 
-
-    count = 1;
+    //console.log(arrayTops);
+    count=1;
     maxLine = d3.max(arrayTops, function(d) { return + d.Subsidies; });
     minLine = d3.min(arrayTops, function(d) { return + d.Subsidies; })
     yScale.domain([minLine, maxLine])
@@ -269,7 +290,9 @@ function updateFishers() {
     fishScale.domain([minFish, maxFish]);
 
     svgFishing.selectAll("g").remove();
+    svgFishing.selectAll(".pcFishTitle").remove();
 
+    //t = svgFishing.append("g").append("text")
     t = svgFishing.append("text")
         .attr("x", 25)
         .attr("y", 15)
@@ -277,6 +300,7 @@ function updateFishers() {
         .text(function(d) {return fishTitle })
         .attr("class", "pcFishTitle");
 
+    console.log(arrayTops);
     g = svgFishing.selectAll("g")
         .data(arrayTops)
         .enter()
@@ -284,7 +308,16 @@ function updateFishers() {
         .attr("class", "fisher")
         .attr("transform", "translate(0,20)");
 
+    //rect for panning
+    g.append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", colWidth * arrayTops.length)
+        .attr("height", pcHeight)
+        .style("fill", "none");
+
     g.append("svg:image")
+        // -50 nudges the angler over to the line
         .attr('x', function(d, i){ return colWidth-50 + (i * colWidth); })
         .attr('y', 0)
         .attr('width', 60)
@@ -325,8 +358,10 @@ function updateFishers() {
         .transition().duration(1000)
         .attr("transform",function (d, i) {
             tempY = yScale(d.Subsidies)+fishScale(d.Landings);
-            console.log(tempY);
-            return "translate(" + (colWidth + (i * colWidth) +i*3) + ", " +
+            tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));
+//            tempX = (colWidth + (i * colWidth) +(i*3));
+            //console.log(tempX);
+            return "translate(" + tempX + ", " +
             tempY +")rotate(-90)"
         });
 
@@ -334,7 +369,15 @@ function updateFishers() {
         .attr('x', -340)
         .attr("y", 0)
         .attr("class", "pcLegend")
-        .text(function(d){return "Subsidies: " + formatNum(d.Subsidies)})
+        .text(function(d){
+            if (d.Subsidies =="0") {
+                vText = "No Data";
+            }
+            else{
+                vText = formatNum(d.Subsidies)
+            }
+            return "Subsidies: " + vText;
+        })
         .attr("text-anchor", "start")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             30 +")rotate(-90)" });
@@ -343,7 +386,15 @@ function updateFishers() {
         .attr('x', -340)
         .attr("y", 25)
         .attr("class", "pcLegend")
-        .text(function(d){return "Landings: " + formatNum(d.Landings)})
+        .text(function(d){
+            if (d.Landings =="0") {
+                vText = "No Data";
+            }
+            else{
+                vText = formatNum(d.Landings)
+            }
+            return "Landings: " + vText;
+        })
         .attr("text-anchor", "start")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             30 +")rotate(-90)" });
@@ -353,10 +404,25 @@ function updateFishers() {
         .attr("y", 15)
         .attr("class", "pcLegend")
         .style("fill", "#0056b3")
-        .text(function(d){return d.Country})
+        .text(function(d){
+            if (d.Country) {
+                return d.Country;
+            }else{
+                return d.Year;
+            }
+        })
         .attr("text-anchor", "middle")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             0 +")" });
+
+
+    var zoomed = function() {
+        g.attr("transform", d3.event.transform);
+    }
+
+    svgFishing.call(d3.zoom()
+        .scaleExtent([1 / 2, 12])
+        .on("zoom", zoomed));
 
 }
 
