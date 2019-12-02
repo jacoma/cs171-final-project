@@ -84,7 +84,7 @@ StackedAreaChart.prototype.initVis = function(){
     vis.svg.append("text")
 		.attr("class", "chart-title")
 		.attr("transform", "translate("+(10)+"," +(-50)+")")
-		.text("Volume fish landings decrease as fisheries become depleted");
+		.text("Just under 90% of fish landings are consumed by humans.");
 
     /*** CREATE AREA & LINE GENERATORS */
 	vis.area = d3.area()

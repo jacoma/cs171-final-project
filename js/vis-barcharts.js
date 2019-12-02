@@ -69,7 +69,7 @@ BarChart.prototype.initVis = function(){
     vis.svg.append("text")
 		.attr("class", "chart-title")
 		.attr("transform", "translate("+(10)+"," +(-50)+")")
-        .text("Peru, U.S., Japan largest contributors to fishing volume");
+        .text("");
         
     vis.svg.append("text")
 		.attr("class", "axis-title")
