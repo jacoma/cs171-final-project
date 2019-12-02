@@ -22,8 +22,12 @@ BubbleChart = function(_parentElement, _data, _country){
 
 BubbleChart.prototype.initVis = function() {
     var vis = this;
-    vis.width = 250;
-    vis.height=250;
+
+    vis.margin = {top: 10, right: 10, bottom: 10, left: 10};
+
+    vis.width = 200 - vis.margin.left - vis.margin.right,
+    vis.height = 200 - vis.margin.top - vis.margin.bottom;
+
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height );
@@ -51,7 +55,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
 
 
     var simulation = d3.forceSimulation(data)
-        .force("charge", d3.forceManyBody().strength([-65]))
+        .force("charge", d3.forceManyBody().strength([-33]))
         .force("x", d3.forceX())
         .force("y", d3.forceY())
         .on("tick", ticked);
@@ -103,7 +107,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
             .domain([
                 d3.min(data, function(d) { return +d.value; }),
                 d3.max(data, function(d) { return +d.value; })])
-            .range([5,30]);
+            .range([5,20]);
 
 //        console.log(d3.min(vis.displayData, function(d) { return +d.value; }));
 //        console.log(d3.max(vis.displayData, function(d) { return +d.value; }));

@@ -59,7 +59,7 @@
 
     
     .story #end-story{
-      margin: 100px 0px 100px 0px;
+      margin: 30px 0px 30px 0px;
   }
   }
 
@@ -73,7 +73,7 @@
     }
 
     .story .row {
-      min-height: 400px;
+/*      min-height: 400px; */
     }
 
     .story div {
@@ -247,4 +247,18 @@ pcFishTitle {
     fill: none;
     stroke-width: 3px;
     opacity: 1;
+}
+
+/***************************/
+/*    INTERACTION TIPS    */
+/*************************/
+
+.viz-hints {
+    background-color: lightsteelblue;
+    border: 1px solid steelblue;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 5px;
+    color: steelblue;
+    font-size: small;
 }
