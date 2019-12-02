@@ -39,8 +39,8 @@ d3.csv("data/aqua_timeseries.csv", function(tData) {
             d.UN_Code = +d.UN_Code;
         });
 
-        console.log(tData);
-        console.log(cData);
+        // console.log(tData);
+        // console.log(cData);
 
         data1 = tData;
         data2 = cData;
@@ -84,7 +84,7 @@ function updateAquaculture() {
         .innerRadius(innerRadius)
         .outerRadius(outerRadius);
 
-    console.log(quantity);
+    // console.log(quantity);
 
     var chart = svgAqua.selectAll(".pie")
         .data(pie(quantity));

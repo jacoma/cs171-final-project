@@ -37,7 +37,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
     var vis = this;
     //console.log(data);
     //console.log(vis.displayData.length)
-    console.log(country);
+    // console.log(country);
 
     var simulation = d3.forceSimulation(data)
         .force("charge", d3.forceManyBody().strength([-35]))

@@ -64,7 +64,7 @@ queue()
 				Years.push(+d.TIME);
 			}
 		});
-		console.log(Years);
+		// console.log(Years);
 		// // Fills JSON container based on number of years
 		// Years.forEach(function(d) {
 		//     data[d] = {};

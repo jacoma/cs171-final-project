@@ -44,7 +44,7 @@ queue()
 function createVis(error, landings, bubbles){
     if(error) { console.log(error); }
 
-    console.log(landings);
+    // console.log(landings);
 
     landings.forEach(function(d){
         if(countries.indexOf(d.Country) < 0) {
@@ -66,7 +66,7 @@ function createVis(error, landings, bubbles){
 
     areaYears = areaYears.sort(function(a,b){return a-b});
 
-    console.log(areaYears, fishSpecies);
+    // console.log(areaYears, fishSpecies);
 
     landingData = landings;
 

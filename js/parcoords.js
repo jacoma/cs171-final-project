@@ -12,7 +12,9 @@ var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016",
 var parcoords_tip = d3.tip()
     .attr("class", "d3-tip")
     .offset([-5, 100])
-    .html(function(d){ console.log("test"); return "test" });
+    .html(function(d){ 
+        // console.log("test"); 
+        return "test" });
 
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
@@ -63,7 +65,7 @@ function createParallel() {
     currentYearLands=[];
     currentYearSubs=[];
     compareYear = d3.select("#radar-year").property("value");
-    console.log(compareYear);
+    // console.log(compareYear);
     compareSubsidies.forEach(function(d){
         temp = {Country: d.Country, Value: d[compareYear]}
         currentYearSubs.push(temp)
@@ -85,10 +87,10 @@ function createParallel() {
         //console.log(tempCompare)
         parallelCompare.push(tempCompare);
     })
-    console.log(parallelCompare)
+    // console.log(parallelCompare)
 //    parallelCompare = parallelCompare.sort(function(a, b){ return b.Subsidies - a.Subsidies })
 
-    console.log(parallelCompare)
+    // console.log(parallelCompare)
     dimensions = d3.keys(parallelCompare[0])
     var y = {}
     for (i in dimensions) {
@@ -305,7 +307,7 @@ function updateFishers() {
         .text(function(d) {return fishTitle })
         .attr("class", "pcFishTitle");
 
-    console.log(arrayTops);
+    // console.log(arrayTops);
     g = svgFishing.selectAll("g")
         .data(arrayTops)
         .enter()

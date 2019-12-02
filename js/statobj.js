@@ -109,7 +109,7 @@ Statistics.prototype.updateVis = function() {
         .attr('height', function(d) {return vis.yScaleImg(d.Metric) })
         .style('opacity', function(d) {
             if (vis.fade==true) {
-                console.log(vis.fadeScale(d.Metric));
+                // console.log(vis.fadeScale(d.Metric));
                 return vis.fadeScale(d.Metric)
             }
             else{ return 1}
