@@ -23,7 +23,7 @@ BubbleChart = function(_parentElement, _data, _country){
 BubbleChart.prototype.initVis = function() {
     var vis = this;
     vis.width = 250;
-    vis.height=400;
+    vis.height=250;
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height );

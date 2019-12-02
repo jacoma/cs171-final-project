@@ -368,8 +368,8 @@ function updateFishers() {
         .transition("fish").duration(50)
         .attr("transform",function (d, i) {
             tempY = yScale(d.Subsidies)+fishScale(d.Landings);
-            tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));
-//            tempX = (colWidth + (i * colWidth) +(i*3));
+//            tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));
+            tempX = (colWidth + (i * colWidth) +(i*1));
             //console.log(tempX);
             return "translate(" + tempX + ", " +
             tempY +")rotate(-90)"

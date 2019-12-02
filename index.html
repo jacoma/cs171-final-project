@@ -79,7 +79,7 @@
 				<div class = "col-md-3"><h4>Vessels</h4><p>Growing the fleet of hunters.</p></div>
 				</div>
 		<div class="col-md-12" id="radar-div-row">
-				<p><i>China provides the largest amount of subsidies but ranked 9th for volume of fish landings.</i></p>
+				<!--p><i>China provides the largest amount of subsidies but ranked 9th for volume of fish landings.</i></p-->
 				<select id = "radar-year" onchange="createParallel()">
 						<option value="2008">2008</option>
 						<option value="2009">2009</option>
@@ -142,11 +142,16 @@
 					</blockquote>
 					</div>
 				</div>
+		<div class="row mt-2 multi-column">
+			<div class="col-md-12 order-md-1">
 				<div class="viz-hints">
 					<p><i>You may select a specific country to filter subsidies.</i></p>
 					<p><i>Clicking on any node in the line chart will filter out bubblechart data for that year.</i></p></p>
 				</div>
-				<div class="col-md-6 order-md-2">
+			</div>
+		</div>
+		<div class="row featurette mt-2 multi-column">
+				<div class="col-md-6 order-md-1">
 					<!-- Select box to choose the ranking type -->
 					<form class="form-inline" >
 						<div class="form-group">
@@ -196,8 +201,7 @@
 					</form>
 				  <div id = "viz-subsidies"></div>
 				</div>
-		<div class="row featurette mt-2 multi-column">
-			<div class="col-md-4 order-md-1">
+			<div class="col-md-3 order-md-2">
 				<select id = "bubble-year" onchange="updateBubbles()">
 					<option value="2008">2008</option>
 					<option value="2009">2009</option>
@@ -213,17 +217,14 @@
 				</select>
 				<h4><span id="head-fleet">Fleet</span></h4>
 				<div id ="viz-vessels"></div>
-			</div>
-			<div class="col-md-4 order-md-1">
 				<h4><span id="head-emp">Employment</span></h4>
 				<div id="viz-employment"></div>
 			</div>
-			<div class="col-md-4 order-md-1">
+			<div class="col-md-3 order-md-3">
 				<h4><span id="head-export">Exports</span></h4>
 				<div id="viz-exports"></div>
 			</div>
 		</div>
-
 		<hr class="featurette-divider">
 
 		<div class="row featurette mt-2 text-only">
