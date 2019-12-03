@@ -175,15 +175,10 @@ function createParallel() {
             d3.select(this).classed("highlightPath", false);
         })
         .on("click", function(d) {
+            clearBrush();
             createFishing(d.Country);
             //console.log(d3.selectAll(".brush").call(pcBrush))
-            d3.selectAll(".compareAxis .brush")
-                .each(function (d) {
-                    console.log(d);
-//                    d3.select(this).call(d.brush.move, null);
-                })
         });
-
 
 
     svgCompare.selectAll(".compareAxis").append("g")
@@ -283,6 +278,16 @@ else{
 }
     updateFishers();
 }
+
+function clearBrush(){
+    d3.selectAll(".compareAxis .brush")
+        .each(function (d) {
+            //console.log(d3.select(this));
+            d3.select(this).call(d.brush = d3.brushY().move, null)
+        })
+    createFishing();
+}
+
 
 function updateFishers() {
 // Create scales and axis for fishing
