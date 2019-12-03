@@ -241,7 +241,8 @@ function createParallel() {
         g.style('display', function(d) {
             return actives.every(function(active) {
                 const dim = active.dimension;
-                return active.extent[0] <= y[dim](d[dim]) && y[dim](d[dim]) <= active.extent[1];
+                    //console.log(y[dim](d[dim]))
+                    return active.extent[0] <= y[dim](d[dim]) && y[dim](d[dim]) <= active.extent[1];
             }) ? null : 'none';
         });
     }
@@ -372,8 +373,8 @@ function updateFishers() {
         .transition("fish").duration(50)
         .attr("transform",function (d, i) {
             tempY = yScale(d.Subsidies)+fishScale(d.Landings);
-//            tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));
-            tempX = (colWidth + (i * colWidth) +(i*1));
+            tempX = (colWidth + (i * colWidth) +(i*1)-(fishScale(d.Landings)/8));
+//            tempX = (colWidth + (i * colWidth) +(i*1));
 //            tempX = (colWidth + (i * colWidth) + fishScale(d.Landings));
             //console.log(tempX);
             return "translate(" + tempX + ", " +

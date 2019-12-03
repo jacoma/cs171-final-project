@@ -107,7 +107,7 @@ function wrangleData(){
     exportData.sort(function(a,b) {return b.value - a.value});
 
     //console.log(exportData);
-
+    createLegend()
     drawChart();
 //    drawBubbles(employmentData);
 //    drawVessels(allVesselData);
@@ -136,10 +136,75 @@ function updateBubbles(year, country) {
 
 }
 
-/*
-function drawBubbles(bData) {
-//    console.log(bData);
-    bubbleChart = new BubbleChart("viz-employment", bData, "bubble");
+
+function createLegend() {
+//viz-bubbleLegend
+    var legendData=[{x: "Low", value: 10, subs: 10 },
+        {x: "Med", value: 20, subs: 20 },
+        {x: "High", value: 30, subs: 30 }];
+    svgLegend = d3.select("#viz-bubbleLegend").append("svg")
+        .attr("width", 200)
+        .attr("height", 200);
+    var colorCircles = d3.scaleOrdinal(d3.schemeBlues[3]);
+    var scaleRadius = d3.scaleLog()
+        .domain([
+            d3.min(legendData, function(d) { return +d.value; }),
+            d3.max(legendData, function(d) { return +d.value; })])
+        .range([5,20]);
+
+    var gLegSize = svgLegend.append("g");
+    gLegSize.selectAll(".szLegend")
+        .data(legendData)
+        .enter()
+        .append("svg:circle")
+        .attr("class", "legend")
+        .attr("r", function(d){ return scaleRadius(d.value) })
+        .attr("cx", function(d, i){return 10+ ((30* i) + (i * 55));})
+        .attr("cy", 35)
+        .style("fill", function(d){ return colorCircles(20); })
+    gLegSize.append("text")
+        .attr("x", 5)
+        .attr("y", 15)
+        .style("fill", "black")
+        .text("Circle Size (Volume)")
+        .attr("text-anchor", "start")
+    gLegSize.selectAll(".leg-size")
+        .data(legendData)
+        .enter()
+        .append("text")
+        .attr("class", "pcLegend")
+        .attr("x", function(d, i){return i * 85;})
+        .attr("y", 70)
+        .style("fill", "black")
+        .text(function(d){ return d.x})
+        .attr("text-anchor", "start")
+
+    var gLegColor = svgLegend.append("g");
+    gLegColor.selectAll(".clrLegend")
+        .data(legendData)
+        .enter()
+        .append("svg:circle")
+        .attr("class", "legend")
+        .attr("r", function(d){ return scaleRadius(d.value) })
+        .attr("cx", function(d, i){return 10+ ((30* i) + (i * 55));})
+        .attr("cy", 140)
+        .style("fill", function(d){ return colorCircles(d.subs); })
+    gLegColor.append("text")
+        .attr("x", 5)
+        .attr("y", 110)
+        .style("fill", "black")
+        .text("Circle Color (Subsidies)")
+        .attr("text-anchor", "start")
+    gLegColor.selectAll(".leg-size")
+        .data(legendData)
+        .enter()
+        .append("text")
+        .attr("class", "pcLegend")
+        .attr("x", function(d, i){return i * 85;})
+        .attr("y", 180)
+        .style("fill", "black")
+        .text(function(d){ return d.x})
+        .attr("text-anchor", "start")
+
 
 }
-*/
