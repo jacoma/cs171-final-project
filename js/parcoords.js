@@ -11,7 +11,7 @@ var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016",
 
 var parcoords_tip = d3.tip()
     .attr("class", "d3-tip")
-    .offset([-5, 100])
+    .offset([0, 0])
     .html(function(d){ 
         // console.log("test"); 
         return "test" });
@@ -174,10 +174,14 @@ function createParallel() {
             d3.select(this).classed("comparePath", true);
             d3.select(this).classed("highlightPath", false);
         })
-        .on("click", function(d){
-            createFishing(d.Country)
-            var b=context.select(".brush")
-                b.select("background").remove();
+        .on("click", function(d) {
+            createFishing(d.Country);
+            //console.log(d3.selectAll(".brush").call(pcBrush))
+            d3.selectAll(".compareAxis .brush")
+                .each(function (d) {
+                    console.log(d);
+//                    d3.select(this).call(d.brush.move, null);
+                })
         });
 
 
@@ -185,7 +189,9 @@ function createParallel() {
     svgCompare.selectAll(".compareAxis").append("g")
         .attr("class", "brush")
         .each(function (d) {
+            //console.log(d3.select(this));
             d3.select(this).call(d.brush = d3.brushY()
+            //    .call(d.brush = d3.brushY()
                 .extent([[-10, 0], [10, pcHeight]])
                 //.on("start", brushstart)
                 .on("brush", brush)
@@ -312,8 +318,6 @@ function updateFishers() {
         .data(arrayTops)
         .enter()
         .append("g")
-//        .merge("g")
-//        .transition().duration(200)
         .attr("class", "fisher")
         .attr("transform", "translate(0,20)");
 
@@ -323,7 +327,7 @@ function updateFishers() {
         .attr("y", 0)
         .attr("width", colWidth)
         .attr("height", pcHeight)
-        .style("fill", "none");
+        .style("fill", "white");
 */
     g.append("svg:image")
         // -50 nudges the angler over to the line
@@ -361,7 +365,7 @@ function updateFishers() {
         .attr("y", -20)
 //        .attr('y', function(d){return yScale(d.value);})
         .attr('width', function(d) { return fishScale(d.Landings) })
-        .attr('height', function(d) {return fishScale(d.Landings)/2 })
+        .attr('height', function(d) {return fishScale(d.Landings) })
         .attr("class", "pcFishImg")
         .attr("xlink:href", "img/trout-sillouette.svg")
 //        .transition().delay(1000)
@@ -370,6 +374,7 @@ function updateFishers() {
             tempY = yScale(d.Subsidies)+fishScale(d.Landings);
 //            tempX = (colWidth + (i * colWidth) +(i*3)-(fishScale(d.Landings)/8));
             tempX = (colWidth + (i * colWidth) +(i*1));
+//            tempX = (colWidth + (i * colWidth) + fishScale(d.Landings));
             //console.log(tempX);
             return "translate(" + tempX + ", " +
             tempY +")rotate(-90)"

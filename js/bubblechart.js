@@ -22,9 +22,9 @@ BubbleChart = function(_parentElement, _data, _country){
 
 BubbleChart.prototype.initVis = function() {
     var vis = this;
+    vis.tipFormat = d3.format(",");
 
     vis.margin = {top: 10, right: 10, bottom: 10, left: 10};
-
     vis.width = 200 - vis.margin.left - vis.margin.right,
     vis.height = 200 - vis.margin.top - vis.margin.bottom;
 
@@ -36,7 +36,7 @@ BubbleChart.prototype.initVis = function() {
         .attr("class", "d3-tip")
         .offset([-5, 100])
         //        .html("testing tool tip")
-        .html(function(d){ return d.name + ": " + d.value });
+        .html(function(d){ return d.name + ": " + vis.tipFormat(d.value) });
 
     vis.svg.call(vis.bubble_tip);
 
@@ -51,6 +51,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
     //console.log(data);
     //console.log(vis.displayData.length)
     //console.log(country);
+
 
 
 
