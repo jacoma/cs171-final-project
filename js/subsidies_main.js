@@ -24,7 +24,8 @@ var yScale = d3.scaleLinear()
 	.range([height, 0]);
 //Create x and y axes
 var xAxis = d3.axisBottom()
-	.scale(xScale);
+	.scale(xScale)
+	.ticks(5);
 var yAxis = d3.axisLeft()
 	.scale(yScale);
 //Create axes groups in svg
