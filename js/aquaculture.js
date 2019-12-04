@@ -93,6 +93,10 @@ function updateAquaculture() {
 
     chart.enter()
         .append("path")
+        .attr("class", "pie")
+        .merge(chart)
+        .transition()
+        .duration(1000)
         .attr("fill", function(d) {
             if (d.value > 50000000) {
                 return "#BA529B";
@@ -108,9 +112,6 @@ function updateAquaculture() {
             }
         })
         .attr("d", arc)
-        .merge(chart)
-        .transition()
-        .duration(1000)
         .on("mouseover", function(d, i) {
             aquaTip.html("Country: " + data2[i].Name_En
                          + "<br>Aquaculture: " + d.value + " tons")
