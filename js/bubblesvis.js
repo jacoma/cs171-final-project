@@ -125,7 +125,6 @@ function drawChart() {
         vesselChart = new BubbleChart("viz-vessels", vesselData, selectedCountry);
         exportChart = new BubbleChart("viz-exports", exportData, selectedCountry);
         createLegend();
-
     }
 }
 
