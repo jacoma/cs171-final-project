@@ -84,7 +84,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
                 if (d.key == country) {
                     return .9;
                 } else {
-                    return .3;
+                    return .1;
                 }
             }
         });

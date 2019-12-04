@@ -255,10 +255,10 @@ pcFishTitle {
 
 .viz-hints {
     background-color: lightsteelblue;
-    border: 1px solid steelblue;
+    border: none;
     border-radius: 25px;
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
     color: steelblue;
     font-size: small;
 }
