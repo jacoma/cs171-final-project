@@ -107,7 +107,7 @@ function wrangleData(){
     exportData.sort(function(a,b) {return b.value - a.value});
 
     //console.log(exportData);
-    createLegend()
+
     drawChart();
 //    drawBubbles(employmentData);
 //    drawVessels(allVesselData);
@@ -122,14 +122,14 @@ function drawChart() {
     } else {
         //console.log(selectedCountry);
         empChart = new BubbleChart("viz-employment", employmentData, selectedCountry);
-        vesselChart = new BubbleChart("viz-vessels", vesselData, selectedCountry)
-        exportChart = new BubbleChart("viz-exports", exportData, selectedCountry)
-
+        vesselChart = new BubbleChart("viz-vessels", vesselData, selectedCountry);
+        exportChart = new BubbleChart("viz-exports", exportData, selectedCountry);
+        createLegend();
     }
 }
 
 function updateBubbles(year, country) {
-    selectedCountry = country;
+    selectedCountry = d3.select("#select-box").property("value");
     filterYear = d3.select("#bubble-year").property("value");
     //console.log(filterYear);
     wrangleData();

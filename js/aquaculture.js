@@ -12,8 +12,8 @@ var aquaText = svgAqua.append("g")
     .attr("x", 0)
     .attr("y", -200)
     .attr("text-anchor", "middle")
-    .attr("font-size", "24px")
-    .text("Aquaculture Per Year");
+    .attr("font-size", "20px")
+    .text("Aquaculture Output Per Year");
 
 var data1 = {};
 var data1display = {};
@@ -67,17 +67,19 @@ function updateAquaculture() {
     }
 
     var quantity = [];
+    
+    var count = 0;
 
     for (var i = 0; i < data2.length; i++) {
         quantity.push(data2[i].Total_Quantity);
+        
+        count += quantity[i];
     }
 
     // Pie chart initialization
     var pie = d3.pie();
 
-    var colors = d3.scaleOrdinal(d3.schemeCategory10);
-
-    var outerRadius = aWidth/2;
+    var outerRadius = (aWidth/2)*(count/90000000);
     var innerRadius = 0;
 
     var arc = d3.arc()
@@ -89,15 +91,27 @@ function updateAquaculture() {
     var chart = svgAqua.selectAll(".pie")
         .data(pie(quantity));
 
-    chart.exit().remove();
-
     chart.enter()
         .append("path")
-        .attr("fill", function(d, i) {
-            return colors(i);
+        .attr("class", "pie")
+        .merge(chart)
+        .transition()
+        .duration(1000)
+        .attr("fill", function(d) {
+            if (d.value > 50000000) {
+                return "#BA529B";
+            }
+            else if (d.value > 5000000) {
+                return "#5071A2";
+            }
+            else if (d.value > 500000) {
+                return "#C6E967";
+            }
+            else {
+                return "#F6C46D";
+            }
         })
         .attr("d", arc)
-        .merge(chart)
         .on("mouseover", function(d, i) {
             aquaTip.html("Country: " + data2[i].Name_En
                          + "<br>Aquaculture: " + d.value + " tons")
@@ -106,4 +120,56 @@ function updateAquaculture() {
         .on("mouseout", function(d) {
             aquaTip.hide();
         });
+    
+    chart.exit().remove();
 }
+
+// Create legend
+
+var svgLegend = d3.select("#aqua-legend").append("svg")
+    .attr("width", aWidth)
+    .attr("height", 100);
+
+svgLegend.append("circle")
+    .attr("cx", 30)
+    .attr("cy", 10)
+    .attr("r", 8)
+    .style("fill", "#BA529B");
+
+svgLegend.append("circle")
+    .attr("cx", 30)
+    .attr("cy", 30)
+    .attr("r", 8)
+    .style("fill", "#5071A2");
+
+svgLegend.append("circle")
+    .attr("cx", 30)
+    .attr("cy", 50)
+    .attr("r", 8)
+    .style("fill", "#C6E967");
+
+svgLegend.append("circle")
+    .attr("cx", 30)
+    .attr("cy", 70)
+    .attr("r", 8)
+    .style("fill", "#F6C46D");
+
+svgLegend.append("text")
+    .attr("x", 50)
+    .attr("y", 15)
+    .text(">50,000,000 tons");
+
+svgLegend.append("text")
+    .attr("x", 50)
+    .attr("y", 35)
+    .text(">5,000,000 tons");
+
+svgLegend.append("text")
+    .attr("x", 50)
+    .attr("y", 55)
+    .text(">500,000 tons");
+
+svgLegend.append("text")
+    .attr("x", 50)
+    .attr("y", 75)
+    .text("<500,000 tons");

@@ -34,9 +34,12 @@
 					 There are two contributing factors to this - 1) natural disasters and the effects of climate change on fishing activity and 2) government 
 					 regulations.
 				</p>
+
 			</div>
-			<div class="col-md-12" style="margin-bottom: 0px;">
-				<p><i>Click on a legend item to see top contributing countries for each species. Or click on a country to see their fish landings by species.</i></p>
+			<div class="col-md-12 " style="margin-bottom: 0px;">
+				<div class="viz-hints">
+					<p><i>Click on a legend item to see top contributing countries for each species. Or click on a country to see their fish landings by species.</i></p>
+				</div>
 				<div id = "landings-legend"></div>
 				</div>
 					<div class = "col-md-6">
@@ -72,6 +75,10 @@
 				<div class="row featurette text-center text-only mx-5">
 				<div class="col-md-12">
 				  <h2 class="featurette-heading">What Factors Contribute to Overfishing?</h2>
+					<p class = "lead">
+						We will now take a closer look at some of the data for the top 25 Countries by each of the
+						following factors to get a closer look at some of the emerging trends.
+					</p>
 				</div>
 				<div class = "col-md-3"><h4 >Subsidies</h4><p>Funding a saturated market.</p></div>
 				<div class = "col-md-3"><h4 >Population</h4><p>Feeding a growing world.</p></div>
@@ -148,14 +155,10 @@
 					</blockquote>
 					</div>
 				</div>
-		<div class="row mt-2 multi-column">
-			<div class="col-md-12 order-md-1">
-				<div class="viz-hints">
-					<p><i>You may select a specific country to filter subsidies.
+			<div class="viz-hints row text-center">
+				<p><i>You may select a specific country to filter subsidies.
 					Clicking on any node in the line chart will filter out bubblechart data for that year.</i></p>
-				</div>
 			</div>
-		</div>
 		<div class="row featurette mt-2 multi-column">
 				<div class="col-md-6 order-md-1">
 					<!-- Select box to choose the ranking type -->
@@ -265,7 +268,7 @@
 					<blockquote>
 						<p class = "lead">Today’s worldwide fishing fleet is estimated to be up to
 							<span class = "callout">two-and-a-half times the capacity needed</span> to catch
-							what we actually need. [5]</p>
+							what we actually need.<span class = "references">[5]</span></p>
 					</blockquote>
 
 				</div>
@@ -277,7 +280,9 @@
 		</div>
 
 		<hr class="featurette-divider">
-	
+		<div class="viz-hints row text-center">
+			<p><i>Filter to see how aquaculture has evolved as a trend over the years.</i></p>
+		</div>
 		<div class="row featurette mt-2 multi-column">
 		  <div class="col-md-6 order-md-2">
 			<h2 class="featurette-heading">What can we do to prevent the collapse?</h2>
@@ -291,8 +296,10 @@
 				</ul>
 			</p>
 			<p class = "lead">
-				Aquacultures are XX. These had a 5.8 percent annual growth rate during the period 2001–2016, showing promising 
-				growth compared to other food sources. For the first time aquaculture provides 53 percent of fish for human consumption. [7]
+				Aquaculture is the breeding, rearing, and harvesting of aquatic organisms, mostly those that live in the ocean.
+				<span class="references">[7]</span> Aquaculture output had a 5.8 percent annual growth rate during the period 2001–2016, 
+				showing promising growth compared to other food sources. For the first time aquaculture provides 53 percent of fish 
+				for human consumption.<span class="references">[8]</span>
 
 				There is still hope in many regions. Examination of protected areas worldwide showed that restoration of
 				biodiversity greatly increased productivity and made ecosystems 21 percent less susceptible to environmental
@@ -313,6 +320,7 @@
         			<option value="2017">2017</option>
     			</select>
 			<div id = "aqua-chart"></div>
+			<div id = "aqua-legend"></div>
 		  </div>
 		</div>
 		<div class = "row text-center" id = "end-story">
@@ -338,7 +346,8 @@
 					<li>[4] Science.org <a href="https://www.science.org.au/curious/earth-environment/population-environment">Population and Environment</a></li>
 					<li>[5] WorldWildlife.org<a href="https://www.worldwildlife.org/threats/overfishing">Overfishing</a></li>
 					<li>[6] Our Shared Seas <a href="https://oursharedseas.com/2019-update/fisheries/">Report</a></li>
-					<li>[7] Food and Agriculture Organization of the United Nations <a href = "http://www.fao.org/state-of-fisheries-aquaculture">State of Fisheries and Aquaculture</a></li>
+					<li>[7] National Ocean Service <a href="https://oceanservice.noaa.gov/facts/aquaculture.html">What is aquaculture?</a></li>
+					<li>[8] Food and Agriculture Organization of the United Nations <a href = "http://www.fao.org/state-of-fisheries-aquaculture">State of Fisheries and Aquaculture</a></li>
 				</ul>
 		</div>
 		<div class = "col-md-4">
