@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Smells Fishy</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light story-cover">
+				<div class="col-md-5 p-lg-5 mx-auto my-5" id="story-heading">
+				  <p class="lead font-weight-normal">Smells Fishy!</p>
+					<h1 class="display-4 font-weight-normal">Is this the last century of wild seafood?</h1>
+				</div>
+		</div>
+	<div class = "container story">
+		<div class = "row text-center" id = "start-story">
+			<div class = "col-sm-12">
+				<h2 class="featurette-heading">Fishing is a $362 billion global economy.</h2>
+				<p class = "lead">In the mid-20th century, international efforts to increase the availability and affordability of
+					protein-rich foods led to concerted government efforts to increase fishing capacity. Favorable policies, loans,
+					and subsidies spawned a rapid rise of big industrial fishing operations, which quickly supplanted local boatmen
+					as the world's source of seafood. <span class = "references">[3]</span></p>
+
+				<p class = "lead">
+					The past decade saw a steady-state of global fish landings but experienced a more recent downward trend. Fish landings refers to the quantities (i.e. weight in tonnes) of fish, crustaceans, molluscs and other
+					 aquatic animals, which were brought to a port, regardless of the state in which is landed (i.e. whole, gutted, filleted, etc.).</p>
+				<p class = "lead">
+					 Data from the Organization for Economic Cooperation and Development show a significant decrease in the past two years. Other studies
+					 found similar trends primarily among developed countries. Developing countries exhibited increased landings. <span class = "references">[6]</span>
+					 There are two contributing factors to this - 1) natural disasters and the effects of climate change on fishing activity and 2) government 
+					 regulations.
+				</p>
+			</div>
+			<div class="col-md-12" style="margin-bottom: 0px;">
+				<p><i>Click on a legend item to see top contributing countries for each species. Or click on a country to see their fish landings by species.</i></p>
+				<div id = "landings-legend"></div>
+				</div>
+					<div class = "col-md-6">
+					<div id = "viz-bar">
+					</div>
+				  </div>
+				<div class="col-md-6">
+					  <div id = "viz-area">
+					  </div>
+				</div>
+		</div>
+		<!-- START THE FEATURETTES -->
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette mt-2">
+			<div class="col-md-6 order-md-1">
+				<h2 class="featurette-heading">What is 'Overfishing'?</h2>
+				<p class="lead">The demand is continuing to increase along with the world's population. But the ocean is not
+					able to replenish at the same rate. Put simply, the ocean is being "over fished". <span class = "references">[3]</span></p>
+				<p class = "lead">Every species lost causes a faster unraveling of the overall ecosystem. <span class = "references">[2]</span> This
+					progressive biodiversity loss not only impairs the ability of the ocean to feed a growing human
+					population but also sabotages the stability of marine environments. Conversely,
+					Every species recovered adds significantly to the ecosystem's overall productivity
+					and ability to withstand stresses. </p>
+			</div>
+			<div class="col-md-6 order-md-2" id = "overfish-image">
+			</div>
+		</div>
+
+				<hr class="featurette-divider">
+
+				<div class="row featurette text-center text-only mx-5">
+				<div class="col-md-12">
+				  <h2 class="featurette-heading">What Factors Contribute to Overfishing?</h2>
+				</div>
+				<div class = "col-md-3"><h4 >Subsidies</h4><p>Funding a saturated market.</p></div>
+				<div class = "col-md-3"><h4 >Population</h4><p>Feeding a growing world.</p></div>
+				<div class = "col-md-3"><h4 >Landings</h4><p>Taking more than we need.</p></div>
+				<div class = "col-md-3"><h4>Vessels</h4><p>Growing the fleet of hunters.</p></div>
+				</div>
+		<div class="col-md-12" id="radar-div-row">
+				<p><i>China provides the largest amount of subsidies but ranked 9th for volume of fish landings.</i></p>
+				<select id = "radar-year" onchange="createParallel()">
+						<option value="2008">2008</option>
+						<option value="2009">2009</option>
+						<option value="2010">2010</option>
+						<option value="2011">2011</option>
+						<option value="2012">2012</option>
+						<option value="2013">2013</option>
+						<option value="2014">2014</option>
+						<option value="2015">2015</option>
+						<option value="2016">2016</option>
+						<option value="2017" selected>2017</option>
+					</select>
+		<div id = "viz-parcoords">
+		</div>
+		</div>
+				<hr class="featurette-divider">
+
+				<div class="row featurette mt-2 multi-column">
+						<div class="col-md-6 order-md-2">
+							<h3>A growing global population to feed.</h3>
+							<p class = "lead">The 20th century saw the biggest growth in the world’s population in human history. This increase
+								in population required a similar increase for food production. In the past 50 years, humans consumed
+								more resources than the entire human history before us. This unexamined consumption of goods and resources is
+								just a part of our daily lives - promoted not only by advertisers but also by governments
+								wanting to continually grow their economy. <span class = "references">[4]</span></p>
+						</div>
+						<div class="col-md-6 order-md-1 text-center display-4 font-italic">
+								<blockquote>
+								<p>In the <span class = "callout">past 50 years</span>, humans consumed more resources than the
+									<span class = "callout">entire human history</span> before us.</p>
+							</blockquote>
+							</div>
+					</div>
+			
+				<hr class="featurette-divider">
+
+				<div class="row featurette mt-2 multi-column">
+						<div class="col-md-6 order-md-1">
+							  <h3 class="featurette-heading">An increase in vessels and food availability.</h3>
+							  <p class = "lead">Consumers soon grew accustomed to having access to a wide selection of fish species at
+								  affordable prices. To support this large, profit-seeking commercial fleets were extremely aggressive, scouring the world's oceans and
+									developing ever more sophisticated methods and technologies for finding, extracting, and processing their
+									target species. <span class = "references">[3]</span></p>
+							</div>
+							<div class="col-md-6 order-md-2" id = "vessels-image">
+								</div>
+					</div>
+			
+					<hr class="featurette-divider">
+
+				<div class="row featurette mt-2 multi-column">
+					<div class="col-md-6 order-md-1">
+					  <h2 class="featurette-heading">Governments encouraging fishing through funding.</h2>
+					  <p class="lead">Ocean-faring nations spent $22 billion on harmful subsidies in 2018. This amounts to 63 percent of the total
+						  amount expended to support the global fishing industry. <span class = "references">[1]</span></p>
+					</div>
+					<div class="col-md-6 order-md-2 text-center display-4 font-italic">
+						<blockquote>
+						<p><span class = "callout">Five</span> countries that issue the <span class = "callout">most</span> subsidies represent <span class = "callout">50%</span> of total global handouts. <span style="font-size: 1.5rem;" >[1]</span></p>
+					</blockquote>
+					</div>
+				</div>
+				<div class="viz-hints">
+					<p><i>You may select a specific country to filter subsidies.</i></p>
+					<p><i>Clicking on any node in the line chart will filter out bubblechart data for that year.</i></p></p>
+				</div>
+				<div class="col-md-6 order-md-2">
+					<!-- Select box to choose the ranking type -->
+					<form class="form-inline" >
+						<div class="form-group">
+							<label for="ranking-type">Group by</label>
+							<select class="form-control" id="select-box" onchange=changeSelection() autocomplete="off">
+								<option value="TOT">Total</option>
+								<option value="AUS">Australia</option>
+								<option value="BEL">Belgium</option>
+								<option value="CAN">Canada</option>
+								<option value="DNK">Denmark</option>
+								<option value="FRA">France</option>
+								<option value="DEU">Germany</option>
+								<option value="GRC">Greece</option>
+								<option value="ISL">Iceland</option>
+								<option value="IRL">Ireland</option>
+								<option value="ITA">Italy</option>
+								<option value="JPN">Japan</option>
+								<option value="KOR">Korea</option>
+								<option value="MEX">Mexico</option>
+								<option value="NLD">Netherlands</option>
+								<option value="NZL">New Zealand</option>
+								<option value="NOR">Norway</option>
+								<option value="PRT">Portugal</option>
+								<option value="ESP">Spain</option>
+								<option value="SWE">Sweden</option>
+								<option value="TUR">Turkey</option>
+								<option value="GBR">United Kingdom</option>
+								<option value="USA">United States</option>
+								<option value="CHL">Chile</option>
+								<option value="EST">Estonia</option>
+								<option value="TWN">Taiwan</option>
+								<option value="ARG">Argentina</option>
+								<option value="LVA">Latvia</option>
+								<option value="COL">Colombia</option>
+								<option value="BRA">Brazil</option>
+								<option value="CHN">China</option>
+								<option value="CRI">Costa Rica</option>
+								<option value="IDN">Indonesia</option>
+								<option value="LTU">Lithuania</option>
+								<option value="MYS">Malaysia</option>
+								<option value="PER">Peru</option>
+								<option value="PHL">Philippines</option>
+								<option value="SVN">Slovenia</option>
+								<option value="OECD">OECD</option>
+							</select>
+						</div>
+					</form>
+				  <div id = "viz-subsidies"></div>
+				</div>
+		<div class="row featurette mt-2 multi-column">
+			<div class="col-md-4 order-md-1">
+				<select id = "bubble-year" onchange="updateBubbles()">
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+				</select>
+				<h4><span id="head-fleet">Fleet</span></h4>
+				<div id ="viz-vessels"></div>
+			</div>
+			<div class="col-md-4 order-md-1">
+				<h4><span id="head-emp">Employment</span></h4>
+				<div id="viz-employment"></div>
+			</div>
+			<div class="col-md-4 order-md-1">
+				<h4><span id="head-export">Exports</span></h4>
+				<div id="viz-exports"></div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette mt-2 text-only">
+				<div class="col-md-12">
+				  <h2 class="featurette-heading">Collapse of all seafood fisheries by 2050.</h2>
+				  <p class="lead">Based on current global trends, it is predicted that every species of wild-caught seafood — 
+					  from tuna to sardines—will collapse by the year 2050. "Collapse" was defined as a 90 percent depletion of the species' baseline abundance. <span class = "references">[2]</span></p>
+					<p><i>This is where we stand today, if the trend continues we will see a collapse by 2050.</i></p>
+
+				</div>
+		</div>
+		<div class="row mb-2">
+				<div class="col-md-4 order-md-1">
+				  <div id = "viz-fishStock"></div>
+				</div>
+				<div class="col-md-4 order-md-2">
+					<div id = "viz-statusStock"></div>
+			  </div>
+			<div class="col-md-4 order-md-3">
+				<div id = "viz-statusDecrease"></div>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<div class="col-md-4 order-md-1">
+				<div id = "viz-illegal"></div>
+			</div>
+
+			<div class="col-md-4 order-md-2">
+				<div id = "stat">
+					<blockquote>
+						<p class = "lead">Today’s worldwide fishing fleet is estimated to be up to
+							<span class = "callout">two-and-a-half times the capacity needed</span> to catch
+							what we actually need. [5]</p>
+					</blockquote>
+
+				</div>
+			</div>
+
+			<div class="col-md-4 order-md-3">
+				<div id = "viz-consumption"></div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+	
+		<div class="row featurette mt-2 multi-column">
+		  <div class="col-md-6 order-md-2">
+			<h2 class="featurette-heading">What can we do to prevent the collapse?</h2>
+			<p class="lead">Illegal fishing and unsustainable harvesting still plagues the industry. Efforts are further complicated
+				by an apathetic public who grew accustomed to abundant seafood supplies. However, many scientists say most fish
+				populations could be restored with:
+				<ul class = "lead">
+					<li>aggressive management of fisheries,</li>
+					<li>stricter enforcement of laws governing catches, and</li>
+					<li>increasing use of aquaculture.</li>
+				</ul>
+			</p>
+			<p class = "lead">
+				Aquacultures are XX. These had a 5.8 percent annual growth rate during the period 2001–2016, showing promising 
+				growth compared to other food sources. For the first time aquaculture provides 53 percent of fish for human consumption. [7]
+
+				There is still hope in many regions. Examination of protected areas worldwide showed that restoration of
+				biodiversity greatly increased productivity and made ecosystems 21 percent less susceptible to environmental
+				and human-caused fluctuations. <span class = "references">[2]</span></p>
+				 
+		  </div>
+		  <div class="col-md-6 order-md-1">
+			<select id="aqua-year" onchange="updateAquaculture()">
+        			<option value="2008">2008</option>
+        			<option value="2009">2009</option>
+        			<option value="2010">2010</option>
+        			<option value="2011">2011</option>
+        			<option value="2012">2012</option>
+        			<option value="2013">2013</option>
+        			<option value="2014">2014</option>
+        			<option value="2015">2015</option>
+        			<option value="2016">2016</option>
+        			<option value="2017">2017</option>
+    			</select>
+			<div id = "aqua-chart"></div>
+		  </div>
+		</div>
+		<div class = "row text-center" id = "end-story">
+				<div class = "col-sm-12">
+						<p class = "lead"> We won't see complete recovery in one year, but in many cases species come back more quickly than people anticipate.
+							And where this has been done we see immediate economic benefits. <span class = "references">[2]</span> As a consumer,
+							being more informed about the source of your fish is a great first step.
+						</p>
+				</div>
+		</div>
+
+
+		<div class = "row">
+			<h3>References:</h3>
+		</div>
+		<div class="row references">
+		<div class = "col-md-4">
+				<h4>Story</h4>
+				<ul>
+					<li>[1] National Geographic <a href="https://apple.news/A76imA6f5TiOOjclVFNHvyQ">The sea is running out of fish, despite nations’ pledges to stop it</a></li>
+					<li>[2] Stanford Report 11/2/2006 <a href="https://news.stanford.edu/news/2006/november8/ocean-110806.html">Science Study predicts collapse of all seafood fisheries by 2050</a></li>
+					<li>[3] National Geographic <a href="https://www.nationalgeographic.com/environment/oceans/critical-issues-overfishing/">Reference: Overfishing</a></li>
+					<li>[4] Science.org <a href="https://www.science.org.au/curious/earth-environment/population-environment">Population and Environment</a></li>
+					<li>[5] WorldWildlife.org<a href="https://www.worldwildlife.org/threats/overfishing">Overfishing</a></li>
+					<li>[6] Our Shared Seas <a href="https://oursharedseas.com/2019-update/fisheries/">Report</a></li>
+					<li>[7] Food and Agriculture Organization of the United Nations <a href = "http://www.fao.org/state-of-fisheries-aquaculture">State of Fisheries and Aquaculture</a></li>
+				</ul>
+		</div>
+		<div class = "col-md-4">
+			<h4>Data</h4>
+			<ul>
+				<li>Statistics: <a href="https://seafarms.com.au/overfishing-statistics-everyone-should-know/">seafarms.com</a></li>
+				<li>Illegal Catch Statistic: <a href="https://www.worldwildlife.org/threats/overfishing">WorldWildlife.org</a></li>
+				<li>Consumption Statistics<a href="http://futureoffish.org/resources/snapshots/infographic-impact-overfishing-statistics">The Impact of Overfishing in statistics</a></li>
+				<li>Aquaculture Statistics: <a href="http://www.fao.org/fishery/statistics/global-aquaculture-production/en">FAO Fisheries & Aquaculture</a></li>
+				<li>Global Population (Radar): <a href="https://data.worldbank.org/indicator/sp.pop.totl">World Bank Data</a></li>
+				<li>Employment: <a href="https://stats.oecd.org/Index.aspx?DataSetCode=FISH_FLEET">OECD</a></li>
+				<li>Vessels: <a href="https://stats.oecd.org/Index.aspx?DataSetCode=FISH_FLEET">OECD</a></li>
+				<li>Catch & Subsidies (Radar): <a href="https://stats.oecd.org/Index.aspx?DataSetCode=FISH_FLEET">OECD</a></li>
+				<li>Exports: <a href="https://stats.oecd.org/Index.aspx?DataSetCode=FISH_FLEET">OECD</a></li>
+			</ul>
+		</div>
+		<div class = "col-md-4">
+			<h4>Images</h4>
+			<ul>
+				<li>Angler Icon: <a href="https://www.publicdomainpictures.net/en/view-image.php?image=143103&picture=angler-silhouette">Public Domain Pictures</a></li>
+				<li>Fish Icon: <a href="https://publicdomainvectors.org/en/free-clipart/Trout-fish-silhouette-vector-image/16421.html">publicdomainvectors.org</a></li>
+				<li>Images: <a href="pexels.com">Pexels.com</a> </li>
+
+			</ul>
+		</div>
+		</div>
+		
+	</div>
+	</div>
+
+	<!-- Load JS libraries -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3-tip.js"></script>
+	<script src="js/d3-scale-chromatic.min.js"></script>
+    <script src="js/d3-array.min.js"></script>
+
+
+    <!-- Visualizations -->
+	<script src="js/main.js"></script>
+	<script src="js/vis-stackedArea.js"></script>
+	<script src="js/vis-barcharts.js"></script>
+	<script src="js/bubblesvis.js"></script>
+	<script src="js/bubblechart.js"></script>
+	<!--script src="js/radarvis.js"></script>
+	<script src="js/RadarChart.js"></script-->
+	<script src="js/parcoords.js"></script>
+	<script src="js/statobj.js"></script>
+	<!--script src="js/statistics.js"></script-->
+	<script src="js/subsidies_main.js"></script>
+	<script src="js/aquaculture.js"></script>
+
+</body>
+</html>
