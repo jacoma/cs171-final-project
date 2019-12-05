@@ -9,19 +9,19 @@ var arrayTops = [];
 var fishTitle;
 var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"];
 
-var parcoords_tip = d3.tip()
+var pc_tip = d3.tip()
     .attr("class", "d3-tip")
     .offset([0, 0])
     .html(function(d){ 
-        // console.log("test"); 
-        return "test" });
+        console.log("test");
+        return d; });
 
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight)
     .append("g")
-    .attr("transform", "translate(" + 0 + "," + 20 + ")")
-    .call(parcoords_tip);
+    .attr("transform", "translate(" + 0 + "," + 20 + ")");
+svgCompare.call(pc_tip);
 
 
 var svgFishing = d3.select("#viz-parcoords").append("svg")
@@ -142,6 +142,8 @@ function createParallel() {
         })
             .attr("class", "pcLegend")
         .style("fill", "#0056b3")
+        .style("font-weight", "bold");
+
 
 
     function path(d) {
@@ -164,13 +166,13 @@ function createParallel() {
         //.duration(500)
         .attr("d", path)
         .attr("class", "comparePath")
-        .on("mouseover", function() {
-            parcoords_tip.show;
+        .on("mouseover", function(d) {
+            pc_tip.show;
             d3.select(this).classed("comparePath", false);
             d3.select(this).classed("highlightPath", true);
         })
-        .on("mouseout", function() {
-            parcoords_tip.hide;
+        .on("mouseout", function(d) {
+            pc_tip.hide;
             d3.select(this).classed("comparePath", true);
             d3.select(this).classed("highlightPath", false);
         })
@@ -366,6 +368,7 @@ function updateFishers() {
         .style("stroke", "black")
         .style("stroke-width", "1.5px");
 
+
     g.append("svg:image")
         .attr("x", 0)
         .attr("y", -20)
@@ -400,6 +403,7 @@ function updateFishers() {
             return "Subsidies: " + vText;
         })
         .attr("text-anchor", "start")
+        .style("font-weight", "bold")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             30 +")rotate(-90)" });
 
@@ -417,6 +421,7 @@ function updateFishers() {
             return "Landings: " + vText;
         })
         .attr("text-anchor", "start")
+        .style("font-weight", "bold")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             30 +")rotate(-90)" });
 
@@ -433,6 +438,7 @@ function updateFishers() {
             }
         })
         .attr("text-anchor", "middle")
+        .style("font-weight", "bold")
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             0 +")" });
 
