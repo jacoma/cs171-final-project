@@ -311,6 +311,16 @@ function updateFishers() {
     svgFishing.selectAll("g").remove();
     svgFishing.selectAll(".pcFishTitle").remove();
 
+    // for panning
+    svgFishing.append("rect")
+        .attr("x", 0)
+        .attr("y", 20)
+        .attr("width", pcWidth)
+        .attr("height", pcHeight-30)
+        .style("fill", "white")
+        .style("cursor", "grab");
+
+
     //t = svgFishing.append("g").append("text")
     t = svgFishing.append("text")
         .attr("x", 25)
@@ -327,14 +337,7 @@ function updateFishers() {
         .attr("class", "fisher")
         .attr("transform", "translate(0,20)");
 
-    /*rect for panning
-    g.append("rect")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", colWidth)
-        .attr("height", pcHeight)
-        .style("fill", "white");
-*/
+
     g.append("svg:image")
         // -50 nudges the angler over to the line
         .attr('x', function(d, i){ return colWidth-50 + (i * colWidth); })
@@ -345,15 +348,6 @@ function updateFishers() {
         //        .attr('height', function(d) {return d.Metric/2 })
         .attr("xlink:href", "img/angler-silhuette.jpg")
 
-/*    g.append("line")
-        .attr("x1", function(d, i){ return colWidth + (i * colWidth); })
-        .attr("y1", 20)
-        .attr("x2", function(d, i){ return colWidth + (i * colWidth); })
-        .attr("y2", function(d){return pcHeight;})
-        .attr("class", "line")
-        .style("stroke", "#80bdff;")
-        .style("stroke-width", "1.5px");
-*/
 
     g.append("line")
         .attr("x1", function(d, i){ return colWidth + (i * colWidth); })
@@ -366,6 +360,31 @@ function updateFishers() {
         .style("stroke", "black")
         .style("stroke-width", "1.5px");
 
+/*
+    g.append("defs").selectAll("fishImg")
+        .data(data)
+        .enter()
+        .append("fishImg")
+        .attr("id", function(d) { return "land-" + d["Country"] })
+        .attr("xlink:href", "img/skeleton.jpg")
+        .attr('width', function(d) { return fishScale(d.Landings) })
+        .attr('height', function(d) {return fishScale(d.Landings) });
+
+
+
+    g.append("rect")
+        .attr("x", function(d, i){ return (colWidth + (i * colWidth)); })
+        .attr("y", function(d){return yScale(d.Subsidies);})
+        //        .attr('y', function(d){return yScale(d.value);})
+        .attr('width', function(d) { return fishScale(d.Landings)/2 })
+        .attr('height', function(d) {return fishScale(d.Landings) })
+        .attr("class", "pcFishImg")
+//        .style("fill","url(img/angler-silhuette.jpg)")
+        .attr("xlink:href", "img/trout-sillouette.svg")
+        //        .transition().delay(1000)
+//        .transition("fish").duration(50)
+
+*/
 
     g.append("svg:image")
         .attr("x", 0)
