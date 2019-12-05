@@ -1,4 +1,4 @@
-var pcMargin = {top: 0, right: 0, bottom: 0, left: 0};
+var pcMargin = {top: 10, right: 0, bottom: 10, left: 0};
 
 var pcWidth = 800 - pcMargin.left - pcMargin.right,
     pcHeight = 400 - pcMargin.top - pcMargin.bottom;
@@ -18,9 +18,9 @@ var pc_tip = d3.tip()
 
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
-    .attr("height", pcHeight)
+    .attr("height", pcHeight+5)
     .append("g")
-    .attr("transform", "translate(" + 0 + "," + 20 + ")");
+    .attr("transform", "translate(" + 3 + "," + 18 + ")");
 svgCompare.call(pc_tip);
 
 
@@ -95,10 +95,10 @@ function createParallel() {
     var y = {}
     for (i in dimensions) {
         name = dimensions[i]
-        //this is creating a sale for each of the dimensions
+        //this is creating a scale for each of the dimensions
         if (name == "Country") {
             y[name] = d3.scaleBand()
-                .domain(["Argentina", "Australia", "Canada", "Chile", "China", "Chinese Taipei", "Denmark", "France", "Iceland", "Indonesia", "Italy", "Japan", "Korea", "Mexico", "Netherlands", "New Zealand", "Norway", "Peru", "Portugal", "Spain", "Sweden", "Thailand", "Turkey", "UK", "USA"])
+                .domain(["USA","UK", "Turkey","Thailand", "Sweden", "Spain", "Portugal", "Peru", "Norway", "New Zealand", "Netherlands", "Mexico", "Korea", "Japan", "Italy", "Indonesia", "Iceland", "France", "Denmark", "Chinese Taipei", "China", "Chile", "Canada", "Australia", "Argentina"])
                 .range([pcHeight-20, 0])
         } else {
             y[name] = d3.scaleLinear()
@@ -122,8 +122,6 @@ function createParallel() {
         .enter()
         .append("g")
         .attr("class", "compareAxis")
-        //.style("stroke", "#919190")
-        //        .style("fill", "#919190")
         .attr("transform", function (d) {
             return "translate(" + x(d) + ")";
         })
