@@ -71,14 +71,12 @@ The zoom extent is set to 1 since zooming does not offer any value to the user
  
  ---
  ### Aquaculture Pie Chart
- - **aquaculture.js**
- Creates the aquaculture visualization.
+ - **aquaculture.js** creates the aquaculture visualization.
  Timeseries data for aquaculture production from **aqua_timeseries.csv** is filtered by year to create a pie chart
  showing the percentage of aquaculture production done by each of our top 25 countries in the range of years we have 
  chosen. The **aqua_countries.csv** file matches the country names to their numerical codes, and is used to display 
  country names in the tooltips. The tooltips themselves are created using D3-tip, with the style defined in 
- **style.css**.
- A separate svg defined in aquaculture.js contains the legend for the pie chart.
+ **style.css**. A separate svg defined in aquaculture.js contains the legend for the pie chart.
  
  ---
  ### Archieve or unused files
