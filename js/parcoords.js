@@ -9,19 +9,11 @@ var arrayTops = [];
 var fishTitle;
 var yearArray = ["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"];
 
-var pc_tip = d3.tip()
-    .attr("class", "d3-tip")
-    .offset([0, 0])
-    .html(function(d){ 
-        console.log("test");
-        return d; });
-
 var svgCompare = d3.select("#viz-parcoords").append("svg")
     .attr("width", itemWidth)
     .attr("height", pcHeight+5)
     .append("g")
     .attr("transform", "translate(" + 3 + "," + 18 + ")");
-svgCompare.call(pc_tip);
 
 
 var svgFishing = d3.select("#viz-parcoords").append("svg")
@@ -272,7 +264,7 @@ else{
         }
         arrayTops.push(tempCompare);
     });
-    fishTitle = "Landings for " + country;
+    fishTitle = "Subsides and Landings for " + country;
 
 //    console.log(arrayTops);
 }
@@ -459,13 +451,14 @@ function updateFishers() {
         .attr("transform",function (d, i) { return "translate(" + (colWidth-10 + (i * colWidth)) + ", " +
             0 +")" });
 
+    svgFishing
 
     var zoomed = function() {
         g.attr("transform", d3.event.transform);
     }
 
     svgFishing.call(d3.zoom()
-        .scaleExtent([1 / 2, 12])
+        .scaleExtent([1 / 1, 1])
         .on("zoom", zoomed));
 
 }
