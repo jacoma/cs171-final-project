@@ -147,7 +147,7 @@ BubbleChart.prototype.updateVis = function(data, country) {
             })
             .attr("class", "bubbles")
             .style("fill", function (d) {
-                console.log(d.key,d["subs"], colorCircles(d["subs"]) );
+                // console.log(d.key,d["subs"], colorCircles(d["subs"]) );
                 // console.log(d["subs"]);
                 return colorCircles(d["subs"])
             })

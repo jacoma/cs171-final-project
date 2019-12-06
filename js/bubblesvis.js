@@ -164,7 +164,7 @@ function createLegend() {
         .attr("r", function(d){ return scaleRadius(d.value) })
         .attr("cx", function(d, i){return 10+ ((30* i) + (i * 55));})
         .attr("cy", 35)
-        .style("fill", function(d){ return colorCircles(20); })
+        .style("fill", function(d){ return colorCircles(20000); })
     gLegSize.append("text")
         .attr("x", 5)
         .attr("y", 15)

@@ -114,8 +114,6 @@ function updateVisualization(data) {
 		return d.YEAR;
 	});
 	// Update scales
-	console.log(d3.max(data, function(d) { return d.Value;}));
-	console.log(d3.min(data, function(d) { return d.Value;}));
 	yScale.domain([0, d3.max(data, function(d) { return d.Value;})]);
 	xScale.domain([date_min, date_max]);
 
