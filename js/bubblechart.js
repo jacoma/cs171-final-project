@@ -82,9 +82,9 @@ BubbleChart.prototype.updateVis = function(data, country) {
                 return .8;
             else {
                 if (d.key == country) {
-                    return .9;
+                    return 1;
                 } else {
-                    return .1;
+                    return .2;
                 }
             }
         });
@@ -100,7 +100,9 @@ BubbleChart.prototype.updateVis = function(data, country) {
 //        .style("opacity", 0);
 
 //        var colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
-        var colorCircles = d3.scaleOrdinal(d3.schemeBlues[3]);
+        var colorCircles = d3.scaleLog()
+            .domain([100, 1223639649])
+            .range(d3.schemeBlues[3]);
         var scaleRadius = d3.scaleLog()
             .domain([
                 d3.min(data, function(d) { return +d.value; }),
@@ -145,6 +147,8 @@ BubbleChart.prototype.updateVis = function(data, country) {
             })
             .attr("class", "bubbles")
             .style("fill", function (d) {
+                console.log(d.key,d["subs"], colorCircles(d["subs"]) );
+                // console.log(d["subs"]);
                 return colorCircles(d["subs"])
             })
 //            .style("fill", function (d) {

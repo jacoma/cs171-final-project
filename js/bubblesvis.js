@@ -47,6 +47,7 @@ function wrangleData(){
         temp = {Country: d.Country, Value: parseInt(d[filterYear])}
         subs.push(temp)
     })
+    // console.log("Subs");
     console.log(subs);
     //*************EMPLOYMENT DATA*******************
     tempEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
@@ -139,13 +140,15 @@ function updateBubbles(year, country) {
 
 function createLegend() {
 //viz-bubbleLegend
-    var legendData=[{x: "Low", value: 10, subs: 10 },
-        {x: "Med", value: 20, subs: 20 },
-        {x: "High", value: 30, subs: 30 }];
+    var legendData=[{x: "Low", value: 10, subs: 20 },
+        {x: "Med", value: 20, subs: 20000 },
+        {x: "High", value: 30, subs: 3000000000 }];
     svgLegend = d3.select("#viz-bubbleLegend").append("svg")
         .attr("width", 200)
         .attr("height", 200);
-    var colorCircles = d3.scaleOrdinal(d3.schemeBlues[3]);
+    var colorCircles = d3.scaleLog()
+        .domain([10, 122363949])
+        .range(d3.schemeBlues[3]);
     var scaleRadius = d3.scaleLog()
         .domain([
             d3.min(legendData, function(d) { return +d.value; }),
