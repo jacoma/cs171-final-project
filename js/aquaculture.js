@@ -12,7 +12,7 @@ var aquaText = svgAqua.append("g")
     .attr("x", 0)
     .attr("y", -200)
     .attr("text-anchor", "middle")
-    .attr("font-size", "20px")
+    .attr("font-size", "1.5rem")
     .text("Aquaculture Output Per Year");
 
 var data1 = {};

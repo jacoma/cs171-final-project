@@ -9,16 +9,6 @@
 1,Freshwater,Australia,AUS,2015,1053
 1,Freshwater,Australia,AUS,2016,994.84
 1,Freshwater,Australia,AUS,2017,1161
-1,Freshwater,Chinese Taipei,TWN,2008,0
-1,Freshwater,Chinese Taipei,TWN,2009,25.4504
-1,Freshwater,Chinese Taipei,TWN,2010,0
-1,Freshwater,Chinese Taipei,TWN,2011,0
-1,Freshwater,Chinese Taipei,TWN,2012,0.3643
-1,Freshwater,Chinese Taipei,TWN,2013,69.0861
-1,Freshwater,Chinese Taipei,TWN,2014,3.81576
-1,Freshwater,Chinese Taipei,TWN,2015,0.4527
-1,Freshwater,Chinese Taipei,TWN,2016,6.9831
-1,Freshwater,Chinese Taipei,TWN,2017,0
 1,Freshwater,Denmark,DNK,2008,45.7
 1,Freshwater,Denmark,DNK,2009,45
 1,Freshwater,Denmark,DNK,2010,40.1
@@ -29,6 +19,8 @@
 1,Freshwater,Denmark,DNK,2015,64
 1,Freshwater,Denmark,DNK,2016,49.2
 1,Freshwater,Denmark,DNK,2017,53.1
+1,Freshwater,Spain,ESP,2008,0
+1,Freshwater,Spain,ESP,2016,0.11
 1,Freshwater,France,FRA,2008,0.4
 1,Freshwater,France,FRA,2009,6.3
 1,Freshwater,France,FRA,2010,93.6
@@ -78,8 +70,6 @@
 1,Freshwater,Peru,PER,2014,14448.7949
 1,Freshwater,Peru,PER,2015,5120.699766
 1,Freshwater,Peru,PER,2016,7985.916651
-1,Freshwater,Spain,ESP,2008,0
-1,Freshwater,Spain,ESP,2016,0.11
 1,Freshwater,Sweden,SWE,2008,158.3866
 1,Freshwater,Sweden,SWE,2009,139.0595
 1,Freshwater,Sweden,SWE,2010,116.0114
@@ -90,6 +80,16 @@
 1,Freshwater,Sweden,SWE,2015,197.5897
 1,Freshwater,Sweden,SWE,2016,185.3803
 1,Freshwater,Sweden,SWE,2017,149.152
+1,Freshwater,Chinese Taipei,TWN,2008,0
+1,Freshwater,Chinese Taipei,TWN,2009,25.4504
+1,Freshwater,Chinese Taipei,TWN,2010,0
+1,Freshwater,Chinese Taipei,TWN,2011,0
+1,Freshwater,Chinese Taipei,TWN,2012,0.3643
+1,Freshwater,Chinese Taipei,TWN,2013,69.0861
+1,Freshwater,Chinese Taipei,TWN,2014,3.81576
+1,Freshwater,Chinese Taipei,TWN,2015,0.4527
+1,Freshwater,Chinese Taipei,TWN,2016,6.9831
+1,Freshwater,Chinese Taipei,TWN,2017,0
 1,Freshwater,United States,USA,2008,8543
 1,Freshwater,United States,USA,2009,7914
 1,Freshwater,United States,USA,2010,8392
@@ -119,16 +119,14 @@
 2,Diadromous,Canada,CAN,2014,37470.18469
 2,Diadromous,Canada,CAN,2015,22619.97729
 2,Diadromous,Canada,CAN,2016,25885.70003
-2,Diadromous,Chinese Taipei,TWN,2008,63.639
-2,Diadromous,Chinese Taipei,TWN,2009,83.9584
-2,Diadromous,Chinese Taipei,TWN,2010,105.007
-2,Diadromous,Chinese Taipei,TWN,2011,79.0571
-2,Diadromous,Chinese Taipei,TWN,2012,98.87098
-2,Diadromous,Chinese Taipei,TWN,2013,73.7322
-2,Diadromous,Chinese Taipei,TWN,2014,24.59872
-2,Diadromous,Chinese Taipei,TWN,2015,31.54123
-2,Diadromous,Chinese Taipei,TWN,2016,41.15462
-2,Diadromous,Chinese Taipei,TWN,2017,27.03804
+2,Diadromous,China,CHN,2008,1453961.853
+2,Diadromous,China,CHN,2009,1402212.32
+2,Diadromous,China,CHN,2010,1364731.145
+2,Diadromous,China,CHN,2011,1344016.503
+2,Diadromous,China,CHN,2012,1337852.115
+2,Diadromous,China,CHN,2013,1350000.739
+2,Diadromous,China,CHN,2014,1366021.295
+2,Diadromous,China,CHN,2015,1389433.64
 2,Diadromous,Denmark,DNK,2008,558.1
 2,Diadromous,Denmark,DNK,2009,656.1
 2,Diadromous,Denmark,DNK,2010,613.6
@@ -139,6 +137,16 @@
 2,Diadromous,Denmark,DNK,2015,382
 2,Diadromous,Denmark,DNK,2016,364.1
 2,Diadromous,Denmark,DNK,2017,286.6
+2,Diadromous,Spain,ESP,2008,267
+2,Diadromous,Spain,ESP,2009,268.8
+2,Diadromous,Spain,ESP,2010,296.8
+2,Diadromous,Spain,ESP,2011,243.88
+2,Diadromous,Spain,ESP,2012,240.49
+2,Diadromous,Spain,ESP,2013,336.75
+2,Diadromous,Spain,ESP,2014,355.7
+2,Diadromous,Spain,ESP,2015,270.55
+2,Diadromous,Spain,ESP,2016,327.9
+2,Diadromous,Spain,ESP,2017,247.11
 2,Diadromous,France,FRA,2008,155.2
 2,Diadromous,France,FRA,2009,441.4
 2,Diadromous,France,FRA,2010,453.5
@@ -149,6 +157,19 @@
 2,Diadromous,France,FRA,2015,400.6
 2,Diadromous,France,FRA,2016,421.6
 2,Diadromous,France,FRA,2017,429.8
+2,Diadromous,United Kingdom,GBR,2008,13.1422
+2,Diadromous,United Kingdom,GBR,2009,24.1827
+2,Diadromous,United Kingdom,GBR,2010,7.8262
+2,Diadromous,United Kingdom,GBR,2011,16.0072
+2,Diadromous,United Kingdom,GBR,2012,12.1777
+2,Diadromous,United Kingdom,GBR,2013,12.3099
+2,Diadromous,United Kingdom,GBR,2014,8.669
+2,Diadromous,United Kingdom,GBR,2015,3.4842
+2,Diadromous,United Kingdom,GBR,2016,7.5766
+2,Diadromous,United Kingdom,GBR,2017,7.7461
+2,Diadromous,Ireland,IRL,2008,0.03
+2,Diadromous,Ireland,IRL,2012,186.39
+2,Diadromous,Ireland,IRL,2013,29.7
 2,Diadromous,Iceland,ISL,2012,0.1
 2,Diadromous,Iceland,ISL,2013,0
 2,Diadromous,Iceland,ISL,2014,0.34
@@ -220,16 +241,6 @@
 2,Diadromous,Portugal,PRT,2015,0.7
 2,Diadromous,Portugal,PRT,2016,0.5
 2,Diadromous,Portugal,PRT,2017,0.3
-2,Diadromous,Spain,ESP,2008,267
-2,Diadromous,Spain,ESP,2009,268.8
-2,Diadromous,Spain,ESP,2010,296.8
-2,Diadromous,Spain,ESP,2011,243.88
-2,Diadromous,Spain,ESP,2012,240.49
-2,Diadromous,Spain,ESP,2013,336.75
-2,Diadromous,Spain,ESP,2014,355.7
-2,Diadromous,Spain,ESP,2015,270.55
-2,Diadromous,Spain,ESP,2016,327.9
-2,Diadromous,Spain,ESP,2017,247.11
 2,Diadromous,Sweden,SWE,2008,1623.3753
 2,Diadromous,Sweden,SWE,2009,1902.2718
 2,Diadromous,Sweden,SWE,2010,1901.9675
@@ -257,16 +268,16 @@
 2,Diadromous,Turkey,TUR,2015,2034.7
 2,Diadromous,Turkey,TUR,2016,1642
 2,Diadromous,Turkey,TUR,2017,1576.2
-2,Diadromous,United Kingdom,GBR,2008,13.1422
-2,Diadromous,United Kingdom,GBR,2009,24.1827
-2,Diadromous,United Kingdom,GBR,2010,7.8262
-2,Diadromous,United Kingdom,GBR,2011,16.0072
-2,Diadromous,United Kingdom,GBR,2012,12.1777
-2,Diadromous,United Kingdom,GBR,2013,12.3099
-2,Diadromous,United Kingdom,GBR,2014,8.669
-2,Diadromous,United Kingdom,GBR,2015,3.4842
-2,Diadromous,United Kingdom,GBR,2016,7.5766
-2,Diadromous,United Kingdom,GBR,2017,7.7461
+2,Diadromous,Chinese Taipei,TWN,2008,63.639
+2,Diadromous,Chinese Taipei,TWN,2009,83.9584
+2,Diadromous,Chinese Taipei,TWN,2010,105.007
+2,Diadromous,Chinese Taipei,TWN,2011,79.0571
+2,Diadromous,Chinese Taipei,TWN,2012,98.87098
+2,Diadromous,Chinese Taipei,TWN,2013,73.7322
+2,Diadromous,Chinese Taipei,TWN,2014,24.59872
+2,Diadromous,Chinese Taipei,TWN,2015,31.54123
+2,Diadromous,Chinese Taipei,TWN,2016,41.15462
+2,Diadromous,Chinese Taipei,TWN,2017,27.03804
 2,Diadromous,United States,USA,2008,311920
 2,Diadromous,United States,USA,2009,333138
 2,Diadromous,United States,USA,2010,370862
@@ -314,16 +325,14 @@
 3,Marine,Chile,CHL,2013,1558153
 3,Marine,Chile,CHL,2014,1886467
 3,Marine,Chile,CHL,2015,1466770
-3,Marine,Chinese Taipei,TWN,2008,743602.49
-3,Marine,Chinese Taipei,TWN,2009,705213.5676
-3,Marine,Chinese Taipei,TWN,2010,758328.8598
-3,Marine,Chinese Taipei,TWN,2011,752019.47
-3,Marine,Chinese Taipei,TWN,2012,771995.942
-3,Marine,Chinese Taipei,TWN,2013,764560.4549
-3,Marine,Chinese Taipei,TWN,2014,825763.9078
-3,Marine,Chinese Taipei,TWN,2015,696870.3012
-3,Marine,Chinese Taipei,TWN,2016,702914.9881
-3,Marine,Chinese Taipei,TWN,2017,641100.8179
+3,Marine,China,CHN,2008,7309648.752
+3,Marine,China,CHN,2009,7570189.257
+3,Marine,China,CHN,2010,7822635.48
+3,Marine,China,CHN,2011,8171293.417
+3,Marine,China,CHN,2012,8229637.661
+3,Marine,China,CHN,2013,8249081.505
+3,Marine,China,CHN,2014,8684465.306
+3,Marine,China,CHN,2015,8952429.621
 3,Marine,Denmark,DNK,2008,638222
 3,Marine,Denmark,DNK,2009,721476.6
 3,Marine,Denmark,DNK,2010,783424.2
@@ -334,6 +343,16 @@
 3,Marine,Denmark,DNK,2015,796389.7
 3,Marine,Denmark,DNK,2016,599995.8
 3,Marine,Denmark,DNK,2017,832612.9
+3,Marine,Spain,ESP,2008,825242
+3,Marine,Spain,ESP,2009,635238.3
+3,Marine,Spain,ESP,2010,695389.8
+3,Marine,Spain,ESP,2011,658166.74
+3,Marine,Spain,ESP,2012,662761.44
+3,Marine,Spain,ESP,2013,793157.54
+3,Marine,Spain,ESP,2014,995661.7
+3,Marine,Spain,ESP,2015,772232.77
+3,Marine,Spain,ESP,2016,746483.72
+3,Marine,Spain,ESP,2017,790221.28
 3,Marine,France,FRA,2008,204718.6
 3,Marine,France,FRA,2009,146379.8
 3,Marine,France,FRA,2010,177044.7
@@ -344,6 +363,26 @@
 3,Marine,France,FRA,2015,191447.35
 3,Marine,France,FRA,2016,261105.6
 3,Marine,France,FRA,2017,256209.85
+3,Marine,United Kingdom,GBR,2008,437699.8855
+3,Marine,United Kingdom,GBR,2009,446900.0968
+3,Marine,United Kingdom,GBR,2010,454631.0399
+3,Marine,United Kingdom,GBR,2011,441014.0531
+3,Marine,United Kingdom,GBR,2012,463616.67
+3,Marine,United Kingdom,GBR,2013,471644.6074
+3,Marine,United Kingdom,GBR,2014,606976.4281
+3,Marine,United Kingdom,GBR,2015,559351.8131
+3,Marine,United Kingdom,GBR,2016,548632.8093
+3,Marine,United Kingdom,GBR,2017,578429.6849
+3,Marine,Ireland,IRL,2008,179326.1345
+3,Marine,Ireland,IRL,2009,244741.79
+3,Marine,Ireland,IRL,2010,292111.5877
+3,Marine,Ireland,IRL,2011,180870.0714
+3,Marine,Ireland,IRL,2012,198962.13
+3,Marine,Ireland,IRL,2013,218797.8826
+3,Marine,Ireland,IRL,2014,249741.1363
+3,Marine,Ireland,IRL,2015,211042.6181
+3,Marine,Ireland,IRL,2016,208812.4821
+3,Marine,Ireland,IRL,2017,221728.99
 3,Marine,Iceland,ISL,2012,1322092.565
 3,Marine,Iceland,ISL,2013,1342442.851
 3,Marine,Iceland,ISL,2014,1067569.922
@@ -400,16 +439,6 @@
 3,Marine,Netherlands,NLD,2015,302848.501
 3,Marine,Netherlands,NLD,2016,338093.444
 3,Marine,Netherlands,NLD,2017,411295.942
-3,Marine,New Zealand,NZL,2008,371837.984
-3,Marine,New Zealand,NZL,2009,375420.969
-3,Marine,New Zealand,NZL,2010,385307.058
-3,Marine,New Zealand,NZL,2011,381333.312
-3,Marine,New Zealand,NZL,2012,390074.297
-3,Marine,New Zealand,NZL,2013,400037.586
-3,Marine,New Zealand,NZL,2014,408429.833
-3,Marine,New Zealand,NZL,2015,409873.635
-3,Marine,New Zealand,NZL,2016,365624.804
-3,Marine,New Zealand,NZL,2017,390454.104
 3,Marine,Norway,NOR,2008,2167564.202
 3,Marine,Norway,NOR,2009,2276113.947
 3,Marine,Norway,NOR,2010,2341878.055
@@ -420,6 +449,16 @@
 3,Marine,Norway,NOR,2015,1950976.964
 3,Marine,Norway,NOR,2016,1675408.409
 3,Marine,Norway,NOR,2017,2021962.042
+3,Marine,New Zealand,NZL,2008,371837.984
+3,Marine,New Zealand,NZL,2009,375420.969
+3,Marine,New Zealand,NZL,2010,385307.058
+3,Marine,New Zealand,NZL,2011,381333.312
+3,Marine,New Zealand,NZL,2012,390074.297
+3,Marine,New Zealand,NZL,2013,400037.586
+3,Marine,New Zealand,NZL,2014,408429.833
+3,Marine,New Zealand,NZL,2015,409873.635
+3,Marine,New Zealand,NZL,2016,365624.804
+3,Marine,New Zealand,NZL,2017,390454.104
 3,Marine,Peru,PER,2008,6740157.365
 3,Marine,Peru,PER,2009,6368237.301
 3,Marine,Peru,PER,2010,3730331.738
@@ -439,16 +478,6 @@
 3,Marine,Portugal,PRT,2015,166821.7
 3,Marine,Portugal,PRT,2016,166972.465
 3,Marine,Portugal,PRT,2017,156826.5
-3,Marine,Spain,ESP,2008,825242
-3,Marine,Spain,ESP,2009,635238.3
-3,Marine,Spain,ESP,2010,695389.8
-3,Marine,Spain,ESP,2011,658166.74
-3,Marine,Spain,ESP,2012,662761.44
-3,Marine,Spain,ESP,2013,793157.54
-3,Marine,Spain,ESP,2014,995661.7
-3,Marine,Spain,ESP,2015,772232.77
-3,Marine,Spain,ESP,2016,746483.72
-3,Marine,Spain,ESP,2017,790221.28
 3,Marine,Sweden,SWE,2008,216878.8361
 3,Marine,Sweden,SWE,2009,194953.7806
 3,Marine,Sweden,SWE,2010,200076.8485
@@ -476,16 +505,16 @@
 3,Marine,Turkey,TUR,2015,343730.3
 3,Marine,Turkey,TUR,2016,262219
 3,Marine,Turkey,TUR,2017,268100.2
-3,Marine,United Kingdom,GBR,2008,437699.8855
-3,Marine,United Kingdom,GBR,2009,446900.0968
-3,Marine,United Kingdom,GBR,2010,454631.0399
-3,Marine,United Kingdom,GBR,2011,441014.0531
-3,Marine,United Kingdom,GBR,2012,463616.67
-3,Marine,United Kingdom,GBR,2013,471644.6074
-3,Marine,United Kingdom,GBR,2014,606976.4281
-3,Marine,United Kingdom,GBR,2015,559351.8131
-3,Marine,United Kingdom,GBR,2016,548632.8093
-3,Marine,United Kingdom,GBR,2017,578429.6849
+3,Marine,Chinese Taipei,TWN,2008,743602.49
+3,Marine,Chinese Taipei,TWN,2009,705213.5676
+3,Marine,Chinese Taipei,TWN,2010,758328.8598
+3,Marine,Chinese Taipei,TWN,2011,752019.47
+3,Marine,Chinese Taipei,TWN,2012,771995.942
+3,Marine,Chinese Taipei,TWN,2013,764560.4549
+3,Marine,Chinese Taipei,TWN,2014,825763.9078
+3,Marine,Chinese Taipei,TWN,2015,696870.3012
+3,Marine,Chinese Taipei,TWN,2016,702914.9881
+3,Marine,Chinese Taipei,TWN,2017,641100.8179
 3,Marine,United States,USA,2008,3090394
 3,Marine,United States,USA,2009,2833316
 3,Marine,United States,USA,2010,2882708
@@ -533,16 +562,14 @@
 4,Crustaceans,Chile,CHL,2013,37785
 4,Crustaceans,Chile,CHL,2014,39827
 4,Crustaceans,Chile,CHL,2015,35829
-4,Crustaceans,Chinese Taipei,TWN,2008,18156.99415
-4,Crustaceans,Chinese Taipei,TWN,2009,20928.54386
-4,Crustaceans,Chinese Taipei,TWN,2010,28793.98207
-4,Crustaceans,Chinese Taipei,TWN,2011,30464.85692
-4,Crustaceans,Chinese Taipei,TWN,2012,27894.95361
-4,Crustaceans,Chinese Taipei,TWN,2013,27905.03974
-4,Crustaceans,Chinese Taipei,TWN,2014,28895.01222
-4,Crustaceans,Chinese Taipei,TWN,2015,16818.76094
-4,Crustaceans,Chinese Taipei,TWN,2016,11215.10016
-4,Crustaceans,Chinese Taipei,TWN,2017,10051.1683
+4,Crustaceans,China,CHN,2008,1934901.069
+4,Crustaceans,China,CHN,2009,2025178.764
+4,Crustaceans,China,CHN,2010,2121426.615
+4,Crustaceans,China,CHN,2011,2201263.897
+4,Crustaceans,China,CHN,2012,2338804.141
+4,Crustaceans,China,CHN,2013,2423051.236
+4,Crustaceans,China,CHN,2014,2557492.298
+4,Crustaceans,China,CHN,2015,2597194.861
 4,Crustaceans,Denmark,DNK,2008,14777.2
 4,Crustaceans,Denmark,DNK,2009,15989.9
 4,Crustaceans,Denmark,DNK,2010,14728.9
@@ -553,6 +580,16 @@
 4,Crustaceans,Denmark,DNK,2015,10840.8
 4,Crustaceans,Denmark,DNK,2016,12146.7
 4,Crustaceans,Denmark,DNK,2017,12176.4
+4,Crustaceans,Spain,ESP,2008,15410
+4,Crustaceans,Spain,ESP,2009,11651.6
+4,Crustaceans,Spain,ESP,2010,9440.3
+4,Crustaceans,Spain,ESP,2011,10349.12
+4,Crustaceans,Spain,ESP,2012,6834.56
+4,Crustaceans,Spain,ESP,2013,8974.23
+4,Crustaceans,Spain,ESP,2014,13905.9
+4,Crustaceans,Spain,ESP,2015,11212.59
+4,Crustaceans,Spain,ESP,2016,10413.63
+4,Crustaceans,Spain,ESP,2017,12805.23
 4,Crustaceans,France,FRA,2008,13743.4
 4,Crustaceans,France,FRA,2009,11769.3
 4,Crustaceans,France,FRA,2010,11270.1
@@ -563,6 +600,26 @@
 4,Crustaceans,France,FRA,2015,14943.6
 4,Crustaceans,France,FRA,2016,16075.7
 4,Crustaceans,France,FRA,2017,15994.61
+4,Crustaceans,United Kingdom,GBR,2008,74810.0315
+4,Crustaceans,United Kingdom,GBR,2009,73937.6449
+4,Crustaceans,United Kingdom,GBR,2010,74118.6292
+4,Crustaceans,United Kingdom,GBR,2011,69086.1623
+4,Crustaceans,United Kingdom,GBR,2012,70526.3889
+4,Crustaceans,United Kingdom,GBR,2013,64697.049
+4,Crustaceans,United Kingdom,GBR,2014,70705.4677
+4,Crustaceans,United Kingdom,GBR,2015,61899.8506
+4,Crustaceans,United Kingdom,GBR,2016,71963.9682
+4,Crustaceans,United Kingdom,GBR,2017,70787.9111
+4,Crustaceans,Ireland,IRL,2008,17389.54166
+4,Crustaceans,Ireland,IRL,2009,14160.39534
+4,Crustaceans,Ireland,IRL,2010,17468.74833
+4,Crustaceans,Ireland,IRL,2011,15252.09264
+4,Crustaceans,Ireland,IRL,2012,18342.45637
+4,Crustaceans,Ireland,IRL,2013,16023.94127
+4,Crustaceans,Ireland,IRL,2014,18341.75353
+4,Crustaceans,Ireland,IRL,2015,16470.41586
+4,Crustaceans,Ireland,IRL,2016,22410.13241
+4,Crustaceans,Ireland,IRL,2017,14903.22
 4,Crustaceans,Iceland,ISL,2012,12049.2
 4,Crustaceans,Iceland,ISL,2013,12710.13
 4,Crustaceans,Iceland,ISL,2014,9210.26
@@ -619,16 +676,6 @@
 4,Crustaceans,Netherlands,NLD,2015,20709.443
 4,Crustaceans,Netherlands,NLD,2016,20868.95
 4,Crustaceans,Netherlands,NLD,2017,16280.676
-4,Crustaceans,New Zealand,NZL,2008,3591.527
-4,Crustaceans,New Zealand,NZL,2009,3323.234
-4,Crustaceans,New Zealand,NZL,2010,3894.972
-4,Crustaceans,New Zealand,NZL,2011,3709.723
-4,Crustaceans,New Zealand,NZL,2012,3623.208
-4,Crustaceans,New Zealand,NZL,2013,3800.919
-4,Crustaceans,New Zealand,NZL,2014,3849.714
-4,Crustaceans,New Zealand,NZL,2015,3965.375
-4,Crustaceans,New Zealand,NZL,2016,4194.117
-4,Crustaceans,New Zealand,NZL,2017,4170.321
 4,Crustaceans,Norway,NOR,2008,51062.1934
 4,Crustaceans,Norway,NOR,2009,44795.5648
 4,Crustaceans,Norway,NOR,2010,47202.242
@@ -639,6 +686,16 @@
 4,Crustaceans,Norway,NOR,2015,60307.0031
 4,Crustaceans,Norway,NOR,2016,58583.5805
 4,Crustaceans,Norway,NOR,2017,50795.797
+4,Crustaceans,New Zealand,NZL,2008,3591.527
+4,Crustaceans,New Zealand,NZL,2009,3323.234
+4,Crustaceans,New Zealand,NZL,2010,3894.972
+4,Crustaceans,New Zealand,NZL,2011,3709.723
+4,Crustaceans,New Zealand,NZL,2012,3623.208
+4,Crustaceans,New Zealand,NZL,2013,3800.919
+4,Crustaceans,New Zealand,NZL,2014,3849.714
+4,Crustaceans,New Zealand,NZL,2015,3965.375
+4,Crustaceans,New Zealand,NZL,2016,4194.117
+4,Crustaceans,New Zealand,NZL,2017,4170.321
 4,Crustaceans,Peru,PER,2008,17484.13333
 4,Crustaceans,Peru,PER,2009,19441.23174
 4,Crustaceans,Peru,PER,2010,21935.48136
@@ -658,16 +715,6 @@
 4,Crustaceans,Portugal,PRT,2015,1193.4
 4,Crustaceans,Portugal,PRT,2016,1325.2
 4,Crustaceans,Portugal,PRT,2017,1365.9
-4,Crustaceans,Spain,ESP,2008,15410
-4,Crustaceans,Spain,ESP,2009,11651.6
-4,Crustaceans,Spain,ESP,2010,9440.3
-4,Crustaceans,Spain,ESP,2011,10349.12
-4,Crustaceans,Spain,ESP,2012,6834.56
-4,Crustaceans,Spain,ESP,2013,8974.23
-4,Crustaceans,Spain,ESP,2014,13905.9
-4,Crustaceans,Spain,ESP,2015,11212.59
-4,Crustaceans,Spain,ESP,2016,10413.63
-4,Crustaceans,Spain,ESP,2017,12805.23
 4,Crustaceans,Sweden,SWE,2008,4082.1955
 4,Crustaceans,Sweden,SWE,2009,3816.8765
 4,Crustaceans,Sweden,SWE,2010,3141.1302
@@ -695,16 +742,16 @@
 4,Crustaceans,Turkey,TUR,2015,4008.1
 4,Crustaceans,Turkey,TUR,2016,4511.6
 4,Crustaceans,Turkey,TUR,2017,4748.6
-4,Crustaceans,United Kingdom,GBR,2008,74810.0315
-4,Crustaceans,United Kingdom,GBR,2009,73937.6449
-4,Crustaceans,United Kingdom,GBR,2010,74118.6292
-4,Crustaceans,United Kingdom,GBR,2011,69086.1623
-4,Crustaceans,United Kingdom,GBR,2012,70526.3889
-4,Crustaceans,United Kingdom,GBR,2013,64697.049
-4,Crustaceans,United Kingdom,GBR,2014,70705.4677
-4,Crustaceans,United Kingdom,GBR,2015,61899.8506
-4,Crustaceans,United Kingdom,GBR,2016,71963.9682
-4,Crustaceans,United Kingdom,GBR,2017,70787.9111
+4,Crustaceans,Chinese Taipei,TWN,2008,18156.99415
+4,Crustaceans,Chinese Taipei,TWN,2009,20928.54386
+4,Crustaceans,Chinese Taipei,TWN,2010,28793.98207
+4,Crustaceans,Chinese Taipei,TWN,2011,30464.85692
+4,Crustaceans,Chinese Taipei,TWN,2012,27894.95361
+4,Crustaceans,Chinese Taipei,TWN,2013,27905.03974
+4,Crustaceans,Chinese Taipei,TWN,2014,28895.01222
+4,Crustaceans,Chinese Taipei,TWN,2015,16818.76094
+4,Crustaceans,Chinese Taipei,TWN,2016,11215.10016
+4,Crustaceans,Chinese Taipei,TWN,2017,10051.1683
 4,Crustaceans,United States,USA,2008,316207
 4,Crustaceans,United States,USA,2009,354957
 4,Crustaceans,United States,USA,2010,347090
@@ -752,16 +799,14 @@
 5,Molluscs,Chile,CHL,2013,143429
 5,Molluscs,Chile,CHL,2014,214888
 5,Molluscs,Chile,CHL,2015,184411
-5,Molluscs,Chinese Taipei,TWN,2008,247494.1293
-5,Molluscs,Chinese Taipei,TWN,2009,76020.46118
-5,Molluscs,Chinese Taipei,TWN,2010,66724.42569
-5,Molluscs,Chinese Taipei,TWN,2011,111150.504
-5,Molluscs,Chinese Taipei,TWN,2012,107828.3769
-5,Molluscs,Chinese Taipei,TWN,2013,132399.3798
-5,Molluscs,Chinese Taipei,TWN,2014,213542.2354
-5,Molluscs,Chinese Taipei,TWN,2015,271703.7134
-5,Molluscs,Chinese Taipei,TWN,2016,34140.32304
-5,Molluscs,Chinese Taipei,TWN,2017,90477.35659
+5,Molluscs,China,CHN,2008,775685.2575
+5,Molluscs,China,CHN,2009,823299.3783
+5,Molluscs,China,CHN,2010,807327.7367
+5,Molluscs,China,CHN,2011,788200.3971
+5,Molluscs,China,CHN,2012,772572.0661
+5,Molluscs,China,CHN,2013,747165.2453
+5,Molluscs,China,CHN,2014,750299.2412
+5,Molluscs,China,CHN,2015,758333.4814
 5,Molluscs,Denmark,DNK,2008,41257.6
 5,Molluscs,Denmark,DNK,2009,40749.6
 5,Molluscs,Denmark,DNK,2010,29173.9
@@ -772,6 +817,16 @@
 5,Molluscs,Denmark,DNK,2015,53568.9
 5,Molluscs,Denmark,DNK,2016,49485.2
 5,Molluscs,Denmark,DNK,2017,50251.6
+5,Molluscs,Spain,ESP,2008,49655
+5,Molluscs,Spain,ESP,2009,56276.1
+5,Molluscs,Spain,ESP,2010,49525.7
+5,Molluscs,Spain,ESP,2011,42913.66
+5,Molluscs,Spain,ESP,2012,61852.09
+5,Molluscs,Spain,ESP,2013,64002.81
+5,Molluscs,Spain,ESP,2014,66395.3
+5,Molluscs,Spain,ESP,2015,52141.76
+5,Molluscs,Spain,ESP,2016,38034.74
+5,Molluscs,Spain,ESP,2017,43642.45
 5,Molluscs,France,FRA,2008,58052.8
 5,Molluscs,France,FRA,2009,36777.1
 5,Molluscs,France,FRA,2010,43461
@@ -782,6 +837,26 @@
 5,Molluscs,France,FRA,2015,64985.5
 5,Molluscs,France,FRA,2016,64256.9
 5,Molluscs,France,FRA,2017,69934.4
+5,Molluscs,United Kingdom,GBR,2008,74940.9159
+5,Molluscs,United Kingdom,GBR,2009,63344.6199
+5,Molluscs,United Kingdom,GBR,2010,80088.1342
+5,Molluscs,United Kingdom,GBR,2011,92664.0845
+5,Molluscs,United Kingdom,GBR,2012,100725.8606
+5,Molluscs,United Kingdom,GBR,2013,91947.5449
+5,Molluscs,United Kingdom,GBR,2014,81259.786
+5,Molluscs,United Kingdom,GBR,2015,87742.596
+5,Molluscs,United Kingdom,GBR,2016,79363.1072
+5,Molluscs,United Kingdom,GBR,2017,73483.3534
+5,Molluscs,Ireland,IRL,2008,5216.26135
+5,Molluscs,Ireland,IRL,2009,23203.3683
+5,Molluscs,Ireland,IRL,2010,8474.69115
+5,Molluscs,Ireland,IRL,2011,9949.17675
+5,Molluscs,Ireland,IRL,2012,7933.0873
+5,Molluscs,Ireland,IRL,2013,7783.11438
+5,Molluscs,Ireland,IRL,2014,7613.39383
+5,Molluscs,Ireland,IRL,2015,6514.48852
+5,Molluscs,Ireland,IRL,2016,10603.80107
+5,Molluscs,Ireland,IRL,2017,8829.61
 5,Molluscs,Iceland,ISL,2012,504
 5,Molluscs,Iceland,ISL,2013,238
 5,Molluscs,Iceland,ISL,2014,497
@@ -838,16 +913,6 @@
 5,Molluscs,Netherlands,NLD,2015,6881.635
 5,Molluscs,Netherlands,NLD,2016,7696.964
 5,Molluscs,Netherlands,NLD,2017,14439.858
-5,Molluscs,New Zealand,NZL,2008,60818.99851
-5,Molluscs,New Zealand,NZL,2009,51186.17282
-5,Molluscs,New Zealand,NZL,2010,37449.86567
-5,Molluscs,New Zealand,NZL,2011,41764.36347
-5,Molluscs,New Zealand,NZL,2012,39999.66961
-5,Molluscs,New Zealand,NZL,2013,29369.00022
-5,Molluscs,New Zealand,NZL,2014,19340.96061
-5,Molluscs,New Zealand,NZL,2015,20679.3798
-5,Molluscs,New Zealand,NZL,2016,47803.5989
-5,Molluscs,New Zealand,NZL,2017,23085.62769
 5,Molluscs,Norway,NOR,2008,991.4572
 5,Molluscs,Norway,NOR,2009,905.2679
 5,Molluscs,Norway,NOR,2010,847.481
@@ -858,6 +923,16 @@
 5,Molluscs,Norway,NOR,2015,690.6148
 5,Molluscs,Norway,NOR,2016,1049.4628
 5,Molluscs,Norway,NOR,2017,1110.5394
+5,Molluscs,New Zealand,NZL,2008,60818.99851
+5,Molluscs,New Zealand,NZL,2009,51186.17282
+5,Molluscs,New Zealand,NZL,2010,37449.86567
+5,Molluscs,New Zealand,NZL,2011,41764.36347
+5,Molluscs,New Zealand,NZL,2012,39999.66961
+5,Molluscs,New Zealand,NZL,2013,29369.00022
+5,Molluscs,New Zealand,NZL,2014,19340.96061
+5,Molluscs,New Zealand,NZL,2015,20679.3798
+5,Molluscs,New Zealand,NZL,2016,47803.5989
+5,Molluscs,New Zealand,NZL,2017,23085.62769
 5,Molluscs,Peru,PER,2008,584571.0629
 5,Molluscs,Peru,PER,2009,470286.8844
 5,Molluscs,Peru,PER,2010,457098.7876
@@ -877,16 +952,6 @@
 5,Molluscs,Portugal,PRT,2015,15258.5
 5,Molluscs,Portugal,PRT,2016,19292.1
 5,Molluscs,Portugal,PRT,2017,17132.5
-5,Molluscs,Spain,ESP,2008,49655
-5,Molluscs,Spain,ESP,2009,56276.1
-5,Molluscs,Spain,ESP,2010,49525.7
-5,Molluscs,Spain,ESP,2011,42913.66
-5,Molluscs,Spain,ESP,2012,61852.09
-5,Molluscs,Spain,ESP,2013,64002.81
-5,Molluscs,Spain,ESP,2014,66395.3
-5,Molluscs,Spain,ESP,2015,52141.76
-5,Molluscs,Spain,ESP,2016,38034.74
-5,Molluscs,Spain,ESP,2017,43642.45
 5,Molluscs,Sweden,SWE,2008,33.3665
 5,Molluscs,Sweden,SWE,2009,25.4357
 5,Molluscs,Sweden,SWE,2010,73.6118
@@ -914,16 +979,16 @@
 5,Molluscs,Turkey,TUR,2015,47957.6
 5,Molluscs,Turkey,TUR,2016,33209.5
 5,Molluscs,Turkey,TUR,2017,47747.5
-5,Molluscs,United Kingdom,GBR,2008,74940.9159
-5,Molluscs,United Kingdom,GBR,2009,63344.6199
-5,Molluscs,United Kingdom,GBR,2010,80088.1342
-5,Molluscs,United Kingdom,GBR,2011,92664.0845
-5,Molluscs,United Kingdom,GBR,2012,100725.8606
-5,Molluscs,United Kingdom,GBR,2013,91947.5449
-5,Molluscs,United Kingdom,GBR,2014,81259.786
-5,Molluscs,United Kingdom,GBR,2015,87742.596
-5,Molluscs,United Kingdom,GBR,2016,79363.1072
-5,Molluscs,United Kingdom,GBR,2017,73483.3534
+5,Molluscs,Chinese Taipei,TWN,2008,247494.1293
+5,Molluscs,Chinese Taipei,TWN,2009,76020.46118
+5,Molluscs,Chinese Taipei,TWN,2010,66724.42569
+5,Molluscs,Chinese Taipei,TWN,2011,111150.504
+5,Molluscs,Chinese Taipei,TWN,2012,107828.3769
+5,Molluscs,Chinese Taipei,TWN,2013,132399.3798
+5,Molluscs,Chinese Taipei,TWN,2014,213542.2354
+5,Molluscs,Chinese Taipei,TWN,2015,271703.7134
+5,Molluscs,Chinese Taipei,TWN,2016,34140.32304
+5,Molluscs,Chinese Taipei,TWN,2017,90477.35659
 5,Molluscs,United States,USA,2008,770586
 5,Molluscs,United States,USA,2009,831418
 5,Molluscs,United States,USA,2010,835802
@@ -957,158 +1022,169 @@
 6,Aquatic Mammals,Norway,NOR,2017,625.6075
 6,Aquatic Mammals,Peru,PER,2014,0.564684811
 6,Aquatic Mammals,Peru,PER,2016,0.05
-7,Misc Aquatic Animals,Australia,AUS,2008,305.1
-7,Misc Aquatic Animals,Australia,AUS,2009,226.234
-7,Misc Aquatic Animals,Australia,AUS,2010,174.9
-7,Misc Aquatic Animals,Australia,AUS,2011,117.445
-7,Misc Aquatic Animals,Australia,AUS,2012,48.28
-7,Misc Aquatic Animals,Australia,AUS,2013,20.2
-7,Misc Aquatic Animals,Australia,AUS,2014,64.59
-7,Misc Aquatic Animals,Australia,AUS,2015,44.35
-7,Misc Aquatic Animals,Australia,AUS,2016,38.68
-7,Misc Aquatic Animals,Australia,AUS,2017,133.81
-7,Misc Aquatic Animals,Canada,CAN,2008,10520.04738
-7,Misc Aquatic Animals,Canada,CAN,2009,11894.78549
-7,Misc Aquatic Animals,Canada,CAN,2010,11963.56
-7,Misc Aquatic Animals,Canada,CAN,2011,14000.37
-7,Misc Aquatic Animals,Canada,CAN,2012,11520.525
-7,Misc Aquatic Animals,Canada,CAN,2013,10387.832
-7,Misc Aquatic Animals,Canada,CAN,2014,13361.68953
-7,Misc Aquatic Animals,Canada,CAN,2015,14785.41882
-7,Misc Aquatic Animals,Canada,CAN,2016,14358.47066
-7,Misc Aquatic Animals,Chile,CHL,2008,40078
-7,Misc Aquatic Animals,Chile,CHL,2009,39775
-7,Misc Aquatic Animals,Chile,CHL,2010,33046
-7,Misc Aquatic Animals,Chile,CHL,2011,33082
-7,Misc Aquatic Animals,Chile,CHL,2012,30553
-7,Misc Aquatic Animals,Chile,CHL,2013,31576
-7,Misc Aquatic Animals,Chile,CHL,2014,34298
-7,Misc Aquatic Animals,Chile,CHL,2015,31682
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2008,22.73
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2009,43.3425
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2010,24.46
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2011,24.4142
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2012,28.5213
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2013,8.967
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2014,15.29
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2015,2.041
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2016,25.1463
-7,Misc Aquatic Animals,Chinese Taipei,TWN,2017,2.2569
-7,Misc Aquatic Animals,Denmark,DNK,2008,0
-7,Misc Aquatic Animals,Denmark,DNK,2009,0
-7,Misc Aquatic Animals,Denmark,DNK,2010,0
-7,Misc Aquatic Animals,Denmark,DNK,2011,0
-7,Misc Aquatic Animals,Denmark,DNK,2012,36.8
-7,Misc Aquatic Animals,Denmark,DNK,2013,1425.4
-7,Misc Aquatic Animals,Denmark,DNK,2014,189.6
-7,Misc Aquatic Animals,Denmark,DNK,2015,600.9
-7,Misc Aquatic Animals,Denmark,DNK,2016,243
-7,Misc Aquatic Animals,Denmark,DNK,2017,1698.3
-7,Misc Aquatic Animals,France,FRA,2008,9.1
-7,Misc Aquatic Animals,France,FRA,2009,6.7
-7,Misc Aquatic Animals,France,FRA,2010,3
-7,Misc Aquatic Animals,France,FRA,2011,99.5
-7,Misc Aquatic Animals,France,FRA,2012,95.5
-7,Misc Aquatic Animals,France,FRA,2013,126.7
-7,Misc Aquatic Animals,France,FRA,2014,108.8
-7,Misc Aquatic Animals,France,FRA,2015,78
-7,Misc Aquatic Animals,France,FRA,2016,102.8
-7,Misc Aquatic Animals,France,FRA,2017,131.3
-7,Misc Aquatic Animals,Iceland,ISL,2012,1550
-7,Misc Aquatic Animals,Iceland,ISL,2013,1553
-7,Misc Aquatic Animals,Iceland,ISL,2014,1078
-7,Misc Aquatic Animals,Iceland,ISL,2015,1687
-7,Misc Aquatic Animals,Iceland,ISL,2016,3607
-7,Misc Aquatic Animals,Iceland,ISL,2017,3572
-7,Misc Aquatic Animals,Italy,ITA,2017,120.71351
-7,Misc Aquatic Animals,Japan,JPN,2008,63895
-7,Misc Aquatic Animals,Japan,JPN,2009,44404
-7,Misc Aquatic Animals,Japan,JPN,2010,52302
-7,Misc Aquatic Animals,Japan,JPN,2011,50782
-7,Misc Aquatic Animals,Japan,JPN,2012,43132
-7,Misc Aquatic Animals,Japan,JPN,2013,27447
-7,Misc Aquatic Animals,Japan,JPN,2014,22596
-7,Misc Aquatic Animals,Japan,JPN,2015,25269
-7,Misc Aquatic Animals,Japan,JPN,2016,22039
-7,Misc Aquatic Animals,Japan,JPN,2017,18000
-7,Misc Aquatic Animals,Korea,KOR,2008,7836
-7,Misc Aquatic Animals,Korea,KOR,2009,7091
-7,Misc Aquatic Animals,Korea,KOR,2010,6939
-7,Misc Aquatic Animals,Korea,KOR,2011,6731
-7,Misc Aquatic Animals,Korea,KOR,2012,5825
-7,Misc Aquatic Animals,Korea,KOR,2013,7013
-7,Misc Aquatic Animals,Korea,KOR,2014,10890
-7,Misc Aquatic Animals,Korea,KOR,2015,7305
-7,Misc Aquatic Animals,Korea,KOR,2016,6340
-7,Misc Aquatic Animals,Korea,KOR,2017,6096
-7,Misc Aquatic Animals,Mexico,MEX,2008,2426.55307
-7,Misc Aquatic Animals,Mexico,MEX,2009,3137.368
-7,Misc Aquatic Animals,Mexico,MEX,2010,5983.93997
-7,Misc Aquatic Animals,Mexico,MEX,2011,4974.23606
-7,Misc Aquatic Animals,Mexico,MEX,2012,4770.92821
-7,Misc Aquatic Animals,Mexico,MEX,2013,6848.73409
-7,Misc Aquatic Animals,Mexico,MEX,2014,5093.712133
-7,Misc Aquatic Animals,Mexico,MEX,2015,4954.31334
-7,Misc Aquatic Animals,Mexico,MEX,2016,3882.964
-7,Misc Aquatic Animals,Mexico,MEX,2017,5076.82
-7,Misc Aquatic Animals,New Zealand,NZL,2008,780.7
-7,Misc Aquatic Animals,New Zealand,NZL,2009,767.395
-7,Misc Aquatic Animals,New Zealand,NZL,2010,724.107
-7,Misc Aquatic Animals,New Zealand,NZL,2011,794.118
-7,Misc Aquatic Animals,New Zealand,NZL,2012,931.1
-7,Misc Aquatic Animals,New Zealand,NZL,2013,925.648
-7,Misc Aquatic Animals,New Zealand,NZL,2014,968.655
-7,Misc Aquatic Animals,New Zealand,NZL,2015,972.49
-7,Misc Aquatic Animals,New Zealand,NZL,2016,959.922
-7,Misc Aquatic Animals,New Zealand,NZL,2017,1043.189
-7,Misc Aquatic Animals,Norway,NOR,2008,0.9315
-7,Misc Aquatic Animals,Norway,NOR,2009,0.451
-7,Misc Aquatic Animals,Norway,NOR,2010,0.07
-7,Misc Aquatic Animals,Norway,NOR,2011,1.028
-7,Misc Aquatic Animals,Norway,NOR,2012,0.3175
-7,Misc Aquatic Animals,Norway,NOR,2015,2.355
-7,Misc Aquatic Animals,Norway,NOR,2017,0.2012
-7,Misc Aquatic Animals,Peru,PER,2008,2470.491906
-7,Misc Aquatic Animals,Peru,PER,2009,2021.994817
-7,Misc Aquatic Animals,Peru,PER,2010,2131.781611
-7,Misc Aquatic Animals,Peru,PER,2011,4156.254511
-7,Misc Aquatic Animals,Peru,PER,2012,2295.44682
-7,Misc Aquatic Animals,Peru,PER,2013,1433.721035
-7,Misc Aquatic Animals,Peru,PER,2014,7496.203905
-7,Misc Aquatic Animals,Peru,PER,2015,1536.000696
-7,Misc Aquatic Animals,Peru,PER,2016,1834.805274
-7,Misc Aquatic Animals,Spain,ESP,2008,623
-7,Misc Aquatic Animals,Spain,ESP,2009,445.7
-7,Misc Aquatic Animals,Spain,ESP,2010,689.8
-7,Misc Aquatic Animals,Spain,ESP,2011,742.5
-7,Misc Aquatic Animals,Spain,ESP,2012,729.58
-7,Misc Aquatic Animals,Spain,ESP,2013,584.69
-7,Misc Aquatic Animals,Spain,ESP,2014,535
-7,Misc Aquatic Animals,Spain,ESP,2015,709.28
-7,Misc Aquatic Animals,Spain,ESP,2016,778.58
-7,Misc Aquatic Animals,Spain,ESP,2017,967.89
-7,Misc Aquatic Animals,Thailand,THA,2008,149985
-7,Misc Aquatic Animals,Thailand,THA,2009,118242
-7,Misc Aquatic Animals,Thailand,THA,2010,37327
-7,Misc Aquatic Animals,Thailand,THA,2011,105491
-7,Misc Aquatic Animals,Thailand,THA,2012,41712
-7,Misc Aquatic Animals,Thailand,THA,2013,127695
-7,Misc Aquatic Animals,Thailand,THA,2014,65195
-7,Misc Aquatic Animals,United Kingdom,GBR,2009,0.14
-7,Misc Aquatic Animals,United Kingdom,GBR,2011,0.046
-7,Misc Aquatic Animals,United Kingdom,GBR,2012,1.226
-7,Misc Aquatic Animals,United Kingdom,GBR,2013,0.08
-7,Misc Aquatic Animals,United Kingdom,GBR,2014,0.0121
-7,Misc Aquatic Animals,United Kingdom,GBR,2015,0.0657
-7,Misc Aquatic Animals,United Kingdom,GBR,2016,7.3146
-7,Misc Aquatic Animals,United Kingdom,GBR,2017,0.0086
-7,Misc Aquatic Animals,United States,USA,2008,10031
-7,Misc Aquatic Animals,United States,USA,2009,9376
-7,Misc Aquatic Animals,United States,USA,2010,8230
-7,Misc Aquatic Animals,United States,USA,2011,10743
-7,Misc Aquatic Animals,United States,USA,2012,9582
-7,Misc Aquatic Animals,United States,USA,2013,10226
-7,Misc Aquatic Animals,United States,USA,2014,14731
-7,Misc Aquatic Animals,United States,USA,2015,7336
-7,Misc Aquatic Animals,United States,USA,2016,6369
-7,Misc Aquatic Animals,United States,USA,2017,6605
+7,Misc. Aquatic Animals,Australia,AUS,2008,305.1
+7,Misc. Aquatic Animals,Australia,AUS,2009,226.234
+7,Misc. Aquatic Animals,Australia,AUS,2010,174.9
+7,Misc. Aquatic Animals,Australia,AUS,2011,117.445
+7,Misc. Aquatic Animals,Australia,AUS,2012,48.28
+7,Misc. Aquatic Animals,Australia,AUS,2013,20.2
+7,Misc. Aquatic Animals,Australia,AUS,2014,64.59
+7,Misc. Aquatic Animals,Australia,AUS,2015,44.35
+7,Misc. Aquatic Animals,Australia,AUS,2016,38.68
+7,Misc. Aquatic Animals,Australia,AUS,2017,133.81
+7,Misc. Aquatic Animals,Canada,CAN,2008,10520.04738
+7,Misc. Aquatic Animals,Canada,CAN,2009,11894.78549
+7,Misc. Aquatic Animals,Canada,CAN,2010,11963.56
+7,Misc. Aquatic Animals,Canada,CAN,2011,14000.37
+7,Misc. Aquatic Animals,Canada,CAN,2012,11520.525
+7,Misc. Aquatic Animals,Canada,CAN,2013,10387.832
+7,Misc. Aquatic Animals,Canada,CAN,2014,13361.68953
+7,Misc. Aquatic Animals,Canada,CAN,2015,14785.41882
+7,Misc. Aquatic Animals,Canada,CAN,2016,14358.47066
+7,Misc. Aquatic Animals,Chile,CHL,2008,40078
+7,Misc. Aquatic Animals,Chile,CHL,2009,39775
+7,Misc. Aquatic Animals,Chile,CHL,2010,33046
+7,Misc. Aquatic Animals,Chile,CHL,2011,33082
+7,Misc. Aquatic Animals,Chile,CHL,2012,30553
+7,Misc. Aquatic Animals,Chile,CHL,2013,31576
+7,Misc. Aquatic Animals,Chile,CHL,2014,34298
+7,Misc. Aquatic Animals,Chile,CHL,2015,31682
+7,Misc. Aquatic Animals,China,CHN,2008,1105803.069
+7,Misc. Aquatic Animals,China,CHN,2009,939120.2808
+7,Misc. Aquatic Animals,China,CHN,2010,1033879.023
+7,Misc. Aquatic Animals,China,CHN,2011,1065225.786
+7,Misc. Aquatic Animals,China,CHN,2012,1221134.017
+7,Misc. Aquatic Animals,China,CHN,2013,1220701.274
+7,Misc. Aquatic Animals,China,CHN,2014,1481721.86
+7,Misc. Aquatic Animals,China,CHN,2015,1642608.396
+7,Misc. Aquatic Animals,Denmark,DNK,2008,0
+7,Misc. Aquatic Animals,Denmark,DNK,2009,0
+7,Misc. Aquatic Animals,Denmark,DNK,2010,0
+7,Misc. Aquatic Animals,Denmark,DNK,2011,0
+7,Misc. Aquatic Animals,Denmark,DNK,2012,36.8
+7,Misc. Aquatic Animals,Denmark,DNK,2013,1425.4
+7,Misc. Aquatic Animals,Denmark,DNK,2014,189.6
+7,Misc. Aquatic Animals,Denmark,DNK,2015,600.9
+7,Misc. Aquatic Animals,Denmark,DNK,2016,243
+7,Misc. Aquatic Animals,Denmark,DNK,2017,1698.3
+7,Misc. Aquatic Animals,Spain,ESP,2008,623
+7,Misc. Aquatic Animals,Spain,ESP,2009,445.7
+7,Misc. Aquatic Animals,Spain,ESP,2010,689.8
+7,Misc. Aquatic Animals,Spain,ESP,2011,742.5
+7,Misc. Aquatic Animals,Spain,ESP,2012,729.58
+7,Misc. Aquatic Animals,Spain,ESP,2013,584.69
+7,Misc. Aquatic Animals,Spain,ESP,2014,535
+7,Misc. Aquatic Animals,Spain,ESP,2015,709.28
+7,Misc. Aquatic Animals,Spain,ESP,2016,778.58
+7,Misc. Aquatic Animals,Spain,ESP,2017,967.89
+7,Misc. Aquatic Animals,France,FRA,2008,9.1
+7,Misc. Aquatic Animals,France,FRA,2009,6.7
+7,Misc. Aquatic Animals,France,FRA,2010,3
+7,Misc. Aquatic Animals,France,FRA,2011,99.5
+7,Misc. Aquatic Animals,France,FRA,2012,95.5
+7,Misc. Aquatic Animals,France,FRA,2013,126.7
+7,Misc. Aquatic Animals,France,FRA,2014,108.8
+7,Misc. Aquatic Animals,France,FRA,2015,78
+7,Misc. Aquatic Animals,France,FRA,2016,102.8
+7,Misc. Aquatic Animals,France,FRA,2017,131.3
+7,Misc. Aquatic Animals,United Kingdom,GBR,2009,0.14
+7,Misc. Aquatic Animals,United Kingdom,GBR,2011,0.046
+7,Misc. Aquatic Animals,United Kingdom,GBR,2012,1.226
+7,Misc. Aquatic Animals,United Kingdom,GBR,2013,0.08
+7,Misc. Aquatic Animals,United Kingdom,GBR,2014,0.0121
+7,Misc. Aquatic Animals,United Kingdom,GBR,2015,0.0657
+7,Misc. Aquatic Animals,United Kingdom,GBR,2016,7.3146
+7,Misc. Aquatic Animals,United Kingdom,GBR,2017,0.0086
+7,Misc. Aquatic Animals,Ireland,IRL,2011,0.066
+7,Misc. Aquatic Animals,Ireland,IRL,2016,19.865
+7,Misc. Aquatic Animals,Ireland,IRL,2017,17.49
+7,Misc. Aquatic Animals,Iceland,ISL,2012,1550
+7,Misc. Aquatic Animals,Iceland,ISL,2013,1553
+7,Misc. Aquatic Animals,Iceland,ISL,2014,1078
+7,Misc. Aquatic Animals,Iceland,ISL,2015,1687
+7,Misc. Aquatic Animals,Iceland,ISL,2016,3607
+7,Misc. Aquatic Animals,Iceland,ISL,2017,3572
+7,Misc. Aquatic Animals,Italy,ITA,2017,120.71351
+7,Misc. Aquatic Animals,Japan,JPN,2008,63895
+7,Misc. Aquatic Animals,Japan,JPN,2009,44404
+7,Misc. Aquatic Animals,Japan,JPN,2010,52302
+7,Misc. Aquatic Animals,Japan,JPN,2011,50782
+7,Misc. Aquatic Animals,Japan,JPN,2012,43132
+7,Misc. Aquatic Animals,Japan,JPN,2013,27447
+7,Misc. Aquatic Animals,Japan,JPN,2014,22596
+7,Misc. Aquatic Animals,Japan,JPN,2015,25269
+7,Misc. Aquatic Animals,Japan,JPN,2016,22039
+7,Misc. Aquatic Animals,Japan,JPN,2017,18000
+7,Misc. Aquatic Animals,Korea,KOR,2008,7836
+7,Misc. Aquatic Animals,Korea,KOR,2009,7091
+7,Misc. Aquatic Animals,Korea,KOR,2010,6939
+7,Misc. Aquatic Animals,Korea,KOR,2011,6731
+7,Misc. Aquatic Animals,Korea,KOR,2012,5825
+7,Misc. Aquatic Animals,Korea,KOR,2013,7013
+7,Misc. Aquatic Animals,Korea,KOR,2014,10890
+7,Misc. Aquatic Animals,Korea,KOR,2015,7305
+7,Misc. Aquatic Animals,Korea,KOR,2016,6340
+7,Misc. Aquatic Animals,Korea,KOR,2017,6096
+7,Misc. Aquatic Animals,Mexico,MEX,2008,2426.55307
+7,Misc. Aquatic Animals,Mexico,MEX,2009,3137.368
+7,Misc. Aquatic Animals,Mexico,MEX,2010,5983.93997
+7,Misc. Aquatic Animals,Mexico,MEX,2011,4974.23606
+7,Misc. Aquatic Animals,Mexico,MEX,2012,4770.92821
+7,Misc. Aquatic Animals,Mexico,MEX,2013,6848.73409
+7,Misc. Aquatic Animals,Mexico,MEX,2014,5093.712133
+7,Misc. Aquatic Animals,Mexico,MEX,2015,4954.31334
+7,Misc. Aquatic Animals,Mexico,MEX,2016,3882.964
+7,Misc. Aquatic Animals,Mexico,MEX,2017,5076.82
+7,Misc. Aquatic Animals,Norway,NOR,2008,0.9315
+7,Misc. Aquatic Animals,Norway,NOR,2009,0.451
+7,Misc. Aquatic Animals,Norway,NOR,2010,0.07
+7,Misc. Aquatic Animals,Norway,NOR,2011,1.028
+7,Misc. Aquatic Animals,Norway,NOR,2012,0.3175
+7,Misc. Aquatic Animals,Norway,NOR,2015,2.355
+7,Misc. Aquatic Animals,Norway,NOR,2017,0.2012
+7,Misc. Aquatic Animals,New Zealand,NZL,2008,780.7
+7,Misc. Aquatic Animals,New Zealand,NZL,2009,767.395
+7,Misc. Aquatic Animals,New Zealand,NZL,2010,724.107
+7,Misc. Aquatic Animals,New Zealand,NZL,2011,794.118
+7,Misc. Aquatic Animals,New Zealand,NZL,2012,931.1
+7,Misc. Aquatic Animals,New Zealand,NZL,2013,925.648
+7,Misc. Aquatic Animals,New Zealand,NZL,2014,968.655
+7,Misc. Aquatic Animals,New Zealand,NZL,2015,972.49
+7,Misc. Aquatic Animals,New Zealand,NZL,2016,959.922
+7,Misc. Aquatic Animals,New Zealand,NZL,2017,1043.189
+7,Misc. Aquatic Animals,Peru,PER,2008,2470.491906
+7,Misc. Aquatic Animals,Peru,PER,2009,2021.994817
+7,Misc. Aquatic Animals,Peru,PER,2010,2131.781611
+7,Misc. Aquatic Animals,Peru,PER,2011,4156.254511
+7,Misc. Aquatic Animals,Peru,PER,2012,2295.44682
+7,Misc. Aquatic Animals,Peru,PER,2013,1433.721035
+7,Misc. Aquatic Animals,Peru,PER,2014,7496.203905
+7,Misc. Aquatic Animals,Peru,PER,2015,1536.000696
+7,Misc. Aquatic Animals,Peru,PER,2016,1834.805274
+7,Misc. Aquatic Animals,Thailand,THA,2008,149985
+7,Misc. Aquatic Animals,Thailand,THA,2009,118242
+7,Misc. Aquatic Animals,Thailand,THA,2010,37327
+7,Misc. Aquatic Animals,Thailand,THA,2011,105491
+7,Misc. Aquatic Animals,Thailand,THA,2012,41712
+7,Misc. Aquatic Animals,Thailand,THA,2013,127695
+7,Misc. Aquatic Animals,Thailand,THA,2014,65195
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2008,22.73
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2009,43.3425
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2010,24.46
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2011,24.4142
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2012,28.5213
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2013,8.967
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2014,15.29
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2015,2.041
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2016,25.1463
+7,Misc. Aquatic Animals,Chinese Taipei,TWN,2017,2.2569
+7,Misc. Aquatic Animals,United States,USA,2008,10031
+7,Misc. Aquatic Animals,United States,USA,2009,9376
+7,Misc. Aquatic Animals,United States,USA,2010,8230
+7,Misc. Aquatic Animals,United States,USA,2011,10743
+7,Misc. Aquatic Animals,United States,USA,2012,9582
+7,Misc. Aquatic Animals,United States,USA,2013,10226
+7,Misc. Aquatic Animals,United States,USA,2014,14731
+7,Misc. Aquatic Animals,United States,USA,2015,7336
+7,Misc. Aquatic Animals,United States,USA,2016,6369
+7,Misc. Aquatic Animals,United States,USA,2017,6605

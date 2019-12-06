@@ -45,10 +45,6 @@
       min-height: 200px;
     }
 
-    .story .multi-column {
-/*        min-height: 400px;*/
-    }
-
     .story div {
         margin: 20px 0px 25px 0px;
     }
@@ -70,10 +66,6 @@
         background-position: bottom;
         background-size: 100%;
         background-attachment: fixed;
-    }
-
-    .story .row {
-/*      min-height: 400px; */
     }
 
     .story div {
@@ -134,9 +126,14 @@
   stroke: #c7c7c7;
   shape-rendering: crispEdges;
 }
+
 #viz-subsidies .axis text {
-  font-size: 13px;
+  font-size: 11px;
   fill: grey;
+}
+
+#viz-subsidies .axis-title {
+  font-size: .9rem;
 }
 
 #viz-subsidies .line {

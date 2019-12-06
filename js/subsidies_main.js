@@ -27,7 +27,8 @@ var xAxis = d3.axisBottom()
 	.scale(xScale)
 	.ticks(5);
 var yAxis = d3.axisLeft()
-	.scale(yScale);
+	.scale(yScale)
+	.tickFormat(d3.format("0.2s"));
 //Create axes groups in svg
 var yAxisGroup = svg.append("g")
 	.attr("class", "y-axis axis");
@@ -200,23 +201,14 @@ function updateVisualization(data) {
 		.attr("x", -50)
 		.attr("y", -10)
 		.attr("text-anchor", "center")
-		.attr("class", "ylabel")
-		.style("font-size", "15px")
-		.style("fill", "grey")
-		.text(function(d) {
-			return "$ Million USD"
-		});
+		.attr("class", "ylabel axis-title")
+		.text("$ Million USD");
 
 	svg.append("text")
-		.attr("y", -60)
-		.attr("x", 200)
-		.attr("class","ylabel")
-		.text(function() {
-			return "Global Fisheries Funding from 2000 - 2018"
-		})
-		.attr("text-anchor","middle")
-		.style("font-size", "25px")
-		.attr("fill","Grey");
+		.attr("transform", "translate("+(300)+"," +(-50)+")")
+		.attr("class","subsidies-title")
+		.text("Global Fisheries Funding from 2000 - 2018")
+		.attr("text-anchor","end");
 }
 
 
