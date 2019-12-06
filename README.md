@@ -34,7 +34,7 @@ The website has the following Visualizations which are each explained below:
 - **parcoords.js**  
 Standalone javascript file that creates the parallel coordinates vis and the firsherman detail visualization.  
 Two svg's are createdin the div. The three data sources are queued up and calls loadCompareData.   
-In **parallelCompare** function, the selected year is captured and an array with just that years data for subsidies and landings.  
+- In **parallelCompare** function, the selected year is captured and an array with just that years data for subsidies and landings.  
 The populations data is then iterated and an array created for the combined dataset.  
 The scales are created for each of the dimensions by reading the keys.
 The countries are hard coded into the scale since they have no numeric value.  
@@ -44,7 +44,7 @@ Brushing is applied to each of the axis to allow the user to select countries wi
 Clicking on a country will also clear any brushing already applied as the dataset is typically too small to require this level of drill down.
 A reset brush button is also available if the user wants to reset all brushes.  
 The brush function itself filters the dimensions data so that the fisherman vis is updated to remove any un-selected elements from the vis.  
-The **createFishing** function takes an optional country argument. If no country is passed, the vis is created with all countries in order of fish landings.
+- The **createFishing** function takes an optional country argument. If no country is passed, the vis is created with all countries in order of fish landings.
 If a country is passed, the year over year data for the country will be displayed. The country will be passed if a user clicks on the country in the parallel coordinates vis.
 The "fishing line" is scaled to the subsidies and the fish image is scaled to the amount of fish landings for the country.  
 A blank rect is placed behind the vis itself to allow the user to 'grab' the vis for panning.
