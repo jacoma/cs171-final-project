@@ -1,6 +1,7 @@
 # Smells Fishy
 
 [Link to project website](https://jacoma.github.io/smellsfishy.github.io/)
+
 [Link to Screencast](https://drive.google.com/drive/u/0/folders/0ANwQ8mygqUzKUk9PVA?fbclid=IwAR26hdrpK0Iw3OkPNE8KAlN6k9kcvYnmYKu9n37QbwYaIkK6R6NPmtN0Y5Q)
 
 This repository contains our team's HTML file, our JS files and libraries, our CSS stylesheets, our .csv data, and the images included in the HTML.
