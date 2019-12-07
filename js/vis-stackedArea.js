@@ -82,9 +82,14 @@ StackedAreaChart.prototype.initVis = function(){
         .text("Fish Landings (Tonnes in millions)");
         
     vis.svg.append("text")
-		.attr("class", "chart-title")
-		.attr("transform", "translate("+(10)+"," +(-50)+")")
-		.text("Just under 90% of fish landings are consumed by humans.");
+        .attr("class", "caption")
+        .attr("transform", "translate("+(10)+"," +(vis.height + vis.margin.top/2)+")")
+        .text("Note: Fish landings data is incomplete for some countries.");
+    
+        vis.svg.append("text")
+        .attr("class", "caption")
+        .attr("transform", "translate("+(10)+"," +(vis.height + vis.margin.top/2 + 11)+")")
+        .text("However, research shows a downward trend.");
 
     /*** CREATE AREA & LINE GENERATORS */
 	vis.area = d3.area()

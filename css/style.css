@@ -115,6 +115,11 @@
   font-style: italic;
 }
 
+#viz-area .caption {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
 
 /****************/
 /*  SUBSIDIES LINE CHART  */
