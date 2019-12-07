@@ -48,7 +48,7 @@ function wrangleData(){
         subs.push(temp)
     })
     // console.log("Subs");
-    console.log(subs);
+    // console.log(subs);
     //*************EMPLOYMENT DATA*******************
     tempEmpData = allEmpData.filter(function(d){ return d.Year == filterYear; });
 
@@ -140,14 +140,15 @@ function updateBubbles(year, country) {
 
 function createLegend() {
 //viz-bubbleLegend
-    var legendData=[{x: "Low", value: 10, subs: 20 },
-        {x: "Med", value: 20, subs: 20000 },
-        {x: "High", value: 30, subs: 3000000000 }];
+    var legendData=[{x: "Low", value: 10, subs: 10 },
+        {x: "Med", value: 20, subs: 974055052 },
+        {x: "High", value: 30, subs: 2974055052 },
+        {x: "N/A", value: 30, subs: 0 }];
     svgLegend = d3.select("#viz-bubbleLegend").append("svg")
         .attr("width", 200)
         .attr("height", 200);
-    var colorCircles = d3.scaleLog()
-        .domain([10, 122363949])
+    var colorCircles = d3.scaleLinear()
+        .domain([-10000000, 1223639649])
         .range(d3.schemeBlues[3]);
     var scaleRadius = d3.scaleLog()
         .domain([
@@ -189,9 +190,14 @@ function createLegend() {
         .append("svg:circle")
         .attr("class", "legend")
         .attr("r", function(d){ return scaleRadius(d.value) })
-        .attr("cx", function(d, i){return 10+ ((30* i) + (i * 55));})
+        .attr("cx", function(d, i){return 10+ ((i) + (i * 55));})
         .attr("cy", 140)
-        .style("fill", function(d){ return colorCircles(d.subs); })
+        .style("fill", function(d){
+            if (d.subs == 0)
+                return "#ebebeb";
+            else
+                return colorCircles(d.subs);
+        })
     gLegColor.append("text")
         .attr("x", 5)
         .attr("y", 110)
@@ -203,7 +209,7 @@ function createLegend() {
         .enter()
         .append("text")
         .attr("class", "pcLegend")
-        .attr("x", function(d, i){return i * 85;})
+        .attr("x", function(d, i){return i * 55;})
         .attr("y", 180)
         .style("fill", "black")
         .text(function(d){ return d.x})

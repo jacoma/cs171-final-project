@@ -79,6 +79,24 @@ The zoom extent is set to 1 since zooming does not offer any value to the user
  ---
  ### Subsidies by Country with Employment, Exports and Fleet
  
+ - **subsidies_main.js** 
+ Main javascript file that uses subsidies data to plot a line chart. 
+ Subsidies data is first imported and matched with country codes from "CountryCodes.JSON". 
+ updateVisualization() takes the data to plot a dynamic line chart along with tool tips. 
+ changeSelection() is called whenever a different country is toggeled and filters data accordingly.    
+ 
+ - **bubblechart.js**
+ Main javascript file that creates a bubblechart visualization for Fleet, Export and Employment data in the updateVis() function using d3.forcesimulation. 
+ Size and location of bubbles is correlated to their respective values for Fleet, Export and Employment. 
+ A tool tip can also be toggled to show this specific data. 
+ Additionally, colors of bubbles are assigned based on their subsidies value. 
+ 
+ - **bubblevis.js**  
+ Javascript file that handles Fleet, Export and Employment data processing. 
+ wrangleData() processes data from these 3 sources as well as for subsidies and calls drawChart().
+ updateBubbles() is called whenever the country or year filter changes and calls drawChart accordingly.
+ drawChart() is responsible for handling filtered data dynamically, as well as updating the legend. 
+ 
  ---
  ### Statistics Data
  - **main.js**   
