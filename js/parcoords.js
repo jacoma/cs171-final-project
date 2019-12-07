@@ -152,17 +152,13 @@ function createParallel() {
         .data(parallelCompare)
         .enter()
         .append("path")
-        //.transition()
-        //.duration(500)
         .attr("d", path)
         .attr("class", "comparePath")
         .on("mouseover", function(d) {
-            pc_tip.show;
             d3.select(this).classed("comparePath", false);
             d3.select(this).classed("highlightPath", true);
         })
         .on("mouseout", function(d) {
-            pc_tip.hide;
             d3.select(this).classed("comparePath", true);
             d3.select(this).classed("highlightPath", false);
         })
@@ -284,9 +280,9 @@ function clearBrush(){
 function updateFishers() {
 // Create scales and axis for fishing
     var yScale = d3.scaleLinear()
-        .range([60, pcHeight - 90]);
+        .range([30, pcHeight - 90]);
     var fishScale = d3.scaleLinear()
-        .range([30, 90]);
+        .range([20, 90]);
 
     var colWidth = (itemWidth-20) / 5;
 
@@ -357,8 +353,8 @@ function updateFishers() {
         .data(data)
         .enter()
         .append("fishImg")
-        .attr("id", function(d) { return "land-" + d["Country"] })
-        .attr("xlink:href", "img/skeleton.jpg")
+        .attr("id", "fishImg")
+        .attr("xlink:href", "img/fishicon.svg")
         .attr('width', function(d) { return fishScale(d.Landings) })
         .attr('height', function(d) {return fishScale(d.Landings) });
 
@@ -371,8 +367,8 @@ function updateFishers() {
         .attr('width', function(d) { return fishScale(d.Landings)/2 })
         .attr('height', function(d) {return fishScale(d.Landings) })
         .attr("class", "pcFishImg")
-//        .style("fill","url(img/angler-silhuette.jpg)")
-        .attr("xlink:href", "img/trout-sillouette.svg")
+        .style("fill","url(#fishImg)")
+//        .attr("xlink:href", "img/trout-sillouette.svg")
         //        .transition().delay(1000)
 //        .transition("fish").duration(50)
 
@@ -382,10 +378,12 @@ function updateFishers() {
         .attr("x", 0)
         .attr("y", -20)
 //        .attr('y', function(d){return yScale(d.value);})
+//        .attr("x", function(d, i){ return (i * (colWidth)); })
+//        .attr("y", function(d){return yScale(d.Subsidies)-25;})
         .attr('width', function(d) { return fishScale(d.Landings) })
         .attr('height', function(d) {return fishScale(d.Landings) })
         .attr("class", "pcFishImg")
-        .attr("xlink:href", "img/trout-sillouette.svg")
+        .attr("xlink:href", "img/fishicon.svg")
 //        .transition().delay(1000)
         .transition("fish").duration(50)
         .attr("transform",function (d, i) {
@@ -399,7 +397,7 @@ function updateFishers() {
         });
 
     g.append("text")
-        .attr('x', -340)
+        .attr('x', -330)
         .attr("y", 0)
         .attr("class", "pcLegend")
         .text(function(d){
@@ -417,7 +415,7 @@ function updateFishers() {
             30 +")rotate(-90)" });
 
     g.append("text")
-        .attr('x', -340)
+        .attr('x', -330)
         .attr("y", 25)
         .attr("class", "pcLegend")
         .text(function(d){
