@@ -180,7 +180,7 @@ StackedAreaChart.prototype.wrangleData = function(){
         yearlyData.push(yearObj);
     }
 
-    console.log(yearlyData);
+    // console.log(yearlyData);
 
     /*** CREATE STACK & PATH LAYOUT */
     vis.fishKeys = d3.keys(yearlyData[0]).filter(function(d){ return d != "Year"; });
@@ -333,7 +333,7 @@ StackedAreaChart.prototype.onSelectionChange = function(speciesFilter, countryFi
         }
     }
 
-    console.log(vis.filteredData);
+    // console.log(vis.filteredData);
 
     vis.wrangleData();
 }

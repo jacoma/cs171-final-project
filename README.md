@@ -27,6 +27,30 @@ The website has the following Visualizations which are each explained below:
 - Aquaculture Pie Chart
  ---
  ### Fish Landings by Species
+ - **main.js**
+ The data is defined and the object created in main.js. Three arrays are also dynamically created from the fish landings dataset - one each for Country, Species, and Year. Finally, a MyEventHandler object is created to facilitate the filtering interaction capability between the stacked area chart and bar chart.
+
+ - **vis.stackedArea.js**
+ First in initVis(), the layout of the visualiation (svg) is created. The axes and scales for the visualization are defined using the arrays created in main.js (i.e. fish species, country). Likewise the path generators are built to be used later in the file after the data is wrangled. The tooltip for the stacked area chart is created followed by the legend which included event listeners for a user click. This event filters both the stacked area and horizontal bar charts.
+
+In wrangleDate(), the display data is created by looping through each value in the years array as well as each fish species value in the species array (both created in main.js) and grabbing the "Sum of Value" which is the weight in tonnes of the fish landings. This output is then used to create the keys for the stacked area chart, then the stacked data itself using the d3.stack functions. Finally, an if statement checks to see which fish species may be selected by the user and filters accordingly.
+
+In updateVis(), the domain of the y axis is updated with the appropriate range of the landings. The stacked area chart is then actually created. Four event listeners are used to apply interactions - click which will filter the dataset and subsequently the bar chart; mouseover which will highlight the moused over species and display the tooltip; mousemove which will update the tooltip values with the appropriate values for the specific species and year; mouseout which will hide the tooltip and stop the highlighting of a species selection. The axis are finally created.
+
+responsify() makes the visualization scale to the size of the viewport. It first grabs the original dimensions of the svg then uses this ratio for scaling up or down.
+
+onSelectionChange() updates two variables used to grab a user selection - speciesFilter and countryFilter. These are then used to filter the original dataset. wrangleData() is then called again.
+
+ - **vis.barcharts.js**
+ First in initVis(), the layout of the visualiation (svg) is created. The axes and scales for the visualization are also defined.
+
+In wrangleDate(), the display data is created by nesting filteredData by each country and calculating a count of landings. This data is then sorted.
+
+In updateVis(), the domain of the x and y axes is updated with the appropriate range of the landings and countries. The bar chart visualization is created. Three event listeners are used - click which changes the color of the selected bar and grabs the user selection and calls the MyEventHandler; mouseenter which changes the opacity of the highlighted bar; mouseleave which returns all bars to the original styles. The axes are finally created.
+
+responsify() makes the visualization scale to the size of the viewport. It first grabs the original dimensions of the svg then uses this ratio for scaling up or down.
+
+onSelectionChange() updates two variables used to grab a user selection - speciesFilter and countryFilter. These are then used to filter the original dataset. wrangleData() is then called again.
  
  ---
  ### Landings, Population and Subsidies  
