@@ -111,8 +111,9 @@ function updateAquaculture() {
                 return "#F6C46D";
             }
         })
-        .attr("d", arc)
-        .on("mouseover", function(d, i) {
+        .attr("d", arc);
+       
+    chart.on("mouseover", function(d, i) {
             aquaTip.html("Country: " + data2[i].Name_En
                          + "<br>Aquaculture: " + d.value + " tons")
                 .show();
