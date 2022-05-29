@@ -1,6 +1,6 @@
 # Smells Fishy
 
-[Link to project website](https://jacoma.github.io/smellsfishy.github.io/)
+[Link to project website](https://onthemarq.github.io/smellsfishy.github.io/)
 
 [Link to Screencast](https://drive.google.com/drive/u/0/folders/0ANwQ8mygqUzKUk9PVA?fbclid=IwAR26hdrpK0Iw3OkPNE8KAlN6k9kcvYnmYKu9n37QbwYaIkK6R6NPmtN0Y5Q)
 
